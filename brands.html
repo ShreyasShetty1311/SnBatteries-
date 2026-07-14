@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Our Brands | SN Batteries Sales & Service Bengaluru</title>
+  <meta name="description" content="Explore genuine battery brands distributed by SN Batteries Bengaluru. Authorized dealer for Amaron, Exide, Luminous, Microtek, SF Sonic, Tata Green.">
+  
+  <!-- Design System Stylesheet Links -->
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/header.css">
+  <link rel="stylesheet" href="css/footer.css">
+  <link rel="stylesheet" href="css/floating.css">
+  <link rel="stylesheet" href="css/animations.css">
+  
+  <style>
+    /* Brands page specific styles */
+    .page-banner {
+      background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+      padding-block: var(--space-20) var(--space-12);
+      color: #FFFFFF;
+      text-align: center;
+      position: relative;
+    }
+    
+    .page-banner::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: radial-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 0);
+      background-size: 24px 24px;
+      pointer-events: none;
+    }
+    
+    .breadcrumbs {
+      font-size: var(--text-body-sm);
+      color: var(--color-text-muted);
+      margin-bottom: var(--space-2);
+      font-weight: 500;
+    }
+    
+    .breadcrumbs a {
+      color: var(--color-text-muted);
+    }
+    
+    .breadcrumbs a:hover {
+      color: #FFFFFF;
+    }
+    
+    .page-banner h1 {
+      color: #FFFFFF;
+      font-size: var(--text-h1);
+      margin-bottom: var(--space-4);
+    }
+    
+    .page-banner-desc {
+      max-width: 720px;
+      margin-inline: auto;
+      color: var(--color-text-muted);
+      font-size: var(--text-body-lg);
+    }
+
+    /* Brands Cards Grid */
+    .brands-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--grid-gap);
+    }
+
+    @media (max-width: 1024px) {
+      .brands-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 640px) {
+      .brands-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .brand-card-item {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .brand-logo-container {
+      height: 120px;
+      background-color: var(--color-surface-raised);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-bottom: 1px solid var(--color-border);
+      padding: var(--space-4);
+    }
+
+    .brand-card-item h3 {
+      font-size: 20px;
+      margin-bottom: var(--space-2);
+    }
+
+    .brand-card-item p {
+      font-size: var(--text-body-sm);
+      color: var(--color-text-secondary);
+      margin-bottom: var(--space-4);
+      flex-grow: 1;
+    }
+
+    .brand-card-ctas {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-2);
+    }
+
+    /* Why authentic brand grid */
+    .auth-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--grid-gap);
+    }
+
+    @media (max-width: 992px) {
+      .auth-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 640px) {
+      .auth-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .auth-card {
+      background-color: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-card);
+      padding: var(--space-6);
+      transition: var(--transition-all);
+    }
+
+    .auth-card:hover {
+      box-shadow: var(--shadow-md);
+      border-color: var(--color-accent);
+    }
+
+    .auth-card-icon {
+      color: var(--color-accent);
+      margin-bottom: var(--space-4);
+      width: 32px;
+      height: 32px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="site-header" id="site-header">
+    <div class="container header-container">
+      <a href="index.html" class="logo">
+        <i data-lucide="battery-charging" class="logo-icon"></i>
+        <span class="logo-text">
+          SN BATTERIES
+          <span class="logo-sub">Sales & Service</span>
+        </span>
+      </a>
+      <nav aria-label="Main Navigation">
+        <ul class="nav-menu">
+          <li><a href="index.html" class="nav-link" id="nav-home">Home</a></li>
+          <li><a href="about.html" class="nav-link" id="nav-about">About</a></li>
+          <li><a href="services.html" class="nav-link" id="nav-services">Services</a></li>
+          <li><a href="branches.html" class="nav-link" id="nav-branches">Branches</a></li>
+          <li><a href="brands.html" class="nav-link active" id="nav-brands">Brands</a></li>
+          <li><a href="contact.html" class="nav-link" id="nav-contact">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="header-actions">
+        <a href="tel:+919845012345" class="btn btn-primary btn-sm">Call Now</a>
+        <button class="drawer-toggle" id="drawer-open" aria-label="Open Menu" aria-controls="mobile-drawer">
+          <i data-lucide="menu"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer -->
+  <div class="mobile-drawer" id="mobile-drawer" aria-hidden="true" role="dialog">
+    <div class="drawer-content">
+      <div class="drawer-header">
+        <a href="index.html" class="logo">
+          <i data-lucide="battery-charging" class="logo-icon"></i>
+          <span class="logo-text">
+            SN BATTERIES
+            <span class="logo-sub">Sales & Service</span>
+          </span>
+        </a>
+        <button class="drawer-toggle" id="drawer-close" aria-label="Close Menu">
+          <i data-lucide="x"></i>
+        </button>
+      </div>
+      <nav class="drawer-nav" aria-label="Mobile Navigation">
+        <a href="index.html" class="drawer-link">Home</a>
+        <a href="about.html" class="drawer-link">About</a>
+        <a href="services.html" class="drawer-link">Services</a>
+        <a href="branches.html" class="drawer-link">Branches</a>
+        <a href="brands.html" class="drawer-link active">Brands</a>
+        <a href="contact.html" class="drawer-link">Contact</a>
+      </nav>
+      <div class="drawer-footer">
+        <a href="tel:+919845012345" class="btn btn-primary btn-md btn-full">
+          <i data-lucide="phone"></i> Call Now
+        </a>
+        <a href="https://wa.me/919845012345?text=Hi%2C%20I%27m%20visiting%20your%20website%20and%20looking%20for%20battery%20sales%20or%20service." target="_blank" class="btn btn-whatsapp btn-md btn-full">
+          <i data-lucide="message-circle"></i> WhatsApp Chat
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <main>
+    <!-- Page Banner -->
+    <section class="page-banner">
+      <div class="container">
+        <div class="breadcrumbs">
+          <a href="index.html">Home</a> &nbsp;&sol;&nbsp; <span>Brands</span>
+        </div>
+        <h1>Our Partner Brands</h1>
+        <p class="page-banner-desc">Explore genuine battery products from leading global manufacturers. 100% original inventory with manufacturer warranty cards.</p>
+      </div>
+    </section>
+
+    <!-- Brands Showcase Grid -->
+    <section class="section section-even">
+      <div class="container">
+        <div class="section-header text-center reveal">
+          <span class="badge badge-primary" style="margin-bottom:var(--space-3);">Partners</span>
+          <h2>Authorized Battery Dealers</h2>
+          <p>We work directly with major manufacturers to ensure original warranty checks and fair pricing.</p>
+        </div>
+        
+        <div class="brands-grid">
+          <!-- Amaron -->
+          <div class="card brand-card-item reveal delay-1">
+            <div class="brand-logo-container">
+              <span style="font-family:var(--font-heading); font-weight:800; font-size:26px; color:#22c55e;">AMARON</span>
+            </div>
+            <div class="card-body">
+              <h3>Amaron Batteries</h3>
+              <p>Highly durable, long life silver-alloy automotive batteries featuring high heat resistance capacity.</p>
+              <div class="brand-card-ctas">
+                <a href="tel:+919845012345" class="btn btn-ghost btn-sm">Call Now</a>
+                <a href="https://wa.me/919845012345?text=Hi%2C%20I%27m%20visiting%20your%20website%20and%20looking%20for%20Amaron%20batteries." target="_blank" class="btn btn-whatsapp btn-sm"><i data-lucide="message-circle"></i> Chat</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Exide -->
+          <div class="card brand-card-item reveal delay-2">
+            <div class="brand-logo-container">
+              <span style="font-family:var(--font-heading); font-weight:800; font-size:26px; color:#ef4444;">EXIDE</span>
+            </div>
+            <div class="card-body">
+              <h3>Exide Batteries</h3>
+              <p>Pioneering battery setups for all vehicle models, residential UPS systems, and corporate backup applications.</p>
+              <div class="brand-card-ctas">
+                <a href="tel:+919845012345" class="btn btn-ghost btn-sm">Call Now</a>
+                <a href="https://wa.me/919845012345?text=Hi%2C%20I%27m%20visiting%20your%20website%20and%20looking%20for%20Exide%20batteries." target="_blank" class="btn btn-whatsapp btn-sm"><i data-lucide="message-circle"></i> Chat</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Luminous -->
+          <div class="card brand-card-item reveal delay-3">
+            <div class="brand-logo-container">
+              <span style="font-family:var(--font-heading); font-weight:800; font-size:24px; color:#3b82f6;">LUMINOUS</span>
+            </div>
+            <div class="card-body">
+              <h3>Luminous Solutions</h3>
+              <p>Top efficiency inverter batteries and home backup systems built to withstand long outages.</p>
+              <div class="brand-card-ctas">
+                <a href="tel:+919845012345" class="btn btn-ghost btn-sm">Call Now</a>
+                <a href="https://wa.me/919845012345?text=Hi%2C%20I%27m%20visiting%20your%20website%20and%20looking%20for%20Luminous%20batteries." target="_blank" class="btn btn-whatsapp btn-sm"><i data-lucide="message-circle"></i> Chat</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Microtek -->
+          <div class="card brand-card-item reveal delay-4">
+            <div class="brand-logo-container">
+              <span style="font-family:var(--font-heading); font-weight:800; font-size:24px; color:#1e3a8a;">MICROTEK</span>
+            </div>
+            <div class="card-body">
+              <h3>Microtek Backups</h3>
+              <p>Advanced digital sine wave power backups and specialized voltage stabilisers for safe running.</p>
+              <div class="brand-card-ctas">
+                <a href="tel:+919845012345" class="btn btn-ghost btn-sm">Call Now</a>
+                <a href="https://wa.me/919845012345?text=Hi%2C%20I%27m%20visiting%20your%20website%20and%20looking%20for%20Microtek%20batteries." target="_blank" class="btn btn-whatsapp btn-sm"><i data-lucide="message-circle"></i> Chat</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- SF Sonic -->
+          <div class="card brand-card-item reveal delay-1">
+            <div class="brand-logo-container">
+              <span style="font-family:var(--font-heading); font-weight:800; font-size:24px; color:#f97316;">SF SONIC</span>
+            </div>
+            <div class="card-body">
+              <h3>SF Sonic Batteries</h3>
+              <p>High start power automotive batteries engineered to handle heavy vehicle loads and terrains.</p>
+              <div class="brand-card-ctas">
+                <a href="tel:+919845012345" class="btn btn-ghost btn-sm">Call Now</a>
+                <a href="https://wa.me/919845012345?text=Hi%2C%20I%27m%20visiting%20your%20website%20and%20looking%20for%20SF+Sonic%20batteries." target="_blank" class="btn btn-whatsapp btn-sm"><i data-lucide="message-circle"></i> Chat</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tata Green -->
+          <div class="card brand-card-item reveal delay-2">
+            <div class="brand-logo-container">
+              <span style="font-family:var(--font-heading); font-weight:800; font-size:24px; color:#15803d;">TATA GREEN</span>
+            </div>
+            <div class="card-body">
+              <h3>Tata Green Batteries</h3>
+              <p>Environment-friendly lead-acid backup cells offering high charge-storage efficiency metrics.</p>
+              <div class="brand-card-ctas">
+                <a href="tel:+919845012345" class="btn btn-ghost btn-sm">Call Now</a>
+                <a href="https://wa.me/919845012345?text=Hi%2C%20I%27m%20visiting%20your%20website%20and%20looking%20for%20Tata+Green%20batteries." target="_blank" class="btn btn-whatsapp btn-sm"><i data-lucide="message-circle"></i> Chat</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Livguard -->
+          <div class="card brand-card-item reveal delay-3">
+            <div class="brand-logo-container">
+              <span style="font-family:var(--font-heading); font-weight:800; font-size:24px; color:#ea580c;">LIVGUARD</span>
+            </div>
+            <div class="card-body">
+              <h3>Livguard Batteries</h3>
+              <p>Smart modern batteries offering high power outputs and long cycle runs for homes.</p>
+              <div class="brand-card-ctas">
+                <a href="tel:+919845012345" class="btn btn-ghost btn-sm">Call Now</a>
+                <a href="https://wa.me/919845012345?text=Hi%2C%20I%27m%20visiting%20your%20website%20and%20looking%20for%20Livguard%20batteries." target="_blank" class="btn btn-whatsapp btn-sm"><i data-lucide="message-circle"></i> Chat</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Livfast -->
+          <div class="card brand-card-item reveal delay-4">
+            <div class="brand-logo-container">
+              <span style="font-family:var(--font-heading); font-weight:800; font-size:24px; color:#dc2626;">LIVFAST</span>
+            </div>
+            <div class="card-body">
+              <h3>Livfast Solutions</h3>
+              <p>Heavy duty battery lines offering rapid recharge times and high temperature resilience.</p>
+              <div class="brand-card-ctas">
+                <a href="tel:+919845012345" class="btn btn-ghost btn-sm">Call Now</a>
+                <a href="https://wa.me/919845012345?text=Hi%2C%20I%27m%20visiting%20your%20website%20and%20looking%20for%20Livfast%20batteries." target="_blank" class="btn btn-whatsapp btn-sm"><i data-lucide="message-circle"></i> Chat</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Why Choose Authentic Brands -->
+    <section class="section section-odd">
+      <div class="container">
+        <div class="section-header text-center reveal">
+          <span class="badge badge-primary" style="margin-bottom:var(--space-3);">Authenticity</span>
+          <h2>Benefits of Authentic Products</h2>
+          <p>We deal only in original brand stock, avoiding third-party assemblies or replicas.</p>
+        </div>
+        
+        <div class="auth-grid">
+          <!-- Item 1 -->
+          <div class="auth-card reveal delay-1">
+            <i data-lucide="shield-check" class="auth-card-icon"></i>
+            <h3>Manufacturer Warranty</h3>
+            <p>Every battery purchased from our network carries official, paper-registered warranty cards.</p>
+          </div>
+          <!-- Item 2 -->
+          <div class="auth-card reveal delay-2">
+            <i data-lucide="thumbs-up" class="auth-card-icon"></i>
+            <h3>Quality Assurance</h3>
+            <p>Direct manufacturer sourcing guarantees proper acid concentrations and intact plates.</p>
+          </div>
+          <!-- Item 3 -->
+          <div class="auth-card reveal delay-3">
+            <i data-lucide="activity" class="auth-card-icon"></i>
+            <h3>Long Lasting Runs</h3>
+            <p>Original batteries feature premium construction designs, preventing premature failures.</p>
+          </div>
+          <!-- Item 4 -->
+          <div class="auth-card reveal delay-1">
+            <i data-lucide="help-circle" class="auth-card-icon"></i>
+            <h3>Reliable Support</h3>
+            <p>Direct support lines to manufacturer technicians if diagnostics require specialized tools.</p>
+          </div>
+          <!-- Item 5 -->
+          <div class="auth-card reveal delay-2">
+            <i data-lucide="zap" class="auth-card-icon"></i>
+            <h3>Safe Design</h3>
+            <p>Authentic outer casings prevent acid spills and withstand electrical sparks.</p>
+          </div>
+          <!-- Item 6 -->
+          <div class="auth-card reveal delay-3">
+            <i data-lucide="file-text" class="auth-card-icon"></i>
+            <h3>Original Invoices</h3>
+            <p>We provide GST-compliant invoices verifying direct serial numbers for transparency.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="section section-even">
+      <div class="container">
+        <div class="cta-banner reveal">
+          <h2>Looking for a Specific Battery Brand?</h2>
+          <p>Find out about stock availability and exact compatibilities with our specialists.</p>
+          <div class="cta-buttons">
+            <a href="tel:+919845012345" class="btn btn-primary-dark btn-lg">
+              <i data-lucide="phone"></i> Call Hotline
+            </a>
+            <a href="https://wa.me/919845012345?text=Hi%2C%20I%20am%20looking%20for%20a%20battery." target="_blank" class="btn btn-whatsapp btn-lg">
+              <i data-lucide="message-circle"></i> WhatsApp Support
+            </a>
+            <a href="branches.html" class="btn btn-ghost btn-lg" style="color:#FFFFFF; border-color:rgba(255,255,255,0.3);">
+              Find Nearest Branch
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div>
+        <a href="index.html" class="footer-logo">
+          <i data-lucide="battery-charging" class="logo-icon"></i>
+          <span class="logo-text">
+            SN BATTERIES
+            <span class="logo-sub">Sales & Service</span>
+          </span>
+        </a>
+        <p class="footer-desc">Bengaluru's leading network for genuine batteries, home UPS solutions, and professional doorstep installation services for over 10 years.</p>
+        <div class="footer-socials">
+          <a href="#" class="social-btn facebook" aria-label="Facebook"><i data-lucide="facebook"></i></a>
+          <a href="#" class="social-btn instagram" aria-label="Instagram"><i data-lucide="instagram"></i></a>
+          <a href="https://wa.me/919845012345" target="_blank" class="social-btn whatsapp" aria-label="WhatsApp"><i data-lucide="message-circle"></i></a>
+        </div>
+      </div>
+      <div>
+        <h3 class="footer-title">Quick Links</h3>
+        <ul class="footer-links">
+          <li class="footer-link-item"><a href="index.html">Home</a></li>
+          <li class="footer-link-item"><a href="about.html">About Us</a></li>
+          <li class="footer-link-item"><a href="services.html">Services</a></li>
+          <li class="footer-link-item"><a href="branches.html">Branches</a></li>
+          <li class="footer-link-item"><a href="brands.html">Brands</a></li>
+          <li class="footer-link-item"><a href="contact.html">Contact Us</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="footer-title">Services</h3>
+        <ul class="footer-links">
+          <li class="footer-link-item"><a href="services.html">Car Batteries</a></li>
+          <li class="footer-link-item"><a href="services.html">Bike Batteries</a></li>
+          <li class="footer-link-item"><a href="services.html">Inverter Batteries</a></li>
+          <li class="footer-link-item"><a href="services.html">UPS Solutions</a></li>
+          <li class="footer-link-item"><a href="services.html">Lithium Batteries</a></li>
+          <li class="footer-link-item"><a href="services.html">Doorstep Support</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="footer-title">Contact Info</h3>
+        <ul class="footer-contact-list">
+          <li class="footer-contact-item">
+            <i data-lucide="map-pin"></i>
+            <span>Bengaluru, Karnataka, India</span>
+          </li>
+          <li class="footer-contact-item">
+            <i data-lucide="phone"></i>
+            <a href="tel:+919845012345">+91 98450 12345</a>
+          </li>
+          <li class="footer-contact-item">
+            <i data-lucide="message-circle"></i>
+            <a href="https://wa.me/919845012345" target="_blank">Chat on WhatsApp</a>
+          </li>
+          <li class="footer-contact-item">
+            <i data-lucide="mail"></i>
+            <a href="mailto:info@snbatteries.com">info@snbatteries.com</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <span class="copyright-text">&copy; 2026 SN Batteries Sales & Service. All rights reserved.</span>
+      <span class="developer-credit">Designed & Developed by <a href="http://www.imarktechserv.com" target="_blank" rel="noopener noreferrer">iMARK TECHSERV</a></span>
+    </div>
+  </footer>
+
+  <!-- Floating Action Buttons -->
+  <div class="floating-actions">
+    <a href="#" class="fab fab-instagram" data-tooltip="Follow Instagram" aria-label="Follow us on Instagram"><i data-lucide="instagram"></i></a>
+    <a href="#" class="fab fab-facebook" data-tooltip="Follow Facebook" aria-label="Follow us on Facebook"><i data-lucide="facebook"></i></a>
+    <a href="https://wa.me/919845012345?text=Hi%2C%20I%20found%20you%20on%20your%20website%20and%20need%20assistance." target="_blank" class="fab fab-whatsapp" data-tooltip="WhatsApp Enquiry" aria-label="Chat on WhatsApp"><i data-lucide="message-circle"></i></a>
+    <a href="tel:+919845012345" class="fab fab-call" data-tooltip="Call Hotline" aria-label="Call our hotline number"><i data-lucide="phone"></i></a>
+  </div>
+
+  <!-- Lucide Icons CDN -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  
+  <!-- JavaScript Files -->
+  <script src="js/header.js"></script>
+  <script src="js/scroll-reveal.js"></script>
+  <script src="js/fab.js"></script>
+  <script>
+    lucide.createIcons();
+  </script>
+</body>
+</html>

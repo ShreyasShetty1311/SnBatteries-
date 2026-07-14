@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us | SN Batteries Sales & Service Bengaluru</title>
+  <meta name="description" content="Learn about SN Batteries Sales & Service. Delivering genuine battery products and professional power backup solutions in Bengaluru for over 10 years.">
+  
+  <!-- Design System Stylesheet Links -->
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/header.css">
+  <link rel="stylesheet" href="css/footer.css">
+  <link rel="stylesheet" href="css/floating.css">
+  <link rel="stylesheet" href="css/animations.css">
+  
+  <style>
+    /* About page specific styles */
+    .page-banner {
+      background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+      padding-block: var(--space-20) var(--space-12);
+      color: #FFFFFF;
+      text-align: center;
+      position: relative;
+    }
+    
+    .page-banner::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: radial-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 0);
+      background-size: 24px 24px;
+      pointer-events: none;
+    }
+    
+    .breadcrumbs {
+      font-size: var(--text-body-sm);
+      color: var(--color-text-muted);
+      margin-bottom: var(--space-2);
+      font-weight: 500;
+    }
+    
+    .breadcrumbs a {
+      color: var(--color-text-muted);
+    }
+    
+    .breadcrumbs a:hover {
+      color: #FFFFFF;
+    }
+    
+    .page-banner h1 {
+      color: #FFFFFF;
+      font-size: var(--text-h1);
+      margin-bottom: var(--space-4);
+    }
+    
+    .page-banner-desc {
+      max-width: 720px;
+      margin-inline: auto;
+      color: var(--color-text-muted);
+      font-size: var(--text-body-lg);
+    }
+
+    /* Who We Are layout */
+    .whoweare-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-12);
+      align-items: center;
+    }
+    
+    @media (max-width: 992px) {
+      .whoweare-grid {
+        grid-template-columns: 1fr;
+        gap: var(--space-8);
+      }
+    }
+    
+    .whoweare-points {
+      list-style: none;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--space-4);
+      margin-top: var(--space-6);
+    }
+    
+    @media (max-width: 640px) {
+      .whoweare-points {
+        grid-template-columns: 1fr;
+      }
+    }
+    
+    .whoweare-point-item {
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+      font-weight: 600;
+      color: var(--color-text-primary);
+    }
+    
+    .whoweare-point-item i,
+    .whoweare-point-item svg {
+      color: var(--color-accent);
+      width: 20px;
+      height: 20px;
+    }
+
+    .whoweare-visual {
+      background: linear-gradient(135deg, var(--color-surface-raised) 0%, var(--color-border) 100%);
+      border-radius: var(--radius-xl);
+      padding: var(--space-8);
+      border: 1px solid var(--color-border);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-6);
+    }
+    
+    .visual-quote {
+      font-style: italic;
+      font-size: var(--text-body-lg);
+      font-weight: 500;
+      color: var(--color-text-primary);
+      position: relative;
+      padding-left: var(--space-6);
+      border-left: 3px solid var(--color-accent);
+    }
+
+    /* Mission & Vision layout */
+    .mv-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--grid-gap);
+    }
+    
+    @media (max-width: 768px) {
+      .mv-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    
+    .mv-card {
+      border-left: 4px solid var(--color-accent);
+    }
+
+    /* Why choose us grid */
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--grid-gap);
+    }
+    
+    @media (max-width: 992px) {
+      .why-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    
+    @media (max-width: 640px) {
+      .why-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    
+    .why-card {
+      padding: var(--space-6);
+      background-color: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-card);
+      transition: var(--transition-all);
+    }
+    
+    .why-card:hover {
+      box-shadow: var(--shadow-md);
+      border-color: var(--color-accent);
+    }
+    
+    .why-card-icon {
+      color: var(--color-energy);
+      margin-bottom: var(--space-4);
+      width: 32px;
+      height: 32px;
+    }
+    
+    .why-card h3 {
+      margin-bottom: var(--space-2);
+      font-size: 18px;
+    }
+    
+    .why-card p {
+      font-size: var(--text-body-sm);
+      margin-bottom: 0;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="site-header" id="site-header">
+    <div class="container header-container">
+      <a href="index.html" class="logo">
+        <i data-lucide="battery-charging" class="logo-icon"></i>
+        <span class="logo-text">
+          SN BATTERIES
+          <span class="logo-sub">Sales & Service</span>
+        </span>
+      </a>
+      <nav aria-label="Main Navigation">
+        <ul class="nav-menu">
+          <li><a href="index.html" class="nav-link" id="nav-home">Home</a></li>
+          <li><a href="about.html" class="nav-link active" id="nav-about">About</a></li>
+          <li><a href="services.html" class="nav-link" id="nav-services">Services</a></li>
+          <li><a href="branches.html" class="nav-link" id="nav-branches">Branches</a></li>
+          <li><a href="brands.html" class="nav-link" id="nav-brands">Brands</a></li>
+          <li><a href="contact.html" class="nav-link" id="nav-contact">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="header-actions">
+        <a href="tel:+919845012345" class="btn btn-primary btn-sm">Call Now</a>
+        <button class="drawer-toggle" id="drawer-open" aria-label="Open Menu" aria-controls="mobile-drawer">
+          <i data-lucide="menu"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer -->
+  <div class="mobile-drawer" id="mobile-drawer" aria-hidden="true" role="dialog">
+    <div class="drawer-content">
+      <div class="drawer-header">
+        <a href="index.html" class="logo">
+          <i data-lucide="battery-charging" class="logo-icon"></i>
+          <span class="logo-text">
+            SN BATTERIES
+            <span class="logo-sub">Sales & Service</span>
+          </span>
+        </a>
+        <button class="drawer-toggle" id="drawer-close" aria-label="Close Menu">
+          <i data-lucide="x"></i>
+        </button>
+      </div>
+      <nav class="drawer-nav" aria-label="Mobile Navigation">
+        <a href="index.html" class="drawer-link">Home</a>
+        <a href="about.html" class="drawer-link active">About</a>
+        <a href="services.html" class="drawer-link">Services</a>
+        <a href="branches.html" class="drawer-link">Branches</a>
+        <a href="brands.html" class="drawer-link">Brands</a>
+        <a href="contact.html" class="drawer-link">Contact</a>
+      </nav>
+      <div class="drawer-footer">
+        <a href="tel:+919845012345" class="btn btn-primary btn-md btn-full">
+          <i data-lucide="phone"></i> Call Now
+        </a>
+        <a href="https://wa.me/919845012345?text=Hi%2C%20I%27m%20visiting%20your%20website%20and%20looking%20for%20battery%20sales%20or%20service." target="_blank" class="btn btn-whatsapp btn-md btn-full">
+          <i data-lucide="message-circle"></i> WhatsApp Chat
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <main>
+    <!-- Page Banner -->
+    <section class="page-banner">
+      <div class="container">
+        <div class="breadcrumbs">
+          <a href="index.html">Home</a> &nbsp;&sol;&nbsp; <span>About Us</span>
+        </div>
+        <h1>SN Batteries Sales & Service</h1>
+        <p class="page-banner-desc">Providing trusted car battery services, home UPS solutions, professional battery installation, and reliable power backup solutions across Bengaluru for more than 10 years.</p>
+      </div>
+    </section>
+
+    <!-- Who We Are -->
+    <section class="section section-even">
+      <div class="container whoweare-grid">
+        <div class="reveal">
+          <span class="badge badge-primary" style="margin-bottom:var(--space-3);">Company Profile</span>
+          <h2 style="margin-bottom:var(--space-4);">Bengaluru's Trusted Battery Network</h2>
+          <p>Over the past decade, SN Batteries has grown from a single outlet to a comprehensive multi-branch sales and service network across Bengaluru. We have focused on maintaining unmatched reliability, genuine product sourcing, and responsive customer service.</p>
+          <p>Our experts analyze your requirements to ensure you get optimal battery life and maximum backup capacity. Whether you need immediate roadside replacement or detailed power diagnostics for home UPS, our network has you covered.</p>
+          
+          <ul class="whoweare-points">
+            <li class="whoweare-point-item"><i data-lucide="check-circle-2"></i> Genuine Products</li>
+            <li class="whoweare-point-item"><i data-lucide="check-circle-2"></i> Professional Service</li>
+            <li class="whoweare-point-item"><i data-lucide="check-circle-2"></i> Customer Satisfaction</li>
+            <li class="whoweare-point-item"><i data-lucide="check-circle-2"></i> Reliable Support</li>
+            <li class="whoweare-point-item" style="grid-column: span 2;"><i data-lucide="check-circle-2"></i> Growing Branch Network</li>
+          </ul>
+        </div>
+        
+        <div class="whoweare-visual reveal delay-2">
+          <div class="visual-quote">
+            "Power backups and vehicle batteries should never be a source of stress. We ensure expert diagnostics and swift replacements."
+          </div>
+          <div style="display:flex; justify-content:space-between; align-items:center; border-top:1px solid var(--color-border); padding-top:var(--space-4);">
+            <div>
+              <p style="font-weight:700; margin:0; color:var(--color-text-primary);">SN Batteries Experts</p>
+              <p style="font-size:12px; margin:0; color:var(--color-text-muted);">Serving Bengaluru since 2016</p>
+            </div>
+            <i data-lucide="award" style="color:var(--color-accent); width:36px; height:36px;"></i>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Mission & Vision -->
+    <section class="section section-odd">
+      <div class="container mv-grid">
+        <!-- Mission -->
+        <div class="card card-dark mv-card reveal">
+          <div class="card-body">
+            <i data-lucide="compass" style="width:36px; height:36px; color:var(--color-accent); margin-bottom:var(--space-4);"></i>
+            <h3 style="margin-bottom:var(--space-2); color:#FFFFFF;">Our Mission</h3>
+            <p style="color:var(--color-text-muted); margin-bottom:0;">To provide immediate, reliable power and automotive battery assistance across Bengaluru, ensuring genuine products, fair pricing, and professional installations that exceed client expectations.</p>
+          </div>
+        </div>
+        
+        <!-- Vision -->
+        <div class="card card-dark mv-card reveal delay-2">
+          <div class="card-body">
+            <i data-lucide="eye" style="width:36px; height:36px; color:var(--color-accent); margin-bottom:var(--space-4);"></i>
+            <h3 style="margin-bottom:var(--space-2); color:#FFFFFF;">Our Vision</h3>
+            <p style="color:var(--color-text-muted); margin-bottom:0;">To establish SN Batteries as Bengaluru's ultimate and most accessible local energy support infrastructure, building trust through direct branch extensions and reliable post-sales warranty support.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section class="section section-even">
+      <div class="container">
+        <div class="section-header text-center reveal">
+          <span class="badge badge-primary" style="margin-bottom:var(--space-3);">Our Commitment</span>
+          <h2>Why Choose SN Batteries?</h2>
+          <p>We deliver an editorial experience that prioritizes customer trust and product authenticity above all else.</p>
+        </div>
+        
+        <div class="why-grid">
+          <!-- Item 1 -->
+          <div class="why-card reveal delay-1">
+            <i data-lucide="verified" class="why-card-icon"></i>
+            <h3>Genuine Battery Products</h3>
+            <p>100% authentic inventory sourced straight from manufacturer warehouses with seal checks.</p>
+          </div>
+          <!-- Item 2 -->
+          <div class="why-card reveal delay-2">
+            <i data-lucide="layers" class="why-card-icon"></i>
+            <h3>10+ Trusted Brands</h3>
+            <p>Direct availability of leading national names including Amaron, Exide, Luminous, SF Sonic.</p>
+          </div>
+          <!-- Item 3 -->
+          <div class="why-card reveal delay-3">
+            <i data-lucide="user-check" class="why-card-icon"></i>
+            <h3>Professional Installation</h3>
+            <p>Our expert crew implements exact alignments and checks currents to keep batteries healthy.</p>
+          </div>
+          <!-- Item 4 -->
+          <div class="why-card reveal delay-1">
+            <i data-lucide="truck" class="why-card-icon"></i>
+            <h3>Doorstep Replacement</h3>
+            <p>Stuck with a dead battery? Call us and we will deliver and fit the replacement at your place.</p>
+          </div>
+          <!-- Item 5 -->
+          <div class="why-card reveal delay-2">
+            <i data-lucide="shield-check" class="why-card-icon"></i>
+            <h3>Warranty Support</h3>
+            <p>We honor complete manufacturer warranties with transparent diagnostics at all branch locations.</p>
+          </div>
+          <!-- Item 6 -->
+          <div class="why-card reveal delay-3">
+            <i data-lucide="calendar" class="why-card-icon"></i>
+            <h3>10+ Years Experience</h3>
+            <p>A decadelong track record supporting thousands of private car owners and business operators.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="section section-odd">
+      <div class="container">
+        <div class="cta-banner reveal">
+          <h2>Need Trusted Energy Experts?</h2>
+          <p>Get in touch with us to check compatibility or locate nearest products.</p>
+          <div class="cta-buttons">
+            <a href="tel:+919845012345" class="btn btn-primary-dark btn-lg">
+              <i data-lucide="phone"></i> Call Now
+            </a>
+            <a href="https://wa.me/919845012345?text=Hi%2C%20I%20am%20enquiring%20about%20your%20services." target="_blank" class="btn btn-whatsapp btn-lg">
+              <i data-lucide="message-circle"></i> Chat on WhatsApp
+            </a>
+            <a href="branches.html" class="btn btn-ghost btn-lg" style="color:#FFFFFF; border-color:rgba(255,255,255,0.3);">
+              Find Nearest Branch
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div>
+        <a href="index.html" class="footer-logo">
+          <i data-lucide="battery-charging" class="logo-icon"></i>
+          <span class="logo-text">
+            SN BATTERIES
+            <span class="logo-sub">Sales & Service</span>
+          </span>
+        </a>
+        <p class="footer-desc">Bengaluru's leading network for genuine batteries, home UPS solutions, and professional doorstep installation services for over 10 years.</p>
+        <div class="footer-socials">
+          <a href="#" class="social-btn facebook" aria-label="Facebook"><i data-lucide="facebook"></i></a>
+          <a href="#" class="social-btn instagram" aria-label="Instagram"><i data-lucide="instagram"></i></a>
+          <a href="https://wa.me/919845012345" target="_blank" class="social-btn whatsapp" aria-label="WhatsApp"><i data-lucide="message-circle"></i></a>
+        </div>
+      </div>
+      <div>
+        <h3 class="footer-title">Quick Links</h3>
+        <ul class="footer-links">
+          <li class="footer-link-item"><a href="index.html">Home</a></li>
+          <li class="footer-link-item"><a href="about.html">About Us</a></li>
+          <li class="footer-link-item"><a href="services.html">Services</a></li>
+          <li class="footer-link-item"><a href="branches.html">Branches</a></li>
+          <li class="footer-link-item"><a href="brands.html">Brands</a></li>
+          <li class="footer-link-item"><a href="contact.html">Contact Us</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="footer-title">Services</h3>
+        <ul class="footer-links">
+          <li class="footer-link-item"><a href="services.html">Car Batteries</a></li>
+          <li class="footer-link-item"><a href="services.html">Bike Batteries</a></li>
+          <li class="footer-link-item"><a href="services.html">Inverter Batteries</a></li>
+          <li class="footer-link-item"><a href="services.html">UPS Solutions</a></li>
+          <li class="footer-link-item"><a href="services.html">Lithium Batteries</a></li>
+          <li class="footer-link-item"><a href="services.html">Doorstep Support</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="footer-title">Contact Info</h3>
+        <ul class="footer-contact-list">
+          <li class="footer-contact-item">
+            <i data-lucide="map-pin"></i>
+            <span>Bengaluru, Karnataka, India</span>
+          </li>
+          <li class="footer-contact-item">
+            <i data-lucide="phone"></i>
+            <a href="tel:+919845012345">+91 98450 12345</a>
+          </li>
+          <li class="footer-contact-item">
+            <i data-lucide="message-circle"></i>
+            <a href="https://wa.me/919845012345" target="_blank">Chat on WhatsApp</a>
+          </li>
+          <li class="footer-contact-item">
+            <i data-lucide="mail"></i>
+            <a href="mailto:info@snbatteries.com">info@snbatteries.com</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <span class="copyright-text">&copy; 2026 SN Batteries Sales & Service. All rights reserved.</span>
+      <span class="developer-credit">Designed & Developed by <a href="http://www.imarktechserv.com" target="_blank" rel="noopener noreferrer">iMARK TECHSERV</a></span>
+    </div>
+  </footer>
+
+  <!-- Floating Action Buttons -->
+  <div class="floating-actions">
+    <a href="#" class="fab fab-instagram" data-tooltip="Follow Instagram" aria-label="Follow us on Instagram"><i data-lucide="instagram"></i></a>
+    <a href="#" class="fab fab-facebook" data-tooltip="Follow Facebook" aria-label="Follow us on Facebook"><i data-lucide="facebook"></i></a>
+    <a href="https://wa.me/919845012345?text=Hi%2C%20I%20found%20you%20on%20your%20website%20and%20need%20assistance." target="_blank" class="fab fab-whatsapp" data-tooltip="WhatsApp Enquiry" aria-label="Chat on WhatsApp"><i data-lucide="message-circle"></i></a>
+    <a href="tel:+919845012345" class="fab fab-call" data-tooltip="Call Hotline" aria-label="Call our hotline number"><i data-lucide="phone"></i></a>
+  </div>
+
+  <!-- Lucide Icons CDN -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  
+  <!-- JavaScript Files -->
+  <script src="js/header.js"></script>
+  <script src="js/scroll-reveal.js"></script>
+  <script src="js/fab.js"></script>
+  <script>
+    lucide.createIcons();
+  </script>
+</body>
+</html>

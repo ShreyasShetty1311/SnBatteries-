@@ -1,0 +1,140 @@
+/* Floating Action Buttons Styles */
+
+.floating-actions {
+  position: fixed;
+  bottom: var(--space-6);
+  right: var(--space-6);
+  z-index: 999;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  pointer-events: none; /* Let clicks pass through empty spaces */
+}
+
+@media (max-width: 768px) {
+  .floating-actions {
+    bottom: var(--space-4);
+    right: var(--space-4);
+    gap: var(--space-2);
+  }
+}
+
+.fab {
+  pointer-events: auto; /* Enable clicks on buttons */
+  width: 52px;
+  height: 52px;
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #FFFFFF;
+  box-shadow: var(--shadow-lg);
+  transition: transform var(--duration-normal) var(--ease-spring),
+              box-shadow var(--duration-normal) var(--ease-out),
+              background-color var(--duration-fast) var(--ease-out);
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  position: relative;
+  /* Start hidden for entrance animation via JS or class */
+  transform: translateX(100px);
+  opacity: 0;
+}
+
+@media (max-width: 768px) {
+  .fab {
+    width: 46px;
+    height: 46px;
+  }
+}
+
+/* Entrance class */
+.fab.slide-in {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+.fab i,
+.fab svg {
+  width: 24px;
+  height: 24px;
+}
+
+@media (max-width: 768px) {
+  .fab i,
+  .fab svg {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+/* Individual FAB Styling */
+.fab-instagram {
+  background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+}
+
+.fab-instagram:hover {
+  transform: scale(1.12);
+  box-shadow: 0 10px 24px rgba(220, 39, 67, 0.4);
+}
+
+.fab-facebook {
+  background-color: #1877F2;
+}
+
+.fab-facebook:hover {
+  transform: scale(1.12);
+  box-shadow: 0 10px 24px rgba(24, 119, 242, 0.4);
+}
+
+.fab-whatsapp {
+  background-color: var(--color-whatsapp);
+}
+
+.fab-whatsapp:hover {
+  transform: scale(1.12);
+  box-shadow: 0 10px 24px rgba(37, 211, 102, 0.4);
+}
+
+.fab-call {
+  background-color: var(--color-accent);
+}
+
+.fab-call:hover {
+  transform: scale(1.12);
+  box-shadow: var(--shadow-accent);
+  background-color: var(--color-accent-hover);
+}
+
+/* Tooltip on hover */
+.fab::before {
+  content: attr(data-tooltip);
+  position: absolute;
+  right: 64px;
+  top: 50%;
+  transform: translateY(-50%) translateX(10px);
+  background-color: var(--color-primary);
+  color: #FFFFFF;
+  padding: 6px 12px;
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 600;
+  border-radius: var(--radius-sm);
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--duration-fast) var(--ease-out),
+              transform var(--duration-fast) var(--ease-out);
+  box-shadow: var(--shadow-sm);
+}
+
+.fab:hover::before {
+  opacity: 1;
+  transform: translateY(-50%) translateX(0);
+}
+
+@media (max-width: 1024px) {
+  .fab::before {
+    display: none; /* Hide tooltips on touch devices */
+  }
+}

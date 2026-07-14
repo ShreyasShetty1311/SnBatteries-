@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us | SN Batteries Sales & Service Bengaluru</title>
+  <meta name="description" content="Get in touch with SN Batteries Sales & Service. Drop your enquiry, call our helpline, or find our office hours and locations in Bengaluru.">
+  
+  <!-- Design System Stylesheet Links -->
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/header.css">
+  <link rel="stylesheet" href="css/footer.css">
+  <link rel="stylesheet" href="css/floating.css">
+  <link rel="stylesheet" href="css/animations.css">
+  
+  <style>
+    /* Contact page specific styles */
+    .page-banner {
+      background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+      padding-block: var(--space-20) var(--space-12);
+      color: #FFFFFF;
+      text-align: center;
+      position: relative;
+    }
+    
+    .page-banner::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: radial-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 0);
+      background-size: 24px 24px;
+      pointer-events: none;
+    }
+    
+    .breadcrumbs {
+      font-size: var(--text-body-sm);
+      color: var(--color-text-muted);
+      margin-bottom: var(--space-2);
+      font-weight: 500;
+    }
+    
+    .breadcrumbs a {
+      color: var(--color-text-muted);
+    }
+    
+    .breadcrumbs a:hover {
+      color: #FFFFFF;
+    }
+    
+    .page-banner h1 {
+      color: #FFFFFF;
+      font-size: var(--text-h1);
+      margin-bottom: var(--space-4);
+    }
+    
+    .page-banner-desc {
+      max-width: 720px;
+      margin-inline: auto;
+      color: var(--color-text-muted);
+      font-size: var(--text-body-lg);
+    }
+
+    /* Contact content grid */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 0.8fr 1.2fr;
+      gap: var(--space-12);
+      align-items: start;
+    }
+
+    @media (max-width: 992px) {
+      .contact-grid {
+        grid-template-columns: 1fr;
+        gap: var(--space-8);
+      }
+    }
+
+    .contact-info-card {
+      background-color: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-card);
+      padding: var(--space-8);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .contact-info-card h3 {
+      font-size: 22px;
+      margin-bottom: var(--space-6);
+      border-bottom: 1px solid var(--color-border);
+      padding-bottom: var(--space-3);
+    }
+
+    .info-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-6);
+    }
+
+    .info-item {
+      display: flex;
+      gap: var(--space-4);
+    }
+
+    .info-item-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: var(--radius-md);
+      background-color: var(--color-accent-light);
+      color: var(--color-accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .info-item-icon i,
+    .info-item-icon svg {
+      width: 20px;
+      height: 20px;
+    }
+
+    .info-item h4 {
+      font-size: 15px;
+      font-weight: 700;
+      margin-bottom: 2px;
+    }
+
+    .info-item p,
+    .info-item a {
+      font-size: var(--text-body-sm);
+      color: var(--color-text-secondary);
+      margin-bottom: 0;
+    }
+
+    .info-item a:hover {
+      color: var(--color-accent);
+    }
+
+    /* Social icons layout */
+    .contact-socials-wrapper {
+      margin-top: var(--space-8);
+      border-top: 1px solid var(--color-border);
+      padding-top: var(--space-6);
+    }
+
+    .contact-socials-wrapper p {
+      font-weight: 600;
+      font-size: var(--text-body-sm);
+      color: var(--color-text-primary);
+      margin-bottom: var(--space-3);
+    }
+
+    .contact-socials {
+      display: flex;
+      gap: var(--space-3);
+    }
+
+    .contact-social-btn {
+      width: 40px;
+      height: 40px;
+      border-radius: var(--radius-full);
+      background-color: var(--color-surface-raised);
+      border: 1px solid var(--color-border);
+      color: var(--color-text-secondary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: var(--transition-all);
+    }
+
+    .contact-social-btn:hover {
+      color: #FFFFFF;
+      transform: translateY(-3px);
+    }
+
+    .contact-social-btn.facebook:hover {
+      background-color: #1877F2;
+      border-color: #1877F2;
+    }
+
+    .contact-social-btn.instagram:hover {
+      background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+      border-color: transparent;
+    }
+
+    .contact-social-btn.whatsapp:hover {
+      background-color: var(--color-whatsapp);
+      border-color: var(--color-whatsapp);
+    }
+
+    /* Form container */
+    .contact-form-card {
+      background-color: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-card);
+      padding: var(--space-8);
+      box-shadow: var(--shadow-sm);
+    }
+
+    @media (max-width: 640px) {
+      .contact-info-card,
+      .contact-form-card {
+        padding: var(--space-6);
+      }
+    }
+
+    /* Map container */
+    .contact-map-container {
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      box-shadow: var(--shadow-lg);
+      border: 1px solid var(--color-border);
+      height: 450px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="site-header" id="site-header">
+    <div class="container header-container">
+      <a href="index.html" class="logo">
+        <i data-lucide="battery-charging" class="logo-icon"></i>
+        <span class="logo-text">
+          SN BATTERIES
+          <span class="logo-sub">Sales & Service</span>
+        </span>
+      </a>
+      <nav aria-label="Main Navigation">
+        <ul class="nav-menu">
+          <li><a href="index.html" class="nav-link" id="nav-home">Home</a></li>
+          <li><a href="about.html" class="nav-link" id="nav-about">About</a></li>
+          <li><a href="services.html" class="nav-link" id="nav-services">Services</a></li>
+          <li><a href="branches.html" class="nav-link" id="nav-branches">Branches</a></li>
+          <li><a href="brands.html" class="nav-link" id="nav-brands">Brands</a></li>
+          <li><a href="contact.html" class="nav-link active" id="nav-contact">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="header-actions">
+        <a href="tel:+919845012345" class="btn btn-primary btn-sm">Call Now</a>
+        <button class="drawer-toggle" id="drawer-open" aria-label="Open Menu" aria-controls="mobile-drawer">
+          <i data-lucide="menu"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer -->
+  <div class="mobile-drawer" id="mobile-drawer" aria-hidden="true" role="dialog">
+    <div class="drawer-content">
+      <div class="drawer-header">
+        <a href="index.html" class="logo">
+          <i data-lucide="battery-charging" class="logo-icon"></i>
+          <span class="logo-text">
+            SN BATTERIES
+            <span class="logo-sub">Sales & Service</span>
+          </span>
+        </a>
+        <button class="drawer-toggle" id="drawer-close" aria-label="Close Menu">
+          <i data-lucide="x"></i>
+        </button>
+      </div>
+      <nav class="drawer-nav" aria-label="Mobile Navigation">
+        <a href="index.html" class="drawer-link">Home</a>
+        <a href="about.html" class="drawer-link">About</a>
+        <a href="services.html" class="drawer-link">Services</a>
+        <a href="branches.html" class="drawer-link">Branches</a>
+        <a href="brands.html" class="drawer-link">Brands</a>
+        <a href="contact.html" class="drawer-link active">Contact</a>
+      </nav>
+      <div class="drawer-footer">
+        <a href="tel:+919845012345" class="btn btn-primary btn-md btn-full">
+          <i data-lucide="phone"></i> Call Now
+        </a>
+        <a href="https://wa.me/919845012345?text=Hi%2C%20I%27m%20visiting%20your%20website%20and%20looking%20for%20battery%20sales%20or%20service." target="_blank" class="btn btn-whatsapp btn-md btn-full">
+          <i data-lucide="message-circle"></i> WhatsApp Chat
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <main>
+    <!-- Page Banner -->
+    <section class="page-banner">
+      <div class="container">
+        <div class="breadcrumbs">
+          <a href="index.html">Home</a> &nbsp;&sol;&nbsp; <span>Contact Us</span>
+        </div>
+        <h1>Get in Touch</h1>
+        <p class="page-banner-desc">Have questions about battery compatibility or want to request a doorstep replacement? Fill out our form or call our helpline.</p>
+      </div>
+    </section>
+
+    <!-- Contact section grid -->
+    <section class="section section-even">
+      <div class="container contact-grid">
+        <!-- Info Column -->
+        <div class="contact-info-card reveal">
+          <h3>Contact Details</h3>
+          
+          <ul class="info-list">
+            <li class="info-item">
+              <div class="info-item-icon"><i data-lucide="map-pin"></i></div>
+              <div>
+                <h4>Main Office</h4>
+                <p>Sector 6, HSR Layout, Bengaluru, Karnataka, India</p>
+              </div>
+            </li>
+            <li class="info-item">
+              <div class="info-item-icon"><i data-lucide="phone"></i></div>
+              <div>
+                <h4>Call Hotline</h4>
+                <p><a href="tel:+919845012345">+91 98450 12345</a></p>
+              </div>
+            </li>
+            <li class="info-item">
+              <div class="info-item-icon"><i data-lucide="mail"></i></div>
+              <div>
+                <h4>Email Support</h4>
+                <p><a href="mailto:info@snbatteries.com">info@snbatteries.com</a></p>
+              </div>
+            </li>
+            <li class="info-item">
+              <div class="info-item-icon"><i data-lucide="clock"></i></div>
+              <div>
+                <h4>Operating Hours</h4>
+                <p>Mon - Sat: 9:00 AM - 8:00 PM<br>Sunday: 9:30 AM - 4:00 PM</p>
+              </div>
+            </li>
+          </ul>
+
+          <div class="contact-socials-wrapper">
+            <p>Connect with Us</p>
+            <div class="contact-socials">
+              <a href="#" class="contact-social-btn facebook" aria-label="Facebook"><i data-lucide="facebook"></i></a>
+              <a href="#" class="contact-social-btn instagram" aria-label="Instagram"><i data-lucide="instagram"></i></a>
+              <a href="https://wa.me/919845012345" target="_blank" class="contact-social-btn whatsapp" aria-label="WhatsApp"><i data-lucide="message-circle"></i></a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Form Column -->
+        <div class="contact-form-card reveal delay-2">
+          <form id="contact-form" novalidate>
+            <div class="form-group">
+              <label for="fullname" class="form-label">Full Name *</label>
+              <input type="text" id="fullname" class="input" placeholder="Your Name" required>
+            </div>
+            
+            <div class="form-group">
+              <label for="phone" class="form-label">Mobile Number *</label>
+              <input type="tel" id="phone" class="input" placeholder="10-digit Mobile Number" required>
+            </div>
+
+            <div class="form-group">
+              <label for="email" class="form-label">Email Address (Optional)</label>
+              <input type="email" id="email" class="input" placeholder="yourname@domain.com">
+            </div>
+
+            <div class="form-group">
+              <label for="service" class="form-label">Service Required *</label>
+              <select id="service" class="input" required>
+                <option value="" disabled selected>Select service</option>
+                <option value="car-battery">Car Battery Replacement</option>
+                <option value="two-wheeler">Two Wheeler Battery</option>
+                <option value="inverter">Home Inverter Setup</option>
+                <option value="ups">UPS Battery Service</option>
+                <option value="diagnostic">General Diagnostic Check</option>
+                <option value="other">Other Inquiries</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="message" class="form-label">Message (Optional)</label>
+              <textarea id="message" class="input" rows="4" placeholder="How can we assist you? (Max 500 characters)" maxlength="500"></textarea>
+            </div>
+
+            <div style="margin-top:var(--space-6);">
+              <button type="submit" class="btn btn-primary btn-md btn-full">
+                Send Enquiry <i data-lucide="send" style="width:16px; height:16px;"></i>
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- Map Section -->
+    <section class="section section-odd">
+      <div class="container">
+        <div class="section-header text-center reveal">
+          <span class="badge badge-primary" style="margin-bottom:var(--space-3);">Directions</span>
+          <h2>Find Us on Google Maps</h2>
+          <p>Get step by step directions to our main headquarters or locate nearest diagnostic store branches.</p>
+        </div>
+        
+        <div class="contact-map-container reveal">
+          <iframe 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m13!1d248849.8491629637!2d77.4661258671875!3d12.971891500000012!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae1670c9b44e69%3A0x207456b22ba74572!2sBengaluru%2C%20Karnataka!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin" 
+            width="100%" 
+            height="100%" 
+            style="border:0;" 
+            allowfullscreen="" 
+            loading="lazy" 
+            referrerpolicy="no-referrer-when-downgrade"
+            title="SN Batteries Corporate Location Map">
+          </iframe>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div>
+        <a href="index.html" class="footer-logo">
+          <i data-lucide="battery-charging" class="logo-icon"></i>
+          <span class="logo-text">
+            SN BATTERIES
+            <span class="logo-sub">Sales & Service</span>
+          </span>
+        </a>
+        <p class="footer-desc">Bengaluru's leading network for genuine batteries, home UPS solutions, and professional doorstep installation services for over 10 years.</p>
+        <div class="footer-socials">
+          <a href="#" class="social-btn facebook" aria-label="Facebook"><i data-lucide="facebook"></i></a>
+          <a href="#" class="social-btn instagram" aria-label="Instagram"><i data-lucide="instagram"></i></a>
+          <a href="https://wa.me/919845012345" target="_blank" class="social-btn whatsapp" aria-label="WhatsApp"><i data-lucide="message-circle"></i></a>
+        </div>
+      </div>
+      <div>
+        <h3 class="footer-title">Quick Links</h3>
+        <ul class="footer-links">
+          <li class="footer-link-item"><a href="index.html">Home</a></li>
+          <li class="footer-link-item"><a href="about.html">About Us</a></li>
+          <li class="footer-link-item"><a href="services.html">Services</a></li>
+          <li class="footer-link-item"><a href="branches.html">Branches</a></li>
+          <li class="footer-link-item"><a href="brands.html">Brands</a></li>
+          <li class="footer-link-item"><a href="contact.html">Contact Us</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="footer-title">Services</h3>
+        <ul class="footer-links">
+          <li class="footer-link-item"><a href="services.html">Car Batteries</a></li>
+          <li class="footer-link-item"><a href="services.html">Bike Batteries</a></li>
+          <li class="footer-link-item"><a href="services.html">Inverter Batteries</a></li>
+          <li class="footer-link-item"><a href="services.html">UPS Solutions</a></li>
+          <li class="footer-link-item"><a href="services.html">Lithium Batteries</a></li>
+          <li class="footer-link-item"><a href="services.html">Doorstep Support</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="footer-title">Contact Info</h3>
+        <ul class="footer-contact-list">
+          <li class="footer-contact-item">
+            <i data-lucide="map-pin"></i>
+            <span>Bengaluru, Karnataka, India</span>
+          </li>
+          <li class="footer-contact-item">
+            <i data-lucide="phone"></i>
+            <a href="tel:+919845012345">+91 98450 12345</a>
+          </li>
+          <li class="footer-contact-item">
+            <i data-lucide="message-circle"></i>
+            <a href="https://wa.me/919845012345" target="_blank">Chat on WhatsApp</a>
+          </li>
+          <li class="footer-contact-item">
+            <i data-lucide="mail"></i>
+            <a href="mailto:info@snbatteries.com">info@snbatteries.com</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <span class="copyright-text">&copy; 2026 SN Batteries Sales & Service. All rights reserved.</span>
+      <span class="developer-credit">Designed & Developed by <a href="http://www.imarktechserv.com" target="_blank" rel="noopener noreferrer">iMARK TECHSERV</a></span>
+    </div>
+  </footer>
+
+  <!-- Floating Action Buttons -->
+  <div class="floating-actions">
+    <a href="#" class="fab fab-instagram" data-tooltip="Follow Instagram" aria-label="Follow us on Instagram"><i data-lucide="instagram"></i></a>
+    <a href="#" class="fab fab-facebook" data-tooltip="Follow Facebook" aria-label="Follow us on Facebook"><i data-lucide="facebook"></i></a>
+    <a href="https://wa.me/919845012345?text=Hi%2C%20I%20found%20you%20on%20your%20website%20and%20need%20assistance." target="_blank" class="fab fab-whatsapp" data-tooltip="WhatsApp Enquiry" aria-label="Chat on WhatsApp"><i data-lucide="message-circle"></i></a>
+    <a href="tel:+919845012345" class="fab fab-call" data-tooltip="Call Hotline" aria-label="Call our hotline number"><i data-lucide="phone"></i></a>
+  </div>
+
+  <!-- Lucide Icons CDN -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  
+  <!-- JavaScript Files -->
+  <script src="js/header.js"></script>
+  <script src="js/scroll-reveal.js"></script>
+  <script src="js/form.js"></script>
+  <script src="js/fab.js"></script>
+  <script>
+    lucide.createIcons();
+  </script>
+</body>
+</html>

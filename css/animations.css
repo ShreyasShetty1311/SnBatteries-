@@ -1,0 +1,140 @@
+/* Animations and Transitions for SN Batteries */
+
+/* 1. SCROLL REVEAL (Intersection Observer classes) */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity var(--duration-slow) var(--ease-out),
+              transform var(--duration-slow) var(--ease-out);
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Staggered Delay classes */
+.delay-1 { transition-delay: 80ms; }
+.delay-2 { transition-delay: 160ms; }
+.delay-3 { transition-delay: 240ms; }
+.delay-4 { transition-delay: 320ms; }
+.delay-5 { transition-delay: 400ms; }
+.delay-6 { transition-delay: 480ms; }
+
+
+/* 2. INFINITE SCROLL MARQUEE (CSS Only) */
+.marquee-container {
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  mask-image: linear-gradient(to right, transparent, #000 10%, #000 90%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 10%, #000 90%, transparent);
+}
+
+.marquee-content {
+  display: flex;
+  gap: var(--space-8);
+  width: max-content;
+  animation: marquee 30s linear infinite;
+}
+
+.marquee-container:hover .marquee-content {
+  animation-play-state: paused;
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%); /* Scroll exactly half of the double content width */
+  }
+}
+
+/* Fast gallery marquee variant */
+.marquee-fast .marquee-content {
+  animation-duration: 25s;
+}
+
+
+/* 3. HERO FLOAT ANIMATION */
+@keyframes float {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.float-anim {
+  animation: float 4s ease-in-out infinite;
+}
+
+
+/* 4. METRIC SHIMMER / PULSE EFFECT */
+@keyframes pulse-soft {
+  0% {
+    box-shadow: 0 0 0 0 rgba(3, 105, 161, 0.4);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(3, 105, 161, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(3, 105, 161, 0);
+  }
+}
+
+.pulse-accent {
+  animation: pulse-soft 2s infinite;
+}
+
+
+/* 5. SHIMMER PLACEHOLDER SKELETON */
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.skeleton {
+  background: linear-gradient(90deg, #F1F5F9 25%, #E2E8F0 50%, #F1F5F9 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite linear;
+}
+
+
+/* 6. TOAST ANIMATIONS */
+@keyframes slideInRight {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+.toast-enter {
+  animation: slideInRight var(--duration-normal) var(--ease-spring) forwards;
+}
+
+.toast-exit {
+  animation: fadeOut var(--duration-fast) var(--ease-out) forwards;
+}

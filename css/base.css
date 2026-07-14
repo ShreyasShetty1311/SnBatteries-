@@ -1,0 +1,210 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap');
+
+/* Modern CSS Reset & Base Styles */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+  -moz-tab-size: 4;
+  tab-size: 4;
+}
+
+body {
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  line-height: 1.65;
+  color: var(--color-foreground);
+  background-color: var(--color-background);
+  min-height: 100vh;
+  text-rendering: optimizeSpeed;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1 0 auto;
+}
+
+/* Typography Headings */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  color: var(--color-text-primary);
+  line-height: 1.2;
+}
+
+h1 {
+  font-size: var(--text-h1);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+}
+
+h2 {
+  font-size: var(--text-h2);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+h3 {
+  font-size: var(--text-h3);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+h4 {
+  font-size: var(--text-h4);
+  font-weight: 600;
+}
+
+p {
+  margin-bottom: var(--space-4);
+  color: var(--color-text-secondary);
+}
+
+p:last-child {
+  margin-bottom: 0;
+}
+
+a {
+  color: var(--color-accent);
+  text-decoration: none;
+  background-color: transparent;
+  transition: var(--transition-colors);
+}
+
+a:hover {
+  color: var(--color-accent-hover);
+}
+
+img, picture, svg, video, canvas {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+button, input, select, textarea {
+  font: inherit;
+}
+
+/* Structural Classes */
+.container {
+  width: 100%;
+  max-width: var(--container-xl);
+  margin-inline: auto;
+  padding-inline: var(--container-gutter-desktop);
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding-inline: var(--container-gutter-mobile);
+  }
+}
+
+.section {
+  padding-block: var(--section-py);
+  position: relative;
+}
+
+@media (max-width: 768px) {
+  .section {
+    padding-block: var(--section-py-sm);
+  }
+}
+
+/* Layout variations */
+.section-odd {
+  background-color: var(--color-background);
+}
+
+.section-even {
+  background-color: var(--color-surface);
+}
+
+.section-dark {
+  background-color: var(--color-primary);
+  color: var(--color-on-primary);
+}
+
+.section-dark h1,
+.section-dark h2,
+.section-dark h3,
+.section-dark h4 {
+  color: var(--color-on-primary);
+}
+
+.section-dark p {
+  color: var(--color-text-muted);
+}
+
+/* Text alignment & Utilities */
+.text-center { text-align: center; }
+.text-left { text-align: left; }
+.text-right { text-align: right; }
+
+.section-header {
+  max-width: 640px;
+  margin-inline: auto;
+  margin-bottom: var(--space-12);
+}
+
+.section-header.text-center {
+  margin-inline: auto;
+}
+
+.section-header.text-left {
+  margin-inline: 0;
+}
+
+.section-header h2 {
+  margin-bottom: var(--space-3);
+}
+
+.section-header p {
+  font-size: var(--text-body-lg);
+  color: var(--color-text-secondary);
+}
+
+.section-dark .section-header p {
+  color: var(--color-text-muted);
+}
+
+.d-grid {
+  display: grid;
+  gap: var(--grid-gap);
+}
+
+/* Custom focus indicators */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 3px solid var(--color-ring);
+  outline-offset: 2px;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Selection color */
+::selection {
+  background-color: var(--color-accent-light);
+  color: var(--color-primary);
+}

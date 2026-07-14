@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Our Services | SN Batteries Bengaluru</title>
+  <meta name="description" content="View automotive battery setups, home inverter systems, professional diagnostics, emergency jump starts, and doorstep replacements by SN Batteries Bengaluru.">
+  
+  <!-- Design System Stylesheet Links -->
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/header.css">
+  <link rel="stylesheet" href="css/footer.css">
+  <link rel="stylesheet" href="css/floating.css">
+  <link rel="stylesheet" href="css/animations.css">
+  
+  <style>
+    /* Services page specific styling */
+    .page-banner {
+      background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+      padding-block: var(--space-20) var(--space-12);
+      color: #FFFFFF;
+      text-align: center;
+      position: relative;
+    }
+    
+    .page-banner::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: radial-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 0);
+      background-size: 24px 24px;
+      pointer-events: none;
+    }
+    
+    .breadcrumbs {
+      font-size: var(--text-body-sm);
+      color: var(--color-text-muted);
+      margin-bottom: var(--space-2);
+      font-weight: 500;
+    }
+    
+    .breadcrumbs a {
+      color: var(--color-text-muted);
+    }
+    
+    .breadcrumbs a:hover {
+      color: #FFFFFF;
+    }
+    
+    .page-banner h1 {
+      color: #FFFFFF;
+      font-size: var(--text-h1);
+      margin-bottom: var(--space-4);
+    }
+    
+    .page-banner-desc {
+      max-width: 720px;
+      margin-inline: auto;
+      color: var(--color-text-muted);
+      font-size: var(--text-body-lg);
+    }
+
+    /* Car Brand Marquee */
+    .brand-slider-section {
+      padding-block: var(--space-6);
+      background-color: var(--color-surface-raised);
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .brand-slide-item {
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+      font-weight: 700;
+      color: var(--color-text-secondary);
+      font-size: 18px;
+      padding: var(--space-2) var(--space-6);
+      opacity: 0.5;
+      transition: opacity var(--duration-fast) var(--ease-out);
+    }
+    
+    .brand-slide-item:hover {
+      opacity: 0.9;
+    }
+
+    .brand-slide-item i,
+    .brand-slide-item svg {
+      width: 20px;
+      height: 20px;
+    }
+
+    /* Solutions Grid */
+    .solutions-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--grid-gap);
+    }
+
+    @media (max-width: 992px) {
+      .solutions-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 640px) {
+      .solutions-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .solution-card {
+      height: 100%;
+    }
+
+    .solution-card-img {
+      height: 200px;
+      background: linear-gradient(135deg, var(--color-primary-700) 0%, var(--color-primary) 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--color-accent);
+      position: relative;
+    }
+
+    .solution-card-img i,
+    .solution-card-img svg {
+      width: 48px;
+      height: 48px;
+    }
+
+    .solution-card-img::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 40%;
+      background: linear-gradient(to top, rgba(15,23,42,0.8), transparent);
+    }
+
+    .solution-card h3 {
+      font-size: 20px;
+      margin-bottom: var(--space-2);
+    }
+
+    .solution-card p {
+      font-size: var(--text-body-sm);
+      color: var(--color-text-secondary);
+      margin-bottom: var(--space-4);
+      flex-grow: 1;
+    }
+
+    .solution-card-buttons {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-2);
+      margin-top: auto;
+    }
+
+    /* Home backups list styling */
+    .backup-section-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-12);
+      align-items: center;
+    }
+
+    @media (max-width: 992px) {
+      .backup-section-grid {
+        grid-template-columns: 1fr;
+        gap: var(--space-8);
+      }
+    }
+
+    .backup-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-4);
+    }
+
+    .backup-item {
+      display: flex;
+      align-items: flex-start;
+      gap: var(--space-3);
+    }
+
+    .backup-item-icon {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background-color: var(--color-accent-light);
+      color: var(--color-accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .backup-item-icon i,
+    .backup-item-icon svg {
+      width: 14px;
+      height: 14px;
+    }
+
+    .backup-item h4 {
+      font-size: 16px;
+      margin-bottom: 2px;
+    }
+
+    .backup-item p {
+      font-size: var(--text-body-sm);
+      margin-bottom: 0;
+    }
+
+    .backup-sectors {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-2);
+      margin-top: var(--space-6);
+    }
+
+    .backup-sector-pill {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--color-text-secondary);
+      background-color: var(--color-surface-raised);
+      border: 1px solid var(--color-border);
+      padding: 6px 14px;
+      border-radius: var(--radius-full);
+    }
+
+    /* Installation gallery */
+    .gallery-slide-card {
+      width: 320px;
+      background-color: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      flex-shrink: 0;
+    }
+
+    .gallery-slide-img {
+      height: 180px;
+      background: linear-gradient(135deg, var(--color-primary-700) 0%, var(--color-primary) 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: rgba(255, 255, 255, 0.15);
+    }
+
+    .gallery-slide-img i,
+    .gallery-slide-img svg {
+      width: 48px;
+      height: 48px;
+    }
+
+    .gallery-slide-desc {
+      padding: var(--space-4);
+    }
+
+    .gallery-slide-desc p {
+      font-size: var(--text-body-sm);
+      font-weight: 600;
+      color: var(--color-text-primary);
+      margin-bottom: 2px;
+    }
+
+    .gallery-slide-desc span {
+      font-size: 12px;
+      color: var(--color-text-muted);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="site-header" id="site-header">
+    <div class="container header-container">
+      <a href="index.html" class="logo">
+        <i data-lucide="battery-charging" class="logo-icon"></i>
+        <span class="logo-text">
+          SN BATTERIES
+          <span class="logo-sub">Sales & Service</span>
+        </span>
+      </a>
+      <nav aria-label="Main Navigation">
+        <ul class="nav-menu">
+          <li><a href="index.html" class="nav-link" id="nav-home">Home</a></li>
+          <li><a href="about.html" class="nav-link" id="nav-about">About</a></li>
+          <li><a href="services.html" class="nav-link active" id="nav-services">Services</a></li>
+          <li><a href="branches.html" class="nav-link" id="nav-branches">Branches</a></li>
+          <li><a href="brands.html" class="nav-link" id="nav-brands">Brands</a></li>
+          <li><a href="contact.html" class="nav-link" id="nav-contact">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="header-actions">
+        <a href="tel:+919845012345" class="btn btn-primary btn-sm">Call Now</a>
+        <button class="drawer-toggle" id="drawer-open" aria-label="Open Menu" aria-controls="mobile-drawer">
+          <i data-lucide="menu"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer -->
+  <div class="mobile-drawer" id="mobile-drawer" aria-hidden="true" role="dialog">
+    <div class="drawer-content">
+      <div class="drawer-header">
+        <a href="index.html" class="logo">
+          <i data-lucide="battery-charging" class="logo-icon"></i>
+          <span class="logo-text">
+            SN BATTERIES
+            <span class="logo-sub">Sales & Service</span>
+          </span>
+        </a>
+        <button class="drawer-toggle" id="drawer-close" aria-label="Close Menu">
+          <i data-lucide="x"></i>
+        </button>
+      </div>
+      <nav class="drawer-nav" aria-label="Mobile Navigation">
+        <a href="index.html" class="drawer-link">Home</a>
+        <a href="about.html" class="drawer-link">About</a>
+        <a href="services.html" class="drawer-link active">Services</a>
+        <a href="branches.html" class="drawer-link">Branches</a>
+        <a href="brands.html" class="drawer-link">Brands</a>
+        <a href="contact.html" class="drawer-link">Contact</a>
+      </nav>
+      <div class="drawer-footer">
+        <a href="tel:+919845012345" class="btn btn-primary btn-md btn-full">
+          <i data-lucide="phone"></i> Call Now
+        </a>
+        <a href="https://wa.me/919845012345?text=Hi%2C%20I%27m%20visiting%20your%20website%20and%20looking%20for%20battery%20sales%20or%20service." target="_blank" class="btn btn-whatsapp btn-md btn-full">
+          <i data-lucide="message-circle"></i> WhatsApp Chat
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <main>
+    <!-- Page Banner -->
+    <section class="page-banner">
+      <div class="container">
+        <div class="breadcrumbs">
+          <a href="index.html">Home</a> &nbsp;&sol;&nbsp; <span>Services</span>
+        </div>
+        <h1>Battery Products &amp; Services</h1>
+        <p class="page-banner-desc">Explore our full line of automotive batteries, home back-up setups, industrial power backups, and responsive local services.</p>
+      </div>
+    </section>
+
+    <!-- Car Brand Slider -->
+    <section class="brand-slider-section">
+      <div class="marquee-container">
+        <div class="marquee-content">
+          <div class="brand-slide-item"><i data-lucide="car"></i> Maruti Suzuki</div>
+          <div class="brand-slide-item"><i data-lucide="car"></i> Hyundai</div>
+          <div class="brand-slide-item"><i data-lucide="car"></i> Tata Motors</div>
+          <div class="brand-slide-item"><i data-lucide="car"></i> Mahindra</div>
+          <div class="brand-slide-item"><i data-lucide="car"></i> Honda</div>
+          <div class="brand-slide-item"><i data-lucide="car"></i> Toyota</div>
+          <div class="brand-slide-item"><i data-lucide="car"></i> KIA</div>
+          <div class="brand-slide-item"><i data-lucide="car"></i> Ford</div>
+          <div class="brand-slide-item"><i data-lucide="car"></i> Volkswagen</div>
+          <div class="brand-slide-item"><i data-lucide="car"></i> Chevrolet</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Automotive Solutions -->
+    <section class="section section-even">
+      <div class="container">
+        <div class="section-header text-center reveal">
+          <span class="badge badge-primary" style="margin-bottom:var(--space-3);">Automotive</span>
+          <h2>Automotive Battery Solutions</h2>
+          <p>Complete professional diagnostics, setup, and recovery support for all kinds of personal and commercial vehicles.</p>
+        </div>
+        
+        <div class="solutions-grid">
+          <!-- Card 1 -->
+          <div class="card solution-card reveal delay-1">
+            <div class="solution-card-img">
+              <i data-lucide="car"></i>
+            </div>
+            <div class="card-body">
+              <h3>Car Batteries</h3>
+              <p>Top performance battery options matching exact power outputs for compacts, sedans, SUVs, and luxury imports.</p>
+              <div class="solution-card-buttons">
+                <a href="tel:+919845012345" class="btn btn-ghost btn-sm">Call Now</a>
+                <a href="https://wa.me/919845012345?text=Hi%2C%20I%27m%20enquiring%20about%20Car%20Batteries." target="_blank" class="btn btn-whatsapp btn-sm"><i data-lucide="message-circle"></i> Chat</a>
+              </div>
+            </div>
+          </div>
+          <!-- Card 2 -->
+          <div class="card solution-card reveal delay-2">
+            <div class="solution-card-img">
+              <i data-lucide="bike"></i>
+            </div>
+            <div class="card-body">
+              <h3>Bike Batteries</h3>
+              <p>Maintenance-free high crank power batteries designed to withstand tough road bumps and climate shifts.</p>
+              <div class="solution-card-buttons">
+                <a href="tel:+919845012345" class="btn btn-ghost btn-sm">Call Now</a>
+                <a href="https://wa.me/919845012345?text=Hi%2C%20I%27m%20enquiring%20about%20Bike%20Batteries." target="_blank" class="btn btn-whatsapp btn-sm"><i data-lucide="message-circle"></i> Chat</a>
+              </div>
+            </div>
+          </div>
+          <!-- Card 3 -->
+          <div class="card solution-card reveal delay-3">
+            <div class="solution-card-img">
+              <i data-lucide="home"></i>
+            </div>
+            <div class="card-body">
+              <h3>Home UPS Batteries</h3>
+              <p>Tubular battery configurations optimized for long backup runs and continuous cyclical operations.</p>
+              <div class="solution-card-buttons">
+                <a href="tel:+919845012345" class="btn btn-ghost btn-sm">Call Now</a>
+                <a href="https://wa.me/919845012345?text=Hi%2C%20I%27m%20enquiring%20about%20Home%20UPS%20Batteries." target="_blank" class="btn btn-whatsapp btn-sm"><i data-lucide="message-circle"></i> Chat</a>
+              </div>
+            </div>
+          </div>
+          <!-- Card 4 -->
+          <div class="card solution-card reveal delay-1">
+            <div class="solution-card-img">
+              <i data-lucide="building"></i>
+            </div>
+            <div class="card-body">
+              <h3>Office UPS Batteries</h3>
+              <p>Reliable SMF battery setups configured to protect critical networking structures and business files.</p>
+              <div class="solution-card-buttons">
+                <a href="tel:+919845012345" class="btn btn-ghost btn-sm">Call Now</a>
+                <a href="https://wa.me/919845012345?text=Hi%2C%20I%27m%20enquiring%20about%20Office%20UPS%20Batteries." target="_blank" class="btn btn-whatsapp btn-sm"><i data-lucide="message-circle"></i> Chat</a>
+              </div>
+            </div>
+          </div>
+          <!-- Card 5 -->
+          <div class="card solution-card reveal delay-2">
+            <div class="solution-card-img">
+              <i data-lucide="refresh-cw"></i>
+            </div>
+            <div class="card-body">
+              <h3>Battery Replacement</h3>
+              <p>Get older worn down setups replaced with verified authentic replacements in under an hour.</p>
+              <div class="solution-card-buttons">
+                <a href="tel:+919845012345" class="btn btn-ghost btn-sm">Call Now</a>
+                <a href="https://wa.me/919845012345?text=Hi%2C%20I%27m%20enquiring%20about%20Battery%20Replacement." target="_blank" class="btn btn-whatsapp btn-sm"><i data-lucide="message-circle"></i> Chat</a>
+              </div>
+            </div>
+          </div>
+          <!-- Card 6 -->
+          <div class="card solution-card reveal delay-3">
+            <div class="solution-card-img">
+              <i data-lucide="battery-charging"></i>
+            </div>
+            <div class="card-body">
+              <h3>Battery Charging</h3>
+              <p>Professional slow and fast trickle charging setups to safely recover heavily discharged batteries.</p>
+              <div class="solution-card-buttons">
+                <a href="tel:+919845012345" class="btn btn-ghost btn-sm">Call Now</a>
+                <a href="https://wa.me/919845012345?text=Hi%2C%20I%27m%20enquiring%20about%20Battery%20Charging." target="_blank" class="btn btn-whatsapp btn-sm"><i data-lucide="message-circle"></i> Chat</a>
+              </div>
+            </div>
+          </div>
+          <!-- Card 7 -->
+          <div class="card solution-card reveal delay-1">
+            <div class="solution-card-img">
+              <i data-lucide="zap"></i>
+            </div>
+            <div class="card-body">
+              <h3>Emergency Jump Start</h3>
+              <p>Dead car battery in the morning? Call us for immediate roadside recovery help in Bengaluru.</p>
+              <div class="solution-card-buttons">
+                <a href="tel:+919845012345" class="btn btn-ghost btn-sm">Call Now</a>
+                <a href="https://wa.me/919845012345?text=Hi%2C%20I%27m%20enquiring%20about%20Emergency%20Jump%20Starts." target="_blank" class="btn btn-whatsapp btn-sm"><i data-lucide="message-circle"></i> Chat</a>
+              </div>
+            </div>
+          </div>
+          <!-- Card 8 -->
+          <div class="card solution-card reveal delay-2">
+            <div class="solution-card-img">
+              <i data-lucide="droplet"></i>
+            </div>
+            <div class="card-body">
+              <h3>Distilled Water Refilling</h3>
+              <p>Routine backup tubular system checks and distilled water top ups to extend battery service cycles.</p>
+              <div class="solution-card-buttons">
+                <a href="tel:+919845012345" class="btn btn-ghost btn-sm">Call Now</a>
+                <a href="https://wa.me/919845012345?text=Hi%2C%20I%27m%20enquiring%20about%20Distilled%20Water%20Refilling." target="_blank" class="btn btn-whatsapp btn-sm"><i data-lucide="message-circle"></i> Chat</a>
+              </div>
+            </div>
+          </div>
+          <!-- Card 9 -->
+          <div class="card solution-card reveal delay-3">
+            <div class="solution-card-img">
+              <i data-lucide="activity"></i>
+            </div>
+            <div class="card-body">
+              <h3>Battery Maintenance</h3>
+              <p>Corrosion cleanup, acid concentration analysis, voltage testing, and preventive health diagnostics.</p>
+              <div class="solution-card-buttons">
+                <a href="tel:+919845012345" class="btn btn-ghost btn-sm">Call Now</a>
+                <a href="https://wa.me/919845012345?text=Hi%2C%20I%27m%20enquiring%20about%20Battery%20Maintenance." target="_blank" class="btn btn-whatsapp btn-sm"><i data-lucide="message-circle"></i> Chat</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Home & Power Backup Solutions -->
+    <section class="section section-odd">
+      <div class="container backup-section-grid">
+        <div class="reveal">
+          <span class="badge badge-primary" style="margin-bottom:var(--space-3);">Power Backup</span>
+          <h2>Home &amp; Commercial Backups</h2>
+          <p>We configure long lasting home inverter configurations and high capacity commercial battery setups to protect environments during grid outages.</p>
+          
+          <ul class="backup-list">
+            <li class="backup-item">
+              <div class="backup-item-icon"><i data-lucide="cpu"></i></div>
+              <div>
+                <h4>Inverter Systems &amp; Batteries</h4>
+                <p>Pure sine wave inverters paired with heavy duty tubular batteries for safe home back-ups.</p>
+              </div>
+            </li>
+            <li class="backup-item">
+              <div class="backup-item-icon"><i data-lucide="shield"></i></div>
+              <div>
+                <h4>Industrial UPS Protections</h4>
+                <p>High-voltage online configurations to maintain critical database protections during cuts.</p>
+              </div>
+            </li>
+            <li class="backup-item">
+              <div class="backup-item-icon"><i data-lucide="sun"></i></div>
+              <div>
+                <h4>Solar Storage banks</h4>
+                <p>Integrated C10 batteries configured for maximum storage yields on solar power paths.</p>
+              </div>
+            </li>
+            <li class="backup-item">
+              <div class="backup-item-icon"><i data-lucide="zap"></i></div>
+              <div>
+                <h4>Lithium Iron Phosphate setups</h4>
+                <p>State-of-the-art fast recharging technology featuring extended lifespan runs.</p>
+              </div>
+            </li>
+          </ul>
+
+          <div class="backup-sectors">
+            <span class="backup-sector-pill">Homes</span>
+            <span class="backup-sector-pill">Offices</span>
+            <span class="backup-sector-pill">Apartments</span>
+            <span class="backup-sector-pill">Villas</span>
+            <span class="backup-sector-pill">Commercial Establishments</span>
+          </div>
+        </div>
+        
+        <div class="whoweare-visual reveal delay-2">
+          <h3 style="margin-bottom:var(--space-4); border-bottom:1px solid var(--color-border); padding-bottom:var(--space-2);">Support Matrix</h3>
+          <p style="font-size:var(--text-body-sm);">We analyze load requirements to make sure backup batteries match home power requirements.</p>
+          <div style="background-color:var(--color-surface); padding:var(--space-4); border-radius:var(--radius-md); border:1px solid var(--color-border); margin-top:var(--space-2);">
+            <div style="display:flex; justify-content:space-between; margin-bottom:var(--space-2);">
+              <span style="font-weight:600; font-size:12px;">INVERTER CAPACITY</span>
+              <span style="font-weight:600; font-size:12px; color:var(--color-accent);">900 VA - 5 KVA</span>
+            </div>
+            <div style="display:flex; justify-content:space-between;">
+              <span style="font-weight:600; font-size:12px;">BATTERY BACKUP</span>
+              <span style="font-weight:600; font-size:12px; color:var(--color-energy);">150 AH - 220 AH</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Professional Installation Gallery -->
+    <section class="section section-even">
+      <div class="container text-center" style="max-width: 100%; padding-inline: 0;">
+        <div class="section-header text-center reveal" style="padding-inline: var(--container-gutter-desktop);">
+          <span class="badge badge-primary" style="margin-bottom:var(--space-3);">Work Showcase</span>
+          <h2>Professional Work Gallery</h2>
+          <p>Real-world images showing clean setups, setups, and diagnostics done by our crew.</p>
+        </div>
+        
+        <div class="marquee-container marquee-fast reveal" style="margin-top:var(--space-8);">
+          <div class="marquee-content">
+            <!-- Item 1 -->
+            <div class="gallery-slide-card">
+              <div class="gallery-slide-img"><i data-lucide="wrench"></i></div>
+              <div class="gallery-slide-desc">
+                <p>Amaron Pro Installation</p>
+                <span>HSR Layout, Car Battery Setup</span>
+              </div>
+            </div>
+            <!-- Item 2 -->
+            <div class="gallery-slide-card">
+              <div class="gallery-slide-img"><i data-lucide="home"></i></div>
+              <div class="gallery-slide-desc">
+                <p>Exide Tubular Set Up</p>
+                <span>Indiranagar, Residential UPS</span>
+              </div>
+            </div>
+            <!-- Item 3 -->
+            <div class="gallery-slide-card">
+              <div class="gallery-slide-img"><i data-lucide="zap"></i></div>
+              <div class="gallery-slide-desc">
+                <p>Luminous Sine Wave setup</p>
+                <span>Jayanagar, Custom Inverter System</span>
+              </div>
+            </div>
+            <!-- Item 4 -->
+            <div class="gallery-slide-card">
+              <div class="gallery-slide-img"><i data-lucide="building"></i></div>
+              <div class="gallery-slide-desc">
+                <p>Corporate SMF installation</p>
+                <span>Electronic City, Server Room UPS</span>
+              </div>
+            </div>
+            <!-- Item 5 -->
+            <div class="gallery-slide-card">
+              <div class="gallery-slide-img"><i data-lucide="bike"></i></div>
+              <div class="gallery-slide-desc">
+                <p>Exide Rider Bike Setup</p>
+                <span>Koramangala, Two-wheeler setup</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Service Process -->
+    <section class="section section-odd">
+      <div class="container">
+        <div class="section-header text-center reveal">
+          <span class="badge badge-primary" style="margin-bottom:var(--space-3);">Workflow</span>
+          <h2>Our Service Process</h2>
+          <p>Getting your power backup systems up and running is fast and structured.</p>
+        </div>
+        
+        <div class="process-grid reveal">
+          <!-- Step 1 -->
+          <div class="process-step">
+            <div class="process-number">1</div>
+            <h3>Contact Us</h3>
+            <p>Call or message our helpline to discuss vehicle model or home load requirements.</p>
+          </div>
+          <!-- Step 2 -->
+          <div class="process-step">
+            <div class="process-number">2</div>
+            <h3>Get Guidance</h3>
+            <p>Our experts advise matching battery ratings and provide transparent quotes.</p>
+          </div>
+          <!-- Step 3 -->
+          <div class="process-step">
+            <div class="process-number">3</div>
+            <h3>Installation</h3>
+            <p>Technicians deliver and configure systems at your doorstep, testing all currents.</p>
+          </div>
+          <!-- Step 4 -->
+          <div class="process-step">
+            <div class="process-number">4</div>
+            <h3>Warranty support</h3>
+            <p>Get authentic manufacturer warranty cards registered immediately for post-sales peace of mind.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="section section-even">
+      <div class="container">
+        <div class="cta-banner reveal">
+          <h2>Need Immediate Battery Support?</h2>
+          <p>Get in touch now to speak directly with an expert technician.</p>
+          <div class="cta-buttons">
+            <a href="tel:+919845012345" class="btn btn-primary-dark btn-lg">
+              <i data-lucide="phone"></i> Call Now
+            </a>
+            <a href="https://wa.me/919845012345?text=Hi%2C%20I%20am%20enquiring%20about%20your%20services." target="_blank" class="btn btn-whatsapp btn-lg">
+              <i data-lucide="message-circle"></i> WhatsApp Support
+            </a>
+            <a href="branches.html" class="btn btn-ghost btn-lg" style="color:#FFFFFF; border-color:rgba(255,255,255,0.3);">
+              Find Nearest Branch
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div>
+        <a href="index.html" class="footer-logo">
+          <i data-lucide="battery-charging" class="logo-icon"></i>
+          <span class="logo-text">
+            SN BATTERIES
+            <span class="logo-sub">Sales & Service</span>
+          </span>
+        </a>
+        <p class="footer-desc">Bengaluru's leading network for genuine batteries, home UPS solutions, and professional doorstep installation services for over 10 years.</p>
+        <div class="footer-socials">
+          <a href="#" class="social-btn facebook" aria-label="Facebook"><i data-lucide="facebook"></i></a>
+          <a href="#" class="social-btn instagram" aria-label="Instagram"><i data-lucide="instagram"></i></a>
+          <a href="https://wa.me/919845012345" target="_blank" class="social-btn whatsapp" aria-label="WhatsApp"><i data-lucide="message-circle"></i></a>
+        </div>
+      </div>
+      <div>
+        <h3 class="footer-title">Quick Links</h3>
+        <ul class="footer-links">
+          <li class="footer-link-item"><a href="index.html">Home</a></li>
+          <li class="footer-link-item"><a href="about.html">About Us</a></li>
+          <li class="footer-link-item"><a href="services.html">Services</a></li>
+          <li class="footer-link-item"><a href="branches.html">Branches</a></li>
+          <li class="footer-link-item"><a href="brands.html">Brands</a></li>
+          <li class="footer-link-item"><a href="contact.html">Contact Us</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="footer-title">Services</h3>
+        <ul class="footer-links">
+          <li class="footer-link-item"><a href="services.html">Car Batteries</a></li>
+          <li class="footer-link-item"><a href="services.html">Bike Batteries</a></li>
+          <li class="footer-link-item"><a href="services.html">Inverter Batteries</a></li>
+          <li class="footer-link-item"><a href="services.html">UPS Solutions</a></li>
+          <li class="footer-link-item"><a href="services.html">Lithium Batteries</a></li>
+          <li class="footer-link-item"><a href="services.html">Doorstep Support</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="footer-title">Contact Info</h3>
+        <ul class="footer-contact-list">
+          <li class="footer-contact-item">
+            <i data-lucide="map-pin"></i>
+            <span>Bengaluru, Karnataka, India</span>
+          </li>
+          <li class="footer-contact-item">
+            <i data-lucide="phone"></i>
+            <a href="tel:+919845012345">+91 98450 12345</a>
+          </li>
+          <li class="footer-contact-item">
+            <i data-lucide="message-circle"></i>
+            <a href="https://wa.me/919845012345" target="_blank">Chat on WhatsApp</a>
+          </li>
+          <li class="footer-contact-item">
+            <i data-lucide="mail"></i>
+            <a href="mailto:info@snbatteries.com">info@snbatteries.com</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <span class="copyright-text">&copy; 2026 SN Batteries Sales & Service. All rights reserved.</span>
+      <span class="developer-credit">Designed & Developed by <a href="http://www.imarktechserv.com" target="_blank" rel="noopener noreferrer">iMARK TECHSERV</a></span>
+    </div>
+  </footer>
+
+  <!-- Floating Action Buttons -->
+  <div class="floating-actions">
+    <a href="#" class="fab fab-instagram" data-tooltip="Follow Instagram" aria-label="Follow us on Instagram"><i data-lucide="instagram"></i></a>
+    <a href="#" class="fab fab-facebook" data-tooltip="Follow Facebook" aria-label="Follow us on Facebook"><i data-lucide="facebook"></i></a>
+    <a href="https://wa.me/919845012345?text=Hi%2C%20I%20found%20you%20on%20your%20website%20and%20need%20assistance." target="_blank" class="fab fab-whatsapp" data-tooltip="WhatsApp Enquiry" aria-label="Chat on WhatsApp"><i data-lucide="message-circle"></i></a>
+    <a href="tel:+919845012345" class="fab fab-call" data-tooltip="Call Hotline" aria-label="Call our hotline number"><i data-lucide="phone"></i></a>
+  </div>
+
+  <!-- Lucide Icons CDN -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  
+  <!-- JavaScript Files -->
+  <script src="js/header.js"></script>
+  <script src="js/sliders.js"></script>
+  <script src="js/scroll-reveal.js"></script>
+  <script src="js/fab.js"></script>
+  <script>
+    lucide.createIcons();
+  </script>
+</body>
+</html>

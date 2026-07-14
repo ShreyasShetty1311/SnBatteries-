@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Our Branches | SN Batteries Sales & Service Bengaluru</title>
+  <meta name="description" content="Find the nearest SN Batteries Sales & Service branch in Bengaluru. Contact details, Google Map locations, ratings, and call support for 5+ local outlets.">
+  
+  <!-- Design System Stylesheet Links -->
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/header.css">
+  <link rel="stylesheet" href="css/footer.css">
+  <link rel="stylesheet" href="css/floating.css">
+  <link rel="stylesheet" href="css/animations.css">
+  
+  <style>
+    /* Branches page specific styles */
+    .page-banner {
+      background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+      padding-block: var(--space-20) var(--space-12);
+      color: #FFFFFF;
+      text-align: center;
+      position: relative;
+    }
+    
+    .page-banner::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: radial-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 0);
+      background-size: 24px 24px;
+      pointer-events: none;
+    }
+    
+    .breadcrumbs {
+      font-size: var(--text-body-sm);
+      color: var(--color-text-muted);
+      margin-bottom: var(--space-2);
+      font-weight: 500;
+    }
+    
+    .breadcrumbs a {
+      color: var(--color-text-muted);
+    }
+    
+    .breadcrumbs a:hover {
+      color: #FFFFFF;
+    }
+    
+    .page-banner h1 {
+      color: #FFFFFF;
+      font-size: var(--text-h1);
+      margin-bottom: var(--space-4);
+    }
+    
+    .page-banner-desc {
+      max-width: 720px;
+      margin-inline: auto;
+      color: var(--color-text-muted);
+      font-size: var(--text-body-lg);
+    }
+
+    /* Branch cards grid */
+    .branches-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--grid-gap);
+    }
+
+    @media (max-width: 1024px) {
+      .branches-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 640px) {
+      .branches-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .branch-card {
+      height: 100%;
+    }
+
+    .branch-img-wrapper {
+      height: 220px;
+      background: linear-gradient(135deg, var(--color-primary-700) 0%, var(--color-primary) 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: var(--color-accent);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .branch-img-wrapper i,
+    .branch-img-wrapper svg {
+      width: 48px;
+      height: 48px;
+      z-index: 2;
+      transition: transform var(--duration-normal) var(--ease-out);
+    }
+
+    .branch-card:hover .branch-img-wrapper i,
+    .branch-card:hover .branch-img-wrapper svg {
+      transform: scale(1.12);
+    }
+
+    .branch-img-wrapper::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: radial-gradient(circle, transparent 40%, rgba(15, 23, 42, 0.4));
+      z-index: 1;
+    }
+
+    .branch-card h3 {
+      font-size: 20px;
+      margin-bottom: var(--space-1);
+    }
+
+    .branch-location {
+      display: flex;
+      align-items: center;
+      gap: var(--space-1);
+      font-size: var(--text-body-sm);
+      color: var(--color-text-secondary);
+      margin-bottom: var(--space-2);
+    }
+
+    .branch-location i,
+    .branch-location svg {
+      width: 14px;
+      height: 14px;
+      color: var(--color-accent);
+    }
+
+    .branch-card-ctas {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-2);
+      margin-top: var(--space-6);
+    }
+
+    /* Map section */
+    .map-container {
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      box-shadow: var(--shadow-lg);
+      border: 1px solid var(--color-border);
+      height: 480px;
+    }
+
+    @media (max-width: 768px) {
+      .map-container {
+        height: 360px;
+      }
+    }
+
+    /* Why visit card */
+    .visit-card-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--grid-gap);
+    }
+
+    @media (max-width: 992px) {
+      .visit-card-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 640px) {
+      .visit-card-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .visit-card {
+      background-color: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-card);
+      padding: var(--space-6);
+      transition: var(--transition-all);
+    }
+
+    .visit-card:hover {
+      box-shadow: var(--shadow-md);
+      border-color: var(--color-accent);
+    }
+
+    .visit-card-icon {
+      color: var(--color-energy);
+      margin-bottom: var(--space-4);
+      width: 32px;
+      height: 32px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="site-header" id="site-header">
+    <div class="container header-container">
+      <a href="index.html" class="logo">
+        <i data-lucide="battery-charging" class="logo-icon"></i>
+        <span class="logo-text">
+          SN BATTERIES
+          <span class="logo-sub">Sales & Service</span>
+        </span>
+      </a>
+      <nav aria-label="Main Navigation">
+        <ul class="nav-menu">
+          <li><a href="index.html" class="nav-link" id="nav-home">Home</a></li>
+          <li><a href="about.html" class="nav-link" id="nav-about">About</a></li>
+          <li><a href="services.html" class="nav-link" id="nav-services">Services</a></li>
+          <li><a href="branches.html" class="nav-link active" id="nav-branches">Branches</a></li>
+          <li><a href="brands.html" class="nav-link" id="nav-brands">Brands</a></li>
+          <li><a href="contact.html" class="nav-link" id="nav-contact">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="header-actions">
+        <a href="tel:+919845012345" class="btn btn-primary btn-sm">Call Now</a>
+        <button class="drawer-toggle" id="drawer-open" aria-label="Open Menu" aria-controls="mobile-drawer">
+          <i data-lucide="menu"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer -->
+  <div class="mobile-drawer" id="mobile-drawer" aria-hidden="true" role="dialog">
+    <div class="drawer-content">
+      <div class="drawer-header">
+        <a href="index.html" class="logo">
+          <i data-lucide="battery-charging" class="logo-icon"></i>
+          <span class="logo-text">
+            SN BATTERIES
+            <span class="logo-sub">Sales & Service</span>
+          </span>
+        </a>
+        <button class="drawer-toggle" id="drawer-close" aria-label="Close Menu">
+          <i data-lucide="x"></i>
+        </button>
+      </div>
+      <nav class="drawer-nav" aria-label="Mobile Navigation">
+        <a href="index.html" class="drawer-link">Home</a>
+        <a href="about.html" class="drawer-link">About</a>
+        <a href="services.html" class="drawer-link">Services</a>
+        <a href="branches.html" class="drawer-link active">Branches</a>
+        <a href="brands.html" class="drawer-link">Brands</a>
+        <a href="contact.html" class="drawer-link">Contact</a>
+      </nav>
+      <div class="drawer-footer">
+        <a href="tel:+919845012345" class="btn btn-primary btn-md btn-full">
+          <i data-lucide="phone"></i> Call Now
+        </a>
+        <a href="https://wa.me/919845012345?text=Hi%2C%20I%27m%20visiting%20your%20website%20and%20looking%20for%20battery%20sales%20or%20service." target="_blank" class="btn btn-whatsapp btn-md btn-full">
+          <i data-lucide="message-circle"></i> WhatsApp Chat
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <main>
+    <!-- Page Banner -->
+    <section class="page-banner">
+      <div class="container">
+        <div class="breadcrumbs">
+          <a href="index.html">Home</a> &nbsp;&sol;&nbsp; <span>Branches</span>
+        </div>
+        <h1>Our Branch Network</h1>
+        <p class="page-banner-desc">Locate the nearest SN Batteries Sales & Service branch across Bengaluru. Pay a visit or get instant doorstep assistance.</p>
+      </div>
+    </section>
+
+    <!-- Branch Overview -->
+    <section class="section section-even">
+      <div class="container">
+        <div class="section-header text-center reveal">
+          <span class="badge badge-primary" style="margin-bottom:var(--space-3);">Outlets</span>
+          <h2>Find the Nearest Outlet</h2>
+          <p>We operate 5+ branches in strategic locations throughout Bengaluru to provide swift power support.</p>
+        </div>
+        
+        <div class="branches-grid">
+          <!-- Branch 1 -->
+          <div class="card branch-card reveal delay-1">
+            <div class="branch-img-wrapper">
+              <i data-lucide="map-pin"></i>
+            </div>
+            <div class="card-body">
+              <h3>HSR Layout Branch</h3>
+              <div class="branch-location">
+                <i data-lucide="map-pin"></i>
+                <span>Sector 6, HSR Layout, Bengaluru</span>
+              </div>
+              <div class="rating">
+                <i data-lucide="star" class="rating-star"></i>
+                <span class="rating-text">4.8 (142 Reviews)</span>
+              </div>
+              <div class="branch-card-ctas">
+                <a href="tel:+919845012345" class="btn btn-ghost btn-sm" aria-label="Call HSR Layout Branch"><i data-lucide="phone"></i></a>
+                <a href="https://wa.me/919845012345?text=Hi%2C%20I%20need%20assistance%20at%20your%20HSR%20Layout%20branch." target="_blank" class="btn btn-whatsapp btn-sm" aria-label="Chat HSR Layout Branch"><i data-lucide="message-circle"></i></a>
+                <a href="https://maps.google.com/?q=HSR+Layout+Bengaluru" target="_blank" rel="noopener" class="btn btn-secondary btn-sm" aria-label="Map HSR Layout Branch">Map</a>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Branch 2 -->
+          <div class="card branch-card reveal delay-2">
+            <div class="branch-img-wrapper">
+              <i data-lucide="map-pin"></i>
+            </div>
+            <div class="card-body">
+              <h3>Indiranagar Branch</h3>
+              <div class="branch-location">
+                <i data-lucide="map-pin"></i>
+                <span>100 Feet Road, Indiranagar, Bengaluru</span>
+              </div>
+              <div class="rating">
+                <i data-lucide="star" class="rating-star"></i>
+                <span class="rating-text">4.7 (98 Reviews)</span>
+              </div>
+              <div class="branch-card-ctas">
+                <a href="tel:+919845012345" class="btn btn-ghost btn-sm" aria-label="Call Indiranagar Branch"><i data-lucide="phone"></i></a>
+                <a href="https://wa.me/919845012345?text=Hi%2C%20I%20need%20assistance%20at%20your%20Indiranagar%20branch." target="_blank" class="btn btn-whatsapp btn-sm" aria-label="Chat Indiranagar Branch"><i data-lucide="message-circle"></i></a>
+                <a href="https://maps.google.com/?q=Indiranagar+Bengaluru" target="_blank" rel="noopener" class="btn btn-secondary btn-sm" aria-label="Map Indiranagar Branch">Map</a>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Branch 3 -->
+          <div class="card branch-card reveal delay-3">
+            <div class="branch-img-wrapper">
+              <i data-lucide="map-pin"></i>
+            </div>
+            <div class="card-body">
+              <h3>Jayanagar Branch</h3>
+              <div class="branch-location">
+                <i data-lucide="map-pin"></i>
+                <span>4th Block, Jayanagar, Bengaluru</span>
+              </div>
+              <div class="rating">
+                <i data-lucide="star" class="rating-star"></i>
+                <span class="rating-text">4.9 (124 Reviews)</span>
+              </div>
+              <div class="branch-card-ctas">
+                <a href="tel:+919845012345" class="btn btn-ghost btn-sm" aria-label="Call Jayanagar Branch"><i data-lucide="phone"></i></a>
+                <a href="https://wa.me/919845012345?text=Hi%2C%20I%20need%20assistance%20at%20your%20Jayanagar%20branch." target="_blank" class="btn btn-whatsapp btn-sm" aria-label="Chat Jayanagar Branch"><i data-lucide="message-circle"></i></a>
+                <a href="https://maps.google.com/?q=Jayanagar+Bengaluru" target="_blank" rel="noopener" class="btn btn-secondary btn-sm" aria-label="Map Jayanagar Branch">Map</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Branch 4 -->
+          <div class="card branch-card reveal delay-1">
+            <div class="branch-img-wrapper">
+              <i data-lucide="map-pin"></i>
+            </div>
+            <div class="card-body">
+              <h3>Koramangala Branch</h3>
+              <div class="branch-location">
+                <i data-lucide="map-pin"></i>
+                <span>80 Feet Road, Koramangala, Bengaluru</span>
+              </div>
+              <div class="rating">
+                <i data-lucide="star" class="rating-star"></i>
+                <span class="rating-text">4.8 (115 Reviews)</span>
+              </div>
+              <div class="branch-card-ctas">
+                <a href="tel:+919845012345" class="btn btn-ghost btn-sm" aria-label="Call Koramangala Branch"><i data-lucide="phone"></i></a>
+                <a href="https://wa.me/919845012345?text=Hi%2C%20I%20need%20assistance%20at%20your%20Koramangala%20branch." target="_blank" class="btn btn-whatsapp btn-sm" aria-label="Chat Koramangala Branch"><i data-lucide="message-circle"></i></a>
+                <a href="https://maps.google.com/?q=Koramangala+Bengaluru" target="_blank" rel="noopener" class="btn btn-secondary btn-sm" aria-label="Map Koramangala Branch">Map</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Branch 5 -->
+          <div class="card branch-card reveal delay-2">
+            <div class="branch-img-wrapper">
+              <i data-lucide="map-pin"></i>
+            </div>
+            <div class="card-body">
+              <h3>Whitefield Branch</h3>
+              <div class="branch-location">
+                <i data-lucide="map-pin"></i>
+                <span>ITPL Main Road, Whitefield, Bengaluru</span>
+              </div>
+              <div class="rating">
+                <i data-lucide="star" class="rating-star"></i>
+                <span class="rating-text">4.7 (89 Reviews)</span>
+              </div>
+              <div class="branch-card-ctas">
+                <a href="tel:+919845012345" class="btn btn-ghost btn-sm" aria-label="Call Whitefield Branch"><i data-lucide="phone"></i></a>
+                <a href="https://wa.me/919845012345?text=Hi%2C%20I%20need%20assistance%20at%20your%20Whitefield%20branch." target="_blank" class="btn btn-whatsapp btn-sm" aria-label="Chat Whitefield Branch"><i data-lucide="message-circle"></i></a>
+                <a href="https://maps.google.com/?q=Whitefield+Bengaluru" target="_blank" rel="noopener" class="btn btn-secondary btn-sm" aria-label="Map Whitefield Branch">Map</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Interactive Map Section -->
+    <section class="section section-odd">
+      <div class="container">
+        <div class="section-header text-center reveal">
+          <span class="badge badge-primary" style="margin-bottom:var(--space-3);">Spatial View</span>
+          <h2>Explore Map Locations</h2>
+          <p>View all our physical store placements on the map to find the one closest to you.</p>
+        </div>
+        
+        <!-- Google Map Embed Iframe -->
+        <div class="map-container reveal">
+          <iframe 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m13!1d248849.8491629637!2d77.4661258671875!3d12.971891500000012!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae1670c9b44e69%3A0x207456b22ba74572!2sBengaluru%2C%20Karnataka!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin" 
+            width="100%" 
+            height="100%" 
+            style="border:0;" 
+            allowfullscreen="" 
+            loading="lazy" 
+            referrerpolicy="no-referrer-when-downgrade"
+            title="SN Batteries Branch Locations Bengaluru">
+          </iframe>
+        </div>
+      </div>
+    </section>
+
+    <!-- Why Visit Our Branches -->
+    <section class="section section-even">
+      <div class="container">
+        <div class="section-header text-center reveal">
+          <span class="badge badge-primary" style="margin-bottom:var(--space-3);">Values</span>
+          <h2>Why Visit Our Branches?</h2>
+          <p>We provide full service support at every physical branch to guarantee customer satisfaction.</p>
+        </div>
+        
+        <div class="visit-card-grid">
+          <!-- Item 1 -->
+          <div class="visit-card reveal delay-1">
+            <i data-lucide="shield-check" class="visit-card-icon"></i>
+            <h3>Genuine Products</h3>
+            <p>Inspect security seals and holograms directly on products in our physical stores.</p>
+          </div>
+          <!-- Item 2 -->
+          <div class="visit-card reveal delay-2">
+            <i data-lucide="wrench" class="visit-card-icon"></i>
+            <h3>Professional Installation</h3>
+            <p>Have your vehicle battery fitted by expert technicians using professional testing toolkits.</p>
+          </div>
+          <!-- Item 3 -->
+          <div class="visit-card reveal delay-3">
+            <i data-lucide="users" class="visit-card-icon"></i>
+            <h3>Expert Assistance</h3>
+            <p>Talk directly with store supervisors for detailed guidance regarding home UPS load sizes.</p>
+          </div>
+          <!-- Item 4 -->
+          <div class="visit-card reveal delay-1">
+            <i data-lucide="award" class="visit-card-icon"></i>
+            <h3>Warranty Support</h3>
+            <p>Get instant replacements and diagnostics for items covered by active warranty cycles.</p>
+          </div>
+          <!-- Item 5 -->
+          <div class="visit-card reveal delay-2">
+            <i data-lucide="zap" class="visit-card-icon"></i>
+            <h3>Quick Service</h3>
+            <p>Vehicular replacements done in less than 30 minutes so you can get back on roads.</p>
+          </div>
+          <!-- Item 6 -->
+          <div class="visit-card reveal delay-3">
+            <i data-lucide="smile" class="visit-card-icon"></i>
+            <h3>Friendly Customer Support</h3>
+            <p>Our branch teams guide you politely from purchase decisions to maintenance requirements.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="section section-odd">
+      <div class="container">
+        <div class="cta-banner reveal">
+          <h2>Need Quick Roadside Battery Help?</h2>
+          <p>Find the nearest technician for instant support or doorstep replacements.</p>
+          <div class="cta-buttons">
+            <a href="tel:+919845012345" class="btn btn-primary-dark btn-lg">
+              <i data-lucide="phone"></i> Call Nearest Branch
+            </a>
+            <a href="https://wa.me/919845012345?text=Hi%2C%20I%20am%20looking%20for%20nearest%20branch%20services." target="_blank" class="btn btn-whatsapp btn-lg">
+              <i data-lucide="message-circle"></i> WhatsApp Support
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div>
+        <a href="index.html" class="footer-logo">
+          <i data-lucide="battery-charging" class="logo-icon"></i>
+          <span class="logo-text">
+            SN BATTERIES
+            <span class="logo-sub">Sales & Service</span>
+          </span>
+        </a>
+        <p class="footer-desc">Bengaluru's leading network for genuine batteries, home UPS solutions, and professional doorstep installation services for over 10 years.</p>
+        <div class="footer-socials">
+          <a href="#" class="social-btn facebook" aria-label="Facebook"><i data-lucide="facebook"></i></a>
+          <a href="#" class="social-btn instagram" aria-label="Instagram"><i data-lucide="instagram"></i></a>
+          <a href="https://wa.me/919845012345" target="_blank" class="social-btn whatsapp" aria-label="WhatsApp"><i data-lucide="message-circle"></i></a>
+        </div>
+      </div>
+      <div>
+        <h3 class="footer-title">Quick Links</h3>
+        <ul class="footer-links">
+          <li class="footer-link-item"><a href="index.html">Home</a></li>
+          <li class="footer-link-item"><a href="about.html">About Us</a></li>
+          <li class="footer-link-item"><a href="services.html">Services</a></li>
+          <li class="footer-link-item"><a href="branches.html">Branches</a></li>
+          <li class="footer-link-item"><a href="brands.html">Brands</a></li>
+          <li class="footer-link-item"><a href="contact.html">Contact Us</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="footer-title">Services</h3>
+        <ul class="footer-links">
+          <li class="footer-link-item"><a href="services.html">Car Batteries</a></li>
+          <li class="footer-link-item"><a href="services.html">Bike Batteries</a></li>
+          <li class="footer-link-item"><a href="services.html">Inverter Batteries</a></li>
+          <li class="footer-link-item"><a href="services.html">UPS Solutions</a></li>
+          <li class="footer-link-item"><a href="services.html">Lithium Batteries</a></li>
+          <li class="footer-link-item"><a href="services.html">Doorstep Support</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="footer-title">Contact Info</h3>
+        <ul class="footer-contact-list">
+          <li class="footer-contact-item">
+            <i data-lucide="map-pin"></i>
+            <span>Bengaluru, Karnataka, India</span>
+          </li>
+          <li class="footer-contact-item">
+            <i data-lucide="phone"></i>
+            <a href="tel:+919845012345">+91 98450 12345</a>
+          </li>
+          <li class="footer-contact-item">
+            <i data-lucide="message-circle"></i>
+            <a href="https://wa.me/919845012345" target="_blank">Chat on WhatsApp</a>
+          </li>
+          <li class="footer-contact-item">
+            <i data-lucide="mail"></i>
+            <a href="mailto:info@snbatteries.com">info@snbatteries.com</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <span class="copyright-text">&copy; 2026 SN Batteries Sales & Service. All rights reserved.</span>
+      <span class="developer-credit">Designed & Developed by <a href="http://www.imarktechserv.com" target="_blank" rel="noopener noreferrer">iMARK TECHSERV</a></span>
+    </div>
+  </footer>
+
+  <!-- Floating Action Buttons -->
+  <div class="floating-actions">
+    <a href="#" class="fab fab-instagram" data-tooltip="Follow Instagram" aria-label="Follow us on Instagram"><i data-lucide="instagram"></i></a>
+    <a href="#" class="fab fab-facebook" data-tooltip="Follow Facebook" aria-label="Follow us on Facebook"><i data-lucide="facebook"></i></a>
+    <a href="https://wa.me/919845012345?text=Hi%2C%20I%20found%20you%20on%20your%20website%20and%20need%20assistance." target="_blank" class="fab fab-whatsapp" data-tooltip="WhatsApp Enquiry" aria-label="Chat on WhatsApp"><i data-lucide="message-circle"></i></a>
+    <a href="tel:+919845012345" class="fab fab-call" data-tooltip="Call Hotline" aria-label="Call our hotline number"><i data-lucide="phone"></i></a>
+  </div>
+
+  <!-- Lucide Icons CDN -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  
+  <!-- JavaScript Files -->
+  <script src="js/header.js"></script>
+  <script src="js/scroll-reveal.js"></script>
+  <script src="js/fab.js"></script>
+  <script>
+    lucide.createIcons();
+  </script>
+</body>
+</html>

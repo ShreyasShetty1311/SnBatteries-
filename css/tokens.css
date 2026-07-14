@@ -1,0 +1,148 @@
+/* CSS Design Tokens for SN Batteries */
+:root {
+  /* Brand Colors */
+  --color-primary:        #0F172A; /* Deep Navy — authority, trust */
+  --color-primary-700:    #1E293B; /* Slightly lighter navy for gradients */
+  --color-primary-600:    #334155; /* Section backgrounds, secondary text */
+  --color-on-primary:     #FFFFFF;
+
+  /* Accent / CTA Colors */
+  --color-accent:         #0369A1; /* Electric Blue — action, energy */
+  --color-accent-hover:   #0284C7;
+  --color-accent-light:   #E0F2FE; /* Light tint for badges, chips */
+  --color-on-accent:      #FFFFFF;
+
+  /* Energy Orange — battery / power motif accent */
+  --color-energy:         #EA580C; /* Used sparingly: badges, highlights */
+  --color-energy-light:   #FFF7ED;
+
+  /* Surface Colors */
+  --color-background:     #F8FAFC;
+  --color-surface:        #FFFFFF;
+  --color-surface-raised: #F1F5F9; /* Cards on white backgrounds */
+
+  /* Text Colors */
+  --color-foreground:     #020617;
+  --color-text-primary:   #0F172A;
+  --color-text-secondary: #475569;
+  --color-text-muted:     #94A3B8;
+
+  /* UI Colors */
+  --color-border:         #E2E8F0;
+  --color-border-strong:  #CBD5E1;
+  --color-muted:          #E8ECF1;
+  --color-ring:           #0369A1;
+  --color-destructive:    #DC2626;
+
+  /* Trust / Status Colors */
+  --color-success:        #059669;
+  --color-warning:        #D97706;
+  --color-gold:           #F59E0B; /* Star ratings */
+
+  /* Glassmorphism */
+  --glass-bg:             rgba(255, 255, 255, 0.12);
+  --glass-border:         rgba(255, 255, 255, 0.18);
+  --glass-blur:           blur(16px);
+
+  /* Typography */
+  --font-heading:         'Poppins', sans-serif;
+  --font-body:            'Inter', sans-serif;
+
+  /* Font Sizes */
+  --text-hero:            clamp(38px, 5vw, 64px);
+  --text-h1:              clamp(32px, 4vw, 48px);
+  --text-h2:              clamp(26px, 3vw, 36px);
+  --text-h3:              clamp(18px, 2vw, 24px);
+  --text-h4:              18px;
+  --text-body-lg:         18px;
+  --text-body:            16px;
+  --text-body-sm:         14px;
+  --text-caption:         12px;
+
+  /* Spacing (8px base system) */
+  --space-1:              4px;
+  --space-2:              8px;
+  --space-3:              12px;
+  --space-4:              16px;
+  --space-5:              20px;
+  --space-6:              24px;
+  --space-8:              32px;
+  --space-10:             40px;
+  --space-12:             48px;
+  --space-16:             64px;
+  --space-20:             80px;
+  --space-24:             96px;
+  --space-32:             128px;
+
+  /* Section vertical padding */
+  --section-py-sm:        64px;
+  --section-py:           96px;
+  --section-py-lg:        128px;
+
+  /* Grid & Container */
+  --grid-columns:         12;
+  --grid-gap:             24px;
+  --container-sm:         640px;
+  --container-md:         768px;
+  --container-lg:         1024px;
+  --container-xl:         1280px;
+  --container-2xl:        1440px;
+  --container-gutter-mobile:  16px;
+  --container-gutter-tablet:  32px;
+  --container-gutter-desktop: 40px;
+
+  /* Border Radius */
+  --radius-sm:            4px;
+  --radius-md:            8px;
+  --radius-lg:            12px;
+  --radius-xl:            16px;
+  --radius-2xl:           24px;
+  --radius-3xl:           32px;
+  --radius-full:          9999px;
+
+  /* Component specific Radius */
+  --radius-card:          var(--radius-xl);
+  --radius-button:        var(--radius-lg);
+  --radius-input:         var(--radius-md);
+  --radius-badge:         var(--radius-full);
+
+  /* Elevation / Shadow System */
+  --shadow-xs:            0 1px 2px rgba(15, 23, 42, 0.06);
+  --shadow-sm:            0 2px 8px rgba(15, 23, 42, 0.08);
+  --shadow-md:            0 4px 16px rgba(15, 23, 42, 0.10);
+  --shadow-lg:            0 8px 32px rgba(15, 23, 42, 0.12);
+  --shadow-xl:            0 16px 48px rgba(15, 23, 42, 0.14);
+  --shadow-2xl:           0 24px 64px rgba(15, 23, 42, 0.18);
+  --shadow-accent:        0 8px 24px rgba(3, 105, 161, 0.30);
+  --shadow-energy:        0 8px 24px rgba(234, 88, 12, 0.25);
+
+  /* Animation & Motion */
+  --duration-instant:     80ms;
+  --duration-fast:        150ms;
+  --duration-normal:      250ms;
+  --duration-slow:        400ms;
+  --duration-slower:      600ms;
+  --duration-page:        500ms;
+
+  /* Easings */
+  --ease-out:             cubic-bezier(0.0, 0, 0.2, 1);
+  --ease-in-out:          cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-spring:          cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  /* Standard transitions */
+  --transition-colors:    color var(--duration-fast) var(--ease-out),
+                          background-color var(--duration-fast) var(--ease-out),
+                          border-color var(--duration-fast) var(--ease-out);
+  --transition-shadow:    box-shadow var(--duration-normal) var(--ease-out);
+  --transition-transform: transform var(--duration-normal) var(--ease-out);
+  --transition-all:       all var(--duration-normal) var(--ease-in-out);
+
+  /* Breakpoints */
+  --bp-mobile:            375px;
+  --bp-sm:                640px;
+  --bp-md:                768px;
+  --bp-lg:                1024px;
+  --bp-xl:                1280px;
+  --bp-2xl:               1440px;
+  --bp-ultra:             1920px;
+}

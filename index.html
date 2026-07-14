@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SN Batteries | Premium Battery Sales & Service Bengaluru</title>
+  <meta name="description" content="SN Batteries Sales & Service offers trusted battery sales & service in Bengaluru. Doorstep replacement, car & bike batteries, inverters, solar, and UPS backups.">
+  
+  <!-- Design System Stylesheet Links -->
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/header.css">
+  <link rel="stylesheet" href="css/footer.css">
+  <link rel="stylesheet" href="css/floating.css">
+  <link rel="stylesheet" href="css/animations.css">
+  
+  <style>
+    /* Home page-specific override styles */
+    .hero-section {
+      background: radial-gradient(circle at 80% 20%, #1e293b 0%, #0f172a 100%);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding-top: 120px;
+      padding-bottom: 80px;
+      color: #FFFFFF;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .hero-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: radial-gradient(circle at 30% 70%, rgba(3, 105, 161, 0.15) 0%, transparent 40%);
+      pointer-events: none;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      align-items: center;
+      gap: var(--space-12);
+    }
+
+    @media (max-width: 1024px) {
+      .hero-grid {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+    }
+
+    .hero-content h1 {
+      font-size: var(--text-hero);
+      line-height: 1.1;
+      margin-bottom: var(--space-4);
+      color: #FFFFFF;
+      letter-spacing: -0.03em;
+    }
+
+    .hero-content p {
+      font-size: var(--text-body-lg);
+      color: var(--color-text-muted);
+      margin-bottom: var(--space-8);
+      max-width: 600px;
+    }
+
+    @media (max-width: 1024px) {
+      .hero-content p {
+        margin-inline: auto;
+      }
+    }
+
+    .hero-ctas {
+      display: flex;
+      gap: var(--space-4);
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 1024px) {
+      .hero-ctas {
+        justify-content: center;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .hero-ctas .btn {
+        width: 100%;
+      }
+    }
+
+    /* Abstract Hero Graphic */
+    .hero-graphic {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    @media (max-width: 1024px) {
+      .hero-graphic {
+        display: none; /* Hide decorative graphics on mobile */
+      }
+    }
+
+    .glow-circle {
+      position: absolute;
+      width: 320px;
+      height: 320px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(3, 105, 161, 0.2) 0%, transparent 70%);
+      filter: blur(20px);
+    }
+
+    .graphic-card {
+      position: relative;
+      z-index: 2;
+      width: 300px;
+      height: 380px;
+      border-radius: var(--radius-card);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      background: linear-gradient(135deg, rgba(30, 41, 59, 0.7) 0%, rgba(15, 23, 42, 0.8) 100%);
+      box-shadow: var(--shadow-2xl);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: var(--space-6);
+    }
+
+    .stats-strip {
+      background-color: var(--color-primary-700);
+      border-block: 1px solid rgba(255, 255, 255, 0.05);
+      padding-block: var(--space-6);
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--space-8);
+      text-align: center;
+    }
+
+    @media (max-width: 768px) {
+      .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--space-6);
+      }
+    }
+
+    .stat-card h3 {
+      font-size: 38px;
+      font-weight: 700;
+      color: var(--color-accent);
+      line-height: 1.1;
+      margin-bottom: var(--space-1);
+    }
+
+    .stat-card p {
+      font-size: var(--text-body-sm);
+      color: var(--color-text-muted);
+      margin-bottom: 0;
+      font-weight: 500;
+    }
+
+    /* Services Grid */
+    .services-grid {
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+    @media (max-width: 1024px) {
+      .services-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 640px) {
+      .services-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .service-card {
+      padding: var(--space-8) var(--space-6);
+    }
+
+    .service-icon-wrapper {
+      width: 48px;
+      height: 48px;
+      border-radius: var(--radius-md);
+      background-color: var(--color-accent-light);
+      color: var(--color-accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: var(--space-6);
+    }
+
+    .service-card h3 {
+      margin-bottom: var(--space-3);
+    }
+
+    .service-card p {
+      font-size: var(--text-body-sm);
+      color: var(--color-text-secondary);
+    }
+
+    /* Brands Section */
+    .brand-showcase {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      gap: var(--space-12);
+      margin-bottom: var(--space-8);
+    }
+
+    .brand-logo-item {
+      height: 60px;
+      width: 140px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0.6;
+      filter: grayscale(100%);
+      transition: var(--transition-all);
+    }
+
+    .brand-logo-item:hover {
+      opacity: 1;
+      filter: grayscale(0%);
+      transform: scale(1.05);
+    }
+
+    .brand-logo-item svg,
+    .brand-logo-item img {
+      max-height: 100%;
+      max-width: 100%;
+      object-fit: contain;
+    }
+
+    .brand-badge {
+      display: inline-block;
+      padding: 6px 14px;
+      background-color: rgba(3, 105, 161, 0.05);
+      border: 1px solid rgba(3, 105, 161, 0.1);
+      border-radius: var(--radius-full);
+      font-weight: 600;
+      color: var(--color-accent);
+      font-size: var(--text-body-sm);
+    }
+
+    /* Call To Action Section */
+    .cta-banner {
+      background: linear-gradient(135deg, var(--color-accent) 0%, #0369a1 50%, #0c4a6e 100%);
+      color: #FFFFFF;
+      border-radius: var(--radius-xl);
+      padding: var(--space-12) var(--space-8);
+      text-align: center;
+      box-shadow: var(--shadow-lg);
+    }
+
+    .cta-banner h2 {
+      color: #FFFFFF;
+      font-size: var(--text-h2);
+      margin-bottom: var(--space-4);
+    }
+
+    .cta-banner p {
+      color: var(--color-accent-light);
+      font-size: var(--text-body-lg);
+      margin-bottom: var(--space-8);
+      max-width: 600px;
+      margin-inline: auto;
+    }
+
+    .cta-buttons {
+      display: flex;
+      justify-content: center;
+      gap: var(--space-4);
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 640px) {
+      .cta-buttons .btn {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Sticky Glass Header -->
+  <header class="site-header theme-dark-init" id="site-header">
+    <div class="container header-container">
+      <a href="index.html" class="logo">
+        <i data-lucide="battery-charging" class="logo-icon"></i>
+        <span class="logo-text">
+          SN BATTERIES
+          <span class="logo-sub">Sales & Service</span>
+        </span>
+      </a>
+      <nav aria-label="Main Navigation">
+        <ul class="nav-menu">
+          <li><a href="index.html" class="nav-link active" id="nav-home">Home</a></li>
+          <li><a href="about.html" class="nav-link" id="nav-about">About</a></li>
+          <li><a href="services.html" class="nav-link" id="nav-services">Services</a></li>
+          <li><a href="branches.html" class="nav-link" id="nav-branches">Branches</a></li>
+          <li><a href="brands.html" class="nav-link" id="nav-brands">Brands</a></li>
+          <li><a href="contact.html" class="nav-link" id="nav-contact">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="header-actions">
+        <a href="tel:+919845012345" class="btn btn-primary btn-sm">Call Now</a>
+        <button class="drawer-toggle" id="drawer-open" aria-label="Open Menu" aria-controls="mobile-drawer">
+          <i data-lucide="menu"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer -->
+  <div class="mobile-drawer" id="mobile-drawer" aria-hidden="true" role="dialog">
+    <div class="drawer-content">
+      <div class="drawer-header">
+        <a href="index.html" class="logo">
+          <i data-lucide="battery-charging" class="logo-icon"></i>
+          <span class="logo-text">
+            SN BATTERIES
+            <span class="logo-sub">Sales & Service</span>
+          </span>
+        </a>
+        <button class="drawer-toggle" id="drawer-close" aria-label="Close Menu">
+          <i data-lucide="x"></i>
+        </button>
+      </div>
+      <nav class="drawer-nav" aria-label="Mobile Navigation">
+        <a href="index.html" class="drawer-link active">Home</a>
+        <a href="about.html" class="drawer-link">About</a>
+        <a href="services.html" class="drawer-link">Services</a>
+        <a href="branches.html" class="drawer-link">Branches</a>
+        <a href="brands.html" class="drawer-link">Brands</a>
+        <a href="contact.html" class="drawer-link">Contact</a>
+      </nav>
+      <div class="drawer-footer">
+        <a href="tel:+919845012345" class="btn btn-primary btn-md btn-full">
+          <i data-lucide="phone"></i> Call Now
+        </a>
+        <a href="https://wa.me/919845012345?text=Hi%2C%20I%27m%20visiting%20your%20website%20and%20looking%20for%20battery%20sales%20or%20service." target="_blank" class="btn btn-whatsapp btn-md btn-full">
+          <i data-lucide="message-circle"></i> WhatsApp Chat
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <main>
+    <!-- Hero Section -->
+    <section class="hero-section">
+      <div class="container hero-grid">
+        <div class="hero-content reveal">
+          <span class="badge badge-energy" style="margin-bottom: var(--space-4);">
+            <i data-lucide="shield-check" style="width:14px; height:14px;"></i> Bengaluru's Trusted Network
+          </span>
+          <h1>Powering Your Vehicles & Homes Seamlessly</h1>
+          <p>Get authentic battery replacement, home UPS back-ups, and expert automotive solutions. Fast doorstep installation across Bengaluru.</p>
+          <div class="hero-ctas">
+            <a href="branches.html" class="btn btn-primary btn-lg">
+              Find Nearest Branch <i data-lucide="arrow-right"></i>
+            </a>
+            <a href="contact.html" class="btn btn-ghost btn-lg" style="color: #FFFFFF; border-color: rgba(255,255,255,0.2);">
+              Contact Us
+            </a>
+          </div>
+        </div>
+        
+        <div class="hero-graphic float-anim">
+          <div class="glow-circle"></div>
+          <div class="graphic-card">
+            <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid rgba(255,255,255,0.08); padding-bottom:var(--space-3); margin-bottom:var(--space-4);">
+              <span style="font-weight:600; color:var(--color-accent); font-size:var(--text-body-sm);">SYSTEM STATUS</span>
+              <span class="badge badge-success" style="font-size:10px;">OPTIMAL</span>
+            </div>
+            
+            <div style="flex-grow:1; display:flex; flex-direction:column; justify-content:center; gap:var(--space-4);">
+              <div style="display:flex; align-items:center; gap:var(--space-3);">
+                <i data-lucide="zap" style="color:var(--color-energy); width:28px; height:28px;"></i>
+                <div>
+                  <p style="font-weight:600; margin:0; color:#FFFFFF; font-size:15px;">Automotive Batteries</p>
+                  <p style="color:var(--color-text-muted); margin:0; font-size:12px;">Immediate replacement & support</p>
+                </div>
+              </div>
+              
+              <div style="display:flex; align-items:center; gap:var(--space-3);">
+                <i data-lucide="home" style="color:var(--color-accent); width:28px; height:28px;"></i>
+                <div>
+                  <p style="font-weight:600; margin:0; color:#FFFFFF; font-size:15px;">Home UPS Backups</p>
+                  <p style="color:var(--color-text-muted); margin:0; font-size:12px;">Continuous residential supply</p>
+                </div>
+              </div>
+            </div>
+            
+            <div style="border-top:1px solid rgba(255,255,255,0.08); padding-top:var(--space-3); margin-top:var(--space-4); display:flex; justify-content:space-between; align-items:center;">
+              <span style="font-size:12px; color:var(--color-text-muted);">100% Genuine Brands</span>
+              <i data-lucide="verified" style="color:var(--color-accent); width:18px; height:18px;"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Stats Strip Section -->
+    <section class="stats-strip">
+      <div class="container stats-grid">
+        <div class="stat-card">
+          <h3 class="stat-number" data-target="5" data-suffix="+">0+</h3>
+          <p>Branches</p>
+        </div>
+        <div class="stat-card">
+          <h3 class="stat-number" data-target="10000" data-suffix="+">0+</h3>
+          <p>Happy Customers</p>
+        </div>
+        <div class="stat-card">
+          <h3 class="stat-number" data-target="10" data-suffix="+">0+</h3>
+          <p>Battery Brands</p>
+        </div>
+        <div class="stat-card">
+          <h3 class="stat-number" data-target="10" data-suffix="+">0+</h3>
+          <p>Years Experience</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="section section-even">
+      <div class="container">
+        <div class="section-header text-center reveal">
+          <span class="badge badge-primary" style="margin-bottom:var(--space-3);">Our Services</span>
+          <h2>Professional Power Solutions</h2>
+          <p>We provide full battery installation, testing, and doorstep maintenance services across Bengaluru.</p>
+        </div>
+        
+        <div class="d-grid services-grid">
+          <!-- Card 1 -->
+          <div class="card service-card reveal delay-1">
+            <div class="service-icon-wrapper">
+              <i data-lucide="car"></i>
+            </div>
+            <h3>Car Batteries</h3>
+            <p>Reliable automotive power for all vehicle makes with immediate roadside setup support.</p>
+          </div>
+          <!-- Card 2 -->
+          <div class="card service-card reveal delay-2">
+            <div class="service-icon-wrapper">
+              <i data-lucide="bike"></i>
+            </div>
+            <h3>Bike Batteries</h3>
+            <p>Long-lasting, zero-maintenance battery setups optimized for two-wheeler rides.</p>
+          </div>
+          <!-- Card 3 -->
+          <div class="card service-card reveal delay-3">
+            <div class="service-icon-wrapper">
+              <i data-lucide="home"></i>
+            </div>
+            <h3>Inverter Batteries</h3>
+            <p>Keep your home running. Reliable power backup supply solutions for home appliances.</p>
+          </div>
+          <!-- Card 4 -->
+          <div class="card service-card reveal delay-4">
+            <div class="service-icon-wrapper">
+              <i data-lucide="building"></i>
+            </div>
+            <h3>UPS Solutions</h3>
+            <p>Corporate backups and server protections to safeguard critical enterprise data.</p>
+          </div>
+          <!-- Card 5 -->
+          <div class="card service-card reveal delay-1">
+            <div class="service-icon-wrapper">
+              <i data-lucide="sun"></i>
+            </div>
+            <h3>Solar Batteries</h3>
+            <p>Harness sustainable energy with specialized high-capacity cycle storage battery banks.</p>
+          </div>
+          <!-- Card 6 -->
+          <div class="card service-card reveal delay-2">
+            <div class="service-icon-wrapper">
+              <i data-lucide="cpu"></i>
+            </div>
+            <h3>Lithium Batteries</h3>
+            <p>Advanced modern storage systems featuring faster charges and extended battery life.</p>
+          </div>
+          <!-- Card 7 -->
+          <div class="card service-card reveal delay-3">
+            <div class="service-icon-wrapper">
+              <i data-lucide="truck"></i>
+            </div>
+            <h3>Doorstep Service</h3>
+            <p>Don't get stuck. Quick delivery, replacement, and testing support right at your place.</p>
+          </div>
+          <!-- Card 8 -->
+          <div class="card service-card reveal delay-4">
+            <div class="service-icon-wrapper">
+              <i data-lucide="wrench"></i>
+            </div>
+            <h3>Expert Setup</h3>
+            <p>Our technicians test current systems and set up replacement batteries professionally.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Brands Section -->
+    <section class="section section-odd">
+      <div class="container text-center">
+        <div class="section-header text-center reveal">
+          <span class="badge badge-primary" style="margin-bottom:var(--space-3);">Partner Brands</span>
+          <h2>Dealers of Leading Battery Brands</h2>
+          <p>We stock only genuine products directly from certified global manufacturers.</p>
+        </div>
+        
+        <div class="brand-showcase reveal">
+          <!-- Amaron Logo Placeholder / SVG -->
+          <div class="brand-logo-item">
+            <span style="font-family:var(--font-heading); font-weight:800; font-size:24px; color:#22c55e;">AMARON</span>
+          </div>
+          <!-- Exide -->
+          <div class="brand-logo-item">
+            <span style="font-family:var(--font-heading); font-weight:800; font-size:24px; color:#ef4444;">EXIDE</span>
+          </div>
+          <!-- Luminous -->
+          <div class="brand-logo-item">
+            <span style="font-family:var(--font-heading); font-weight:800; font-size:22px; color:#3b82f6;">LUMINOUS</span>
+          </div>
+          <!-- Microtek -->
+          <div class="brand-logo-item">
+            <span style="font-family:var(--font-heading); font-weight:800; font-size:22px; color:#1e3a8a;">MICROTEK</span>
+          </div>
+        </div>
+        
+        <div class="reveal delay-2" style="margin-top:var(--space-6);">
+          <span class="brand-badge">Lithium Batteries & Other Leading Battery Brands Available</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="section section-even">
+      <div class="container">
+        <div class="cta-banner reveal">
+          <h2>Looking for the Right Battery Solution?</h2>
+          <p>Speak to our energy experts now for professional guidance, genuine product checks, and fast doorstep delivery.</p>
+          <div class="cta-buttons">
+            <a href="tel:+919845012345" class="btn btn-primary-dark btn-lg">
+              <i data-lucide="phone"></i> Call Now
+            </a>
+            <a href="https://wa.me/919845012345?text=Hi%2C%20I%20am%20looking%20for%20a%20battery%20for%20my%20vehicle/home." target="_blank" class="btn btn-whatsapp btn-lg">
+              <i data-lucide="message-circle"></i> WhatsApp Enquiry
+            </a>
+            <a href="branches.html" class="btn btn-ghost btn-lg" style="color:#FFFFFF; border-color:rgba(255,255,255,0.3);">
+              Find Nearest Branch
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div>
+        <a href="index.html" class="footer-logo">
+          <i data-lucide="battery-charging" class="logo-icon"></i>
+          <span class="logo-text">
+            SN BATTERIES
+            <span class="logo-sub">Sales & Service</span>
+          </span>
+        </a>
+        <p class="footer-desc">Bengaluru's leading network for genuine batteries, home UPS solutions, and professional doorstep installation services for over 10 years.</p>
+        <div class="footer-socials">
+          <a href="#" class="social-btn facebook" aria-label="Facebook"><i data-lucide="facebook"></i></a>
+          <a href="#" class="social-btn instagram" aria-label="Instagram"><i data-lucide="instagram"></i></a>
+          <a href="https://wa.me/919845012345" target="_blank" class="social-btn whatsapp" aria-label="WhatsApp"><i data-lucide="message-circle"></i></a>
+        </div>
+      </div>
+      <div>
+        <h3 class="footer-title">Quick Links</h3>
+        <ul class="footer-links">
+          <li class="footer-link-item"><a href="index.html">Home</a></li>
+          <li class="footer-link-item"><a href="about.html">About Us</a></li>
+          <li class="footer-link-item"><a href="services.html">Services</a></li>
+          <li class="footer-link-item"><a href="branches.html">Branches</a></li>
+          <li class="footer-link-item"><a href="brands.html">Brands</a></li>
+          <li class="footer-link-item"><a href="contact.html">Contact Us</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="footer-title">Services</h3>
+        <ul class="footer-links">
+          <li class="footer-link-item"><a href="services.html">Car Batteries</a></li>
+          <li class="footer-link-item"><a href="services.html">Bike Batteries</a></li>
+          <li class="footer-link-item"><a href="services.html">Inverter Batteries</a></li>
+          <li class="footer-link-item"><a href="services.html">UPS Solutions</a></li>
+          <li class="footer-link-item"><a href="services.html">Lithium Batteries</a></li>
+          <li class="footer-link-item"><a href="services.html">Doorstep Support</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="footer-title">Contact Info</h3>
+        <ul class="footer-contact-list">
+          <li class="footer-contact-item">
+            <i data-lucide="map-pin"></i>
+            <span>Bengaluru, Karnataka, India</span>
+          </li>
+          <li class="footer-contact-item">
+            <i data-lucide="phone"></i>
+            <a href="tel:+919845012345">+91 98450 12345</a>
+          </li>
+          <li class="footer-contact-item">
+            <i data-lucide="message-circle"></i>
+            <a href="https://wa.me/919845012345" target="_blank">Chat on WhatsApp</a>
+          </li>
+          <li class="footer-contact-item">
+            <i data-lucide="mail"></i>
+            <a href="mailto:info@snbatteries.com">info@snbatteries.com</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <span class="copyright-text">&copy; 2026 SN Batteries Sales & Service. All rights reserved.</span>
+      <span class="developer-credit">Designed & Developed by <a href="http://www.imarktechserv.com" target="_blank" rel="noopener noreferrer">iMARK TECHSERV</a></span>
+    </div>
+  </footer>
+
+  <!-- Floating Action Buttons -->
+  <div class="floating-actions">
+    <a href="#" class="fab fab-instagram" data-tooltip="Follow Instagram" aria-label="Follow us on Instagram"><i data-lucide="instagram"></i></a>
+    <a href="#" class="fab fab-facebook" data-tooltip="Follow Facebook" aria-label="Follow us on Facebook"><i data-lucide="facebook"></i></a>
+    <a href="https://wa.me/919845012345?text=Hi%2C%20I%20found%20you%20on%20your%20website%20and%20need%20assistance." target="_blank" class="fab fab-whatsapp" data-tooltip="WhatsApp Enquiry" aria-label="Chat on WhatsApp"><i data-lucide="message-circle"></i></a>
+    <a href="tel:+919845012345" class="fab fab-call" data-tooltip="Call Hotline" aria-label="Call our hotline number"><i data-lucide="phone"></i></a>
+  </div>
+
+  <!-- Lucide Icons CDN -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  
+  <!-- JavaScript Files -->
+  <script src="js/header.js"></script>
+  <script src="js/stats.js"></script>
+  <script src="js/sliders.js"></script>
+  <script src="js/scroll-reveal.js"></script>
+  <script src="js/form.js"></script>
+  <script src="js/fab.js"></script>
+  <script>
+    lucide.createIcons();
+  </script>
+</body>
+</html>
