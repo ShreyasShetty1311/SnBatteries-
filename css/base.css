@@ -13,6 +13,7 @@ html {
   -webkit-text-size-adjust: 100%;
   -moz-tab-size: 4;
   tab-size: 4;
+  overflow-x: hidden; /* Prevent horizontal scroll on iOS */
 }
 
 body {
@@ -26,8 +27,10 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
+  max-width: 100vw;  /* Safety net against content widening page */
   display: flex;
   flex-direction: column;
+  animation: page-enter 300ms var(--ease-out) both;
 }
 
 main {
@@ -209,12 +212,8 @@ textarea:focus-visible {
   color: var(--color-primary);
 }
 
-/* Page load fade-in */
+/* Page load fade-in keyframe */
 @keyframes page-enter {
   from { opacity: 0; transform: translateY(6px); }
   to   { opacity: 1; transform: translateY(0); }
-}
-
-body {
-  animation: page-enter 300ms var(--ease-out) both;
 }
