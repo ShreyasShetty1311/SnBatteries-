@@ -124,6 +124,20 @@
       z-index: 1;
     }
 
+    /* Image scale on card hover */
+    .branch-card {
+      overflow: hidden;
+    }
+
+    .branch-card:hover .branch-img-wrapper {
+      transform: scale(1.04);
+      transition: transform var(--duration-normal) var(--ease-out);
+    }
+
+    .branch-img-wrapper {
+      transition: transform var(--duration-normal) var(--ease-out);
+    }
+
     .branch-card h3 {
       font-size: 20px;
       margin-bottom: var(--space-1);

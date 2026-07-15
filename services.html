@@ -277,6 +277,28 @@
       font-size: 12px;
       color: var(--color-text-muted);
     }
+
+    /* Process step connector line (desktop only) */
+    .process-grid {
+      position: relative;
+    }
+
+    @media (min-width: 768px) {
+      .process-grid::before {
+        content: '';
+        position: absolute;
+        top: 24px; /* vertically centers with step number circles */
+        left: calc(12.5% + 24px);
+        right: calc(12.5% + 24px);
+        border-top: 2px dashed var(--color-border-strong);
+        z-index: 0;
+      }
+
+      .process-step {
+        position: relative;
+        z-index: 1;
+      }
+    }
   </style>
 </head>
 <body>
@@ -367,6 +389,7 @@
           <div class="brand-slide-item"><i data-lucide="car"></i> Honda</div>
           <div class="brand-slide-item"><i data-lucide="car"></i> Toyota</div>
           <div class="brand-slide-item"><i data-lucide="car"></i> KIA</div>
+          <div class="brand-slide-item"><i data-lucide="car"></i> MG Motor</div>
           <div class="brand-slide-item"><i data-lucide="car"></i> Ford</div>
           <div class="brand-slide-item"><i data-lucide="car"></i> Volkswagen</div>
           <div class="brand-slide-item"><i data-lucide="car"></i> Chevrolet</div>
@@ -507,6 +530,20 @@
               <div class="solution-card-buttons">
                 <a href="tel:+919845012345" class="btn btn-ghost btn-sm">Call Now</a>
                 <a href="https://wa.me/919845012345?text=Hi%2C%20I%27m%20enquiring%20about%20Battery%20Maintenance." target="_blank" class="btn btn-whatsapp btn-sm"><i data-lucide="message-circle"></i> Chat</a>
+              </div>
+            </div>
+          </div>
+          <!-- Card 10 -->
+          <div class="card solution-card reveal delay-1">
+            <div class="solution-card-img">
+              <i data-lucide="truck"></i>
+            </div>
+            <div class="card-body">
+              <h3>Doorstep Replacement</h3>
+              <p>We come to your home or office — genuine battery delivered, fitted, and tested at your location.</p>
+              <div class="solution-card-buttons">
+                <a href="tel:+919845012345" class="btn btn-ghost btn-sm">Call Now</a>
+                <a href="https://wa.me/919845012345?text=Hi%2C%20I%27m%20enquiring%20about%20Doorstep%20Battery%20Replacement." target="_blank" class="btn btn-whatsapp btn-sm"><i data-lucide="message-circle"></i> Chat</a>
               </div>
             </div>
           </div>

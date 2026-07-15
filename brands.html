@@ -156,6 +156,40 @@
       width: 32px;
       height: 32px;
     }
+
+    /* Category filter pills */
+    .category-tabs {
+      display: flex;
+      gap: var(--space-2);
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-bottom: var(--space-10);
+    }
+
+    .category-tab {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 20px;
+      border-radius: var(--radius-full);
+      border: 1.5px solid var(--color-accent);
+      background: transparent;
+      color: var(--color-accent);
+      font-family: var(--font-body);
+      font-size: var(--text-body-sm);
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition-all);
+      text-decoration: none;
+    }
+
+    .category-tab:hover,
+    .category-tab.active {
+      background-color: var(--color-accent);
+      color: #FFFFFF;
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-accent);
+    }
   </style>
 </head>
 <body>
@@ -243,7 +277,18 @@
           <h2>Authorized Battery Dealers</h2>
           <p>We work directly with major manufacturers to ensure original warranty checks and fair pricing.</p>
         </div>
-        
+
+        <!-- Battery Category Filter Tabs -->
+        <div class="category-tabs reveal">
+          <a href="#" class="category-tab active">All Brands</a>
+          <a href="#" class="category-tab">Car Batteries</a>
+          <a href="#" class="category-tab">Bike Batteries</a>
+          <a href="#" class="category-tab">Inverter</a>
+          <a href="#" class="category-tab">UPS</a>
+          <a href="#" class="category-tab">Solar</a>
+          <a href="#" class="category-tab">Lithium</a>
+        </div>
+
         <div class="brands-grid">
           <!-- Amaron -->
           <div class="card brand-card-item reveal delay-1">
@@ -361,6 +406,21 @@
               <div class="brand-card-ctas">
                 <a href="tel:+919845012345" class="btn btn-ghost btn-sm">Call Now</a>
                 <a href="https://wa.me/919845012345?text=Hi%2C%20I%27m%20visiting%20your%20website%20and%20looking%20for%20Livfast%20batteries." target="_blank" class="btn btn-whatsapp btn-sm"><i data-lucide="message-circle"></i> Chat</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Okaya -->
+          <div class="card brand-card-item reveal delay-1">
+            <div class="brand-logo-container">
+              <span style="font-family:var(--font-heading); font-weight:800; font-size:24px; color:#7c3aed;">OKAYA</span>
+            </div>
+            <div class="card-body">
+              <h3>Okaya Batteries</h3>
+              <p>Trusted automotive and inverter batteries known for superior performance and wide vehicle compatibility.</p>
+              <div class="brand-card-ctas">
+                <a href="tel:+919845012345" class="btn btn-ghost btn-sm">Call Now</a>
+                <a href="https://wa.me/919845012345?text=Hi%2C%20I%27m%20visiting%20your%20website%20and%20looking%20for%20Okaya%20batteries." target="_blank" class="btn btn-whatsapp btn-sm"><i data-lucide="message-circle"></i> Chat</a>
               </div>
             </div>
           </div>

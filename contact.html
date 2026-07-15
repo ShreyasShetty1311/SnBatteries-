@@ -80,37 +80,42 @@
       }
     }
 
-    .contact-info-card {
+    /* 4-card contact info row */
+    .contact-cards-row {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--space-4);
+      margin-bottom: var(--space-8);
+    }
+
+    @media (max-width: 640px) {
+      .contact-cards-row {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .contact-info-box {
       background-color: var(--color-surface);
       border: 1px solid var(--color-border);
       border-radius: var(--radius-card);
-      padding: var(--space-8);
-      box-shadow: var(--shadow-sm);
-    }
-
-    .contact-info-card h3 {
-      font-size: 22px;
-      margin-bottom: var(--space-6);
-      border-bottom: 1px solid var(--color-border);
-      padding-bottom: var(--space-3);
-    }
-
-    .info-list {
-      list-style: none;
+      padding: var(--space-6);
       display: flex;
       flex-direction: column;
-      gap: var(--space-6);
+      align-items: flex-start;
+      gap: var(--space-3);
+      transition: var(--transition-all);
     }
 
-    .info-item {
-      display: flex;
-      gap: var(--space-4);
+    .contact-info-box:hover {
+      border-color: var(--color-accent);
+      box-shadow: var(--shadow-md);
+      transform: translateY(-3px);
     }
 
-    .info-item-icon {
-      width: 40px;
-      height: 40px;
-      border-radius: var(--radius-md);
+    .contact-info-box-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: var(--radius-lg);
       background-color: var(--color-accent-light);
       color: var(--color-accent);
       display: flex;
@@ -119,34 +124,63 @@
       flex-shrink: 0;
     }
 
-    .info-item-icon i,
-    .info-item-icon svg {
-      width: 20px;
-      height: 20px;
+    .contact-info-box-icon.whatsapp {
+      background-color: rgba(37, 211, 102, 0.12);
+      color: var(--color-whatsapp);
     }
 
-    .info-item h4 {
-      font-size: 15px;
+    .contact-info-box-icon i,
+    .contact-info-box-icon svg {
+      width: 24px;
+      height: 24px;
+    }
+
+    .contact-info-box h4 {
+      font-size: 13px;
       font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--color-text-muted);
       margin-bottom: 2px;
     }
 
-    .info-item p,
-    .info-item a {
+    .contact-info-box p,
+    .contact-info-box a {
       font-size: var(--text-body-sm);
-      color: var(--color-text-secondary);
+      color: var(--color-text-primary);
+      font-weight: 600;
       margin-bottom: 0;
+      line-height: 1.4;
     }
 
-    .info-item a:hover {
+    .contact-info-box a:hover {
       color: var(--color-accent);
+    }
+
+    .service-area-note {
+      background: linear-gradient(135deg, var(--color-accent-light) 0%, #f0f9ff 100%);
+      border: 1px solid rgba(3, 105, 161, 0.15);
+      border-radius: var(--radius-lg);
+      padding: var(--space-4) var(--space-5);
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+      margin-bottom: var(--space-6);
+      font-size: var(--text-body-sm);
+      color: var(--color-accent);
+      font-weight: 600;
+    }
+
+    .service-area-note i,
+    .service-area-note svg {
+      width: 18px;
+      height: 18px;
+      flex-shrink: 0;
     }
 
     /* Social icons layout */
     .contact-socials-wrapper {
-      margin-top: var(--space-8);
-      border-top: 1px solid var(--color-border);
-      padding-top: var(--space-6);
+      padding-top: var(--space-2);
     }
 
     .contact-socials-wrapper p {
@@ -204,7 +238,6 @@
     }
 
     @media (max-width: 640px) {
-      .contact-info-card,
       .contact-form-card {
         padding: var(--space-6);
       }
@@ -301,42 +334,41 @@
     <section class="section section-even">
       <div class="container contact-grid">
         <!-- Info Column -->
-        <div class="contact-info-card reveal">
-          <h3>Contact Details</h3>
-          
-          <ul class="info-list">
-            <li class="info-item">
-              <div class="info-item-icon"><i data-lucide="map-pin"></i></div>
-              <div>
-                <h4>Main Office</h4>
-                <p>Sector 6, HSR Layout, Bengaluru, Karnataka, India</p>
-              </div>
-            </li>
-            <li class="info-item">
-              <div class="info-item-icon"><i data-lucide="phone"></i></div>
-              <div>
-                <h4>Call Hotline</h4>
-                <p><a href="tel:+919845012345">+91 98450 12345</a></p>
-              </div>
-            </li>
-            <li class="info-item">
-              <div class="info-item-icon"><i data-lucide="mail"></i></div>
-              <div>
-                <h4>Email Support</h4>
-                <p><a href="mailto:info@snbatteries.com">info@snbatteries.com</a></p>
-              </div>
-            </li>
-            <li class="info-item">
-              <div class="info-item-icon"><i data-lucide="clock"></i></div>
-              <div>
-                <h4>Operating Hours</h4>
-                <p>Mon - Sat: 9:00 AM - 8:00 PM<br>Sunday: 9:30 AM - 4:00 PM</p>
-              </div>
-            </li>
-          </ul>
+        <div class="reveal">
+          <h3 style="font-size:22px; margin-bottom:var(--space-6);">Contact Details</h3>
+
+          <!-- Service area note -->
+          <div class="service-area-note">
+            <i data-lucide="map"></i>
+            <span>Serving all areas across Bengaluru</span>
+          </div>
+
+          <!-- 4 contact info cards -->
+          <div class="contact-cards-row">
+            <a href="tel:+919845012345" class="contact-info-box">
+              <div class="contact-info-box-icon"><i data-lucide="phone"></i></div>
+              <h4>Phone</h4>
+              <p>+91 98450 12345</p>
+            </a>
+            <a href="https://wa.me/919845012345" target="_blank" class="contact-info-box">
+              <div class="contact-info-box-icon whatsapp"><i data-lucide="message-circle"></i></div>
+              <h4>WhatsApp</h4>
+              <p>Chat Instantly</p>
+            </a>
+            <a href="mailto:info@snbatteries.com" class="contact-info-box">
+              <div class="contact-info-box-icon"><i data-lucide="mail"></i></div>
+              <h4>Email</h4>
+              <p>info@snbatteries.com</p>
+            </a>
+            <div class="contact-info-box">
+              <div class="contact-info-box-icon"><i data-lucide="clock"></i></div>
+              <h4>Business Hours</h4>
+              <p>Mon–Sat: 9AM–8PM<br>Sunday: 9:30AM–4PM</p>
+            </div>
+          </div>
 
           <div class="contact-socials-wrapper">
-            <p>Connect with Us</p>
+            <p>Follow Us</p>
             <div class="contact-socials">
               <a href="#" class="contact-social-btn facebook" aria-label="Facebook"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
               <a href="#" class="contact-social-btn instagram" aria-label="Instagram"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg></a>
@@ -371,6 +403,8 @@
                 <option value="two-wheeler">Two Wheeler Battery</option>
                 <option value="inverter">Home Inverter Setup</option>
                 <option value="ups">UPS Battery Service</option>
+                <option value="solar">Solar Battery</option>
+                <option value="doorstep">Doorstep Replacement</option>
                 <option value="diagnostic">General Diagnostic Check</option>
                 <option value="other">Other Inquiries</option>
               </select>
@@ -382,7 +416,7 @@
             </div>
 
             <div style="margin-top:var(--space-6);">
-              <button type="submit" class="btn btn-primary btn-md btn-full">
+              <button type="submit" class="btn btn-primary btn-lg btn-full">
                 Send Enquiry <i data-lucide="send" style="width:16px; height:16px;"></i>
               </button>
             </div>
