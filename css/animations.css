@@ -37,7 +37,7 @@
      is preserved on the last item of each set, preventing loop seam jump */
   gap: 0;
   width: max-content;
-  animation: marquee 30s linear infinite;
+  animation: marquee 60s linear infinite;
   will-change: transform;
   backface-visibility: hidden;
 }
@@ -51,7 +51,7 @@
 
 /* Fast gallery marquee variant */
 .marquee-fast .marquee-content {
-  animation-duration: 25s;
+  animation-duration: 50s;
 }
 
 
