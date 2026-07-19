@@ -93,6 +93,14 @@ img, picture, svg, video, canvas {
   height: auto;
 }
 
+/* Exception: brand ticker logos need explicit height */
+.brand-slide-logo img {
+  height: 52px;
+  width: auto;
+  max-width: 110px;
+  object-fit: contain;
+}
+
 button, input, select, textarea {
   font: inherit;
 }

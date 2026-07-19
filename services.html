@@ -7,6 +7,9 @@
   <meta name="description" content="View automotive battery setups, home inverter systems, professional diagnostics, emergency jump starts, and doorstep replacements by SN Batteries Bengaluru.">
   
   <!-- Design System Stylesheet Links -->
+  <link rel="preconnect" href="https://res.cloudinary.com" crossorigin>
+  <link rel="dns-prefetch" href="https://res.cloudinary.com">
+  <link rel="preload" as="image" href="https://res.cloudinary.com/daimyvr5u/image/upload/f_auto,q_auto,w_300/v1784428607/final_logo_rbe7ys.png" fetchpriority="high">
   <link rel="stylesheet" href="css/tokens.css">
   <link rel="stylesheet" href="css/base.css">
   <link rel="stylesheet" href="css/components.css">
@@ -88,17 +91,22 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
+      justify-content: space-between;
       background-color: #FFFFFF;
       border: 1px solid rgba(226, 232, 240, 0.8);
-      border-radius: 12px;
-      padding: var(--space-4) var(--space-5);
-      width: 150px;
-      height: 100px;
+      border-radius: 14px;
+      padding: 14px 16px 12px;
+      width: 160px;
+      height: 120px;
       flex-shrink: 0;
+      /* margin-right instead of gap — ensures the trailing space exists
+         even on the LAST card of each set, making the loop seam invisible */
+      margin-right: 20px;
       box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.04), 0 2px 4px -1px rgba(0, 0, 0, 0.02);
-      transition: all var(--duration-normal) var(--ease-out);
-      gap: var(--space-2);
+      transition: transform var(--duration-normal) var(--ease-out),
+                  box-shadow var(--duration-normal) var(--ease-out),
+                  border-color var(--duration-normal) var(--ease-out);
+      gap: 0;
     }
 
     .brand-slide-card:hover {
@@ -108,30 +116,45 @@
     }
 
     .brand-slide-logo {
-      height: 38px;
+      flex: 1;
       width: 100%;
       display: flex;
       align-items: center;
       justify-content: center;
+      overflow: hidden;
     }
 
-    .brand-slide-logo svg {
-      height: 100%;
+    .brand-slide-logo svg,
+    .brand-slide-logo img {
+      display: block;
       width: auto;
-      max-width: 90px;
+      height: 52px;
+      max-width: 110px;
+      object-fit: contain;
     }
 
     .brand-slide-name {
-      font-size: 11px;
+      flex-shrink: 0;
+      font-size: 10.5px;
       font-weight: 600;
       color: #64748B;
       text-align: center;
-      letter-spacing: 0.02em;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      width: 100%;
+      padding-top: 8px;
     }
 
-    /* Increased speed for the brand marquee */
+    /* Fast, seamless brand marquee — 4× speed, GPU composited */
+    .brand-slider-section .marquee-container {
+      transform: translateZ(0);
+    }
     .brand-slider-section .marquee-content {
-      animation-duration: 10s;
+      animation-duration: 4s;
+      gap: 0; /* spacing handled by margin-right on each card */
     }
 
     /* Solutions Grid */
@@ -408,11 +431,7 @@
   <header class="site-header theme-dark-init" id="site-header">
     <div class="container header-container">
       <a href="index.html" class="logo">
-        <i data-lucide="battery-charging" class="logo-icon"></i>
-        <span class="logo-text">
-          SN BATTERIES
-          <span class="logo-sub">Sales & Service</span>
-        </span>
+        <img src="https://res.cloudinary.com/daimyvr5u/image/upload/f_auto,q_auto,w_300/v1784428607/final_logo_rbe7ys.png" alt="SN Batteries Logo" class="logo-image" fetchpriority="high" loading="eager">
       </a>
       <nav aria-label="Main Navigation">
         <ul class="nav-menu">
@@ -438,11 +457,7 @@
     <div class="drawer-content">
       <div class="drawer-header">
         <a href="index.html" class="logo">
-          <i data-lucide="battery-charging" class="logo-icon"></i>
-          <span class="logo-text">
-            SN BATTERIES
-            <span class="logo-sub">Sales & Service</span>
-          </span>
+          <img src="https://res.cloudinary.com/daimyvr5u/image/upload/f_auto,q_auto,w_300/v1784428607/final_logo_rbe7ys.png" alt="SN Batteries Logo" class="logo-image" fetchpriority="high" loading="eager">
         </a>
         <button class="drawer-toggle" id="drawer-close" aria-label="Close Menu">
           <i data-lucide="x"></i>
@@ -485,379 +500,209 @@
       <div class="marquee-container">
         <div class="marquee-content">
           <!-- Set 1 -->
-          <!-- Maruti Suzuki -->
+          <!-- Volvo -->
           <div class="brand-slide-card">
             <div class="brand-slide-logo">
-              <svg viewBox="0 0 100 50" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M35 10 H75 L60 25 H80 L45 42 H25 L40 27 H20 Z" fill="#E60012"/>
-              </svg>
+              <img src="https://res.cloudinary.com/daimyvr5u/image/upload/f_auto,q_auto/v1784428106/volvo_blldsi.png" alt="Volvo" loading="eager">
             </div>
-            <div class="brand-slide-name">Maruti Suzuki</div>
-          </div>
-          <!-- Hyundai -->
-          <div class="brand-slide-card">
-            <div class="brand-slide-logo">
-              <svg viewBox="0 0 100 50" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <ellipse cx="50" cy="25" rx="40" ry="20" stroke="#002C5F" stroke-width="5" fill="none"/>
-                <path d="M38 15 L34 35 M62 15 L58 35 M35 25 C45 23 55 23 60 25" stroke="#002C5F" stroke-width="6" stroke-linecap="round"/>
-              </svg>
-            </div>
-            <div class="brand-slide-name">Hyundai</div>
-          </div>
-          <!-- Tata Motors -->
-          <div class="brand-slide-card">
-            <div class="brand-slide-logo">
-              <svg viewBox="0 0 100 50" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="50" cy="25" r="22" stroke="#00529B" stroke-width="4.5" fill="none"/>
-                <path d="M38 34 C39 24 46 18 50 18 C54 18 61 24 62 34 M50 18 V35" stroke="#00529B" stroke-width="4.5" stroke-linecap="round"/>
-              </svg>
-            </div>
-            <div class="brand-slide-name">Tata Motors</div>
-          </div>
-          <!-- Mahindra -->
-          <div class="brand-slide-card">
-            <div class="brand-slide-logo">
-              <svg viewBox="0 0 100 50" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M25 40 C32 30 45 15 50 8 C55 15 68 30 75 40 M50 8 C50 20 45 32 35 40 M50 8 C50 20 55 32 65 40" stroke="#DD1D25" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-            </div>
-            <div class="brand-slide-name">Mahindra</div>
-          </div>
-          <!-- Honda -->
-          <div class="brand-slide-card">
-            <div class="brand-slide-logo">
-              <svg viewBox="0 0 100 50" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <rect x="25" y="8" width="50" height="34" rx="6" stroke="#E31837" stroke-width="4" fill="none"/>
-                <path d="M38 15V35 M62 15V35 M38 25H62" stroke="#E31837" stroke-width="5.5" stroke-linecap="round"/>
-              </svg>
-            </div>
-            <div class="brand-slide-name">Honda</div>
-          </div>
-          <!-- Toyota -->
-          <div class="brand-slide-card">
-            <div class="brand-slide-logo">
-              <svg viewBox="0 0 100 50" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <ellipse cx="50" cy="25" rx="36" ry="21" stroke="#EB0A1E" stroke-width="4" fill="none"/>
-                <ellipse cx="50" cy="25" rx="22" ry="13" stroke="#EB0A1E" stroke-width="3.5" fill="none"/>
-                <ellipse cx="50" cy="18" rx="8" ry="13" stroke="#EB0A1E" stroke-width="3.5" fill="none"/>
-              </svg>
-            </div>
-            <div class="brand-slide-name">Toyota</div>
-          </div>
-          <!-- KIA -->
-          <div class="brand-slide-card">
-            <div class="brand-slide-logo">
-              <svg viewBox="0 0 100 50" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M20 12L35 25L35 12M35 37L35 25L50 37M60 12V37M70 37L80 12L90 37" stroke="#000000" stroke-width="5.5" stroke-linecap="miter" stroke-linejoin="miter"/>
-              </svg>
-            </div>
-            <div class="brand-slide-name">KIA</div>
-          </div>
-          <!-- MG -->
-          <div class="brand-slide-card">
-            <div class="brand-slide-logo">
-              <svg viewBox="0 0 100 50" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <polygon points="50,6 74,6 92,25 92,25 74,44 50,44 26,44 8,25 8,25 26,6" stroke="#B22222" stroke-width="4" fill="none"/>
-                <text x="50" y="34" font-family="Arial, sans-serif" font-weight="900" font-size="24" fill="#B22222" text-anchor="middle">MG</text>
-              </svg>
-            </div>
-            <div class="brand-slide-name">MG Motor</div>
+            <div class="brand-slide-name">Volvo</div>
           </div>
           <!-- Volkswagen -->
           <div class="brand-slide-card">
             <div class="brand-slide-logo">
-              <svg viewBox="0 0 100 50" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="50" cy="25" r="22" fill="#0079C1"/>
-                <path d="M37 17 L46 37 H48 L39 17 Z" fill="#FFFFFF"/>
-                <path d="M63 17 L54 37 H52 L61 17 Z" fill="#FFFFFF"/>
-                <path d="M50 26 L45 17 H48 L50 21 L52 17 H55 Z" fill="#FFFFFF"/>
-                <path d="M50 27 L46 37 H48 L50 31 L52 37 H54 Z" fill="#FFFFFF"/>
-                <rect x="35" y="24" width="30" height="1.5" fill="#0079C1"/>
-              </svg>
+              <img src="https://res.cloudinary.com/daimyvr5u/image/upload/f_auto,q_auto/v1784428111/volkswagen_oj3wyq.png" alt="Volkswagen" loading="eager">
             </div>
             <div class="brand-slide-name">Volkswagen</div>
-          </div>
-          <!-- Chevrolet -->
-          <div class="brand-slide-card">
-            <div class="brand-slide-logo">
-              <svg viewBox="0 0 100 50" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M20 20 L35 20 L35 12 L65 12 L65 20 L80 20 L84 30 L65 30 L65 38 L35 38 L35 30 L16 30 Z" fill="#EAAA00" stroke="#8C6900" stroke-width="2.5" stroke-linejoin="round"/>
-              </svg>
-            </div>
-            <div class="brand-slide-name">Chevrolet</div>
           </div>
           <!-- Skoda -->
           <div class="brand-slide-card">
             <div class="brand-slide-logo">
-              <svg viewBox="0 0 100 50" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="50" cy="25" r="22" fill="#008A51"/>
-                <path d="M46 25 C46 22 50 15 58 18 C54 19 52 22 52 25 C52 28 54 31 58 32 C50 35 46 28 46 25 Z" fill="#FFFFFF"/>
-                <path d="M40 25 L50 19 L52 25 L50 31 Z" fill="#FFFFFF"/>
-                <circle cx="48" cy="25" r="1.5" fill="#008A51"/>
-              </svg>
+              <img src="https://res.cloudinary.com/daimyvr5u/image/upload/f_auto,q_auto/v1784428125/skoda_adqrq0.png" alt="Skoda" loading="eager">
             </div>
             <div class="brand-slide-name">Skoda</div>
+          </div>
+          <!-- Tata Motors -->
+          <div class="brand-slide-card">
+            <div class="brand-slide-logo">
+              <img src="https://res.cloudinary.com/daimyvr5u/image/upload/f_auto,q_auto/v1784428116/tata-motors_xoapov.png" alt="Tata Motors" loading="eager">
+            </div>
+            <div class="brand-slide-name">Tata Motors</div>
+          </div>
+          <!-- Tesla -->
+          <div class="brand-slide-card">
+            <div class="brand-slide-logo">
+              <img src="https://res.cloudinary.com/daimyvr5u/image/upload/f_auto,q_auto/v1784428114/tesla_hct5ah.png" alt="Tesla" loading="eager">
+            </div>
+            <div class="brand-slide-name">Tesla</div>
+          </div>
+          <!-- Toyota -->
+          <div class="brand-slide-card">
+            <div class="brand-slide-logo">
+              <img src="https://res.cloudinary.com/daimyvr5u/image/upload/f_auto,q_auto/v1784428112/toyota_d347kp.png" alt="Toyota" loading="eager">
+            </div>
+            <div class="brand-slide-name">Toyota</div>
+          </div>
+          <!-- Nissan -->
+          <div class="brand-slide-card">
+            <div class="brand-slide-logo">
+              <img src="https://res.cloudinary.com/daimyvr5u/image/upload/f_auto,q_auto/v1784428130/nissan_dd24rn.png" alt="Nissan" loading="lazy">
+            </div>
+            <div class="brand-slide-name">Nissan</div>
+          </div>
+          <!-- Porsche -->
+          <div class="brand-slide-card">
+            <div class="brand-slide-logo">
+              <img src="https://res.cloudinary.com/daimyvr5u/image/upload/f_auto,q_auto/v1784428121/porsche_vfqf5z.png" alt="Porsche" loading="lazy">
+            </div>
+            <div class="brand-slide-name">Porsche</div>
+          </div>
+          <!-- Renault -->
+          <div class="brand-slide-card">
+            <div class="brand-slide-logo">
+              <img src="https://res.cloudinary.com/daimyvr5u/image/upload/f_auto,q_auto/v1784428134/renault_eevg6c.png" alt="Renault" loading="lazy">
+            </div>
+            <div class="brand-slide-name">Renault</div>
+          </div>
+          <!-- Mini -->
+          <div class="brand-slide-card">
+            <div class="brand-slide-logo">
+              <img src="https://res.cloudinary.com/daimyvr5u/image/upload/f_auto,q_auto/v1784428126/mini_w0s1za.png" alt="Mini" loading="lazy">
+            </div>
+            <div class="brand-slide-name">Mini</div>
+          </div>
+          <!-- MG -->
+          <div class="brand-slide-card">
+            <div class="brand-slide-logo">
+              <img src="https://res.cloudinary.com/daimyvr5u/image/upload/f_auto,q_auto/v1784428145/mg_kfaltn.png" alt="MG" loading="lazy">
+            </div>
+            <div class="brand-slide-name">MG</div>
+          </div>
+          <!-- Mercedes-Benz -->
+          <div class="brand-slide-card">
+            <div class="brand-slide-logo">
+              <img src="https://res.cloudinary.com/daimyvr5u/image/upload/f_auto,q_auto/v1784428141/mercedes-benz_oy9akj.png" alt="Mercedes-Benz" loading="lazy">
+            </div>
+            <div class="brand-slide-name">Mercedes-Benz</div>
+          </div>
+          <!-- Mahindra -->
+          <div class="brand-slide-card">
+            <div class="brand-slide-logo">
+              <img src="https://res.cloudinary.com/daimyvr5u/image/upload/f_auto,q_auto/v1784428138/mahindra_sntyy9.png" alt="Mahindra" loading="lazy">
+            </div>
+            <div class="brand-slide-name">Mahindra</div>
+          </div>
+          <!-- Maruti Suzuki -->
+          <div class="brand-slide-card">
+            <div class="brand-slide-logo">
+              <img src="https://res.cloudinary.com/daimyvr5u/image/upload/f_auto,q_auto/v1784428383/maruti-suzuki_shwuha.png" alt="Maruti Suzuki" loading="lazy">
+            </div>
+            <div class="brand-slide-name">Maruti Suzuki</div>
+          </div>
+          <!-- Lexus -->
+          <div class="brand-slide-card">
+            <div class="brand-slide-logo">
+              <img src="https://res.cloudinary.com/daimyvr5u/image/upload/f_auto,q_auto/v1784428129/lexus_kh2djw.png" alt="Lexus" loading="lazy">
+            </div>
+            <div class="brand-slide-name">Lexus</div>
+          </div>
+          <!-- Land Rover -->
+          <div class="brand-slide-card">
+            <div class="brand-slide-logo">
+              <img src="https://res.cloudinary.com/daimyvr5u/image/upload/f_auto,q_auto/v1784428150/land-rover_qmdaes.png" alt="Land Rover" loading="lazy">
+            </div>
+            <div class="brand-slide-name">Land Rover</div>
+          </div>
+          <!-- Kia -->
+          <div class="brand-slide-card">
+            <div class="brand-slide-logo">
+              <img src="https://res.cloudinary.com/daimyvr5u/image/upload/f_auto,q_auto/v1784428132/kia_exszh1.png" alt="Kia" loading="lazy">
+            </div>
+            <div class="brand-slide-name">Kia</div>
+          </div>
+          <!-- Jeep -->
+          <div class="brand-slide-card">
+            <div class="brand-slide-logo">
+              <img src="https://res.cloudinary.com/daimyvr5u/image/upload/f_auto,q_auto/v1784428154/jeep_pslaxu.png" alt="Jeep" loading="lazy">
+            </div>
+            <div class="brand-slide-name">Jeep</div>
+          </div>
+          <!-- Jaguar -->
+          <div class="brand-slide-card">
+            <div class="brand-slide-logo">
+              <img src="https://res.cloudinary.com/daimyvr5u/image/upload/f_auto,q_auto/v1784428137/jaguar_ekucal.png" alt="Jaguar" loading="lazy">
+            </div>
+            <div class="brand-slide-name">Jaguar</div>
+          </div>
+          <!-- Isuzu -->
+          <div class="brand-slide-card">
+            <div class="brand-slide-logo">
+              <img src="https://res.cloudinary.com/daimyvr5u/image/upload/f_auto,q_auto/v1784428158/isuzu_hu5pfh.png" alt="Isuzu" loading="lazy">
+            </div>
+            <div class="brand-slide-name">Isuzu</div>
+          </div>
+          <!-- Hyundai -->
+          <div class="brand-slide-card">
+            <div class="brand-slide-logo">
+              <img src="https://res.cloudinary.com/daimyvr5u/image/upload/f_auto,q_auto/v1784428161/hyundai_hbleus.png" alt="Hyundai" loading="lazy">
+            </div>
+            <div class="brand-slide-name">Hyundai</div>
+          </div>
+          <!-- Ford -->
+          <div class="brand-slide-card">
+            <div class="brand-slide-logo">
+              <img src="https://res.cloudinary.com/daimyvr5u/image/upload/f_auto,q_auto/v1784428163/ford_xl6jep.png" alt="Ford" loading="lazy">
+            </div>
+            <div class="brand-slide-name">Ford</div>
+          </div>
+          <!-- Force Motors -->
+          <div class="brand-slide-card">
+            <div class="brand-slide-logo">
+              <img src="https://res.cloudinary.com/daimyvr5u/image/upload/f_auto,q_auto/v1784428148/force-motors_ixcwqk.png" alt="Force Motors" loading="lazy">
+            </div>
+            <div class="brand-slide-name">Force Motors</div>
+          </div>
+          <!-- Fiat -->
+          <div class="brand-slide-card">
+            <div class="brand-slide-logo">
+              <img src="https://res.cloudinary.com/daimyvr5u/image/upload/f_auto,q_auto/v1784428166/fiat_wxoov1.png" alt="Fiat" loading="lazy">
+            </div>
+            <div class="brand-slide-name">Fiat</div>
+          </div>
+          <!-- Citroen -->
+          <div class="brand-slide-card">
+            <div class="brand-slide-logo">
+              <img src="https://res.cloudinary.com/daimyvr5u/image/upload/f_auto,q_auto/v1784428152/citroen_w2bbff.png" alt="Citroen" loading="lazy">
+            </div>
+            <div class="brand-slide-name">Citroen</div>
+          </div>
+          <!-- Chevrolet -->
+          <div class="brand-slide-card">
+            <div class="brand-slide-logo">
+              <img src="https://res.cloudinary.com/daimyvr5u/image/upload/f_auto,q_auto/v1784428168/chevrolet_btsgil.png" alt="Chevrolet" loading="lazy">
+            </div>
+            <div class="brand-slide-name">Chevrolet</div>
+          </div>
+          <!-- BYD -->
+          <div class="brand-slide-card">
+            <div class="brand-slide-logo">
+              <img src="https://res.cloudinary.com/daimyvr5u/image/upload/f_auto,q_auto/v1784428157/byd_vofa6x.png" alt="BYD" loading="lazy">
+            </div>
+            <div class="brand-slide-name">BYD</div>
           </div>
           <!-- BMW -->
           <div class="brand-slide-card">
             <div class="brand-slide-logo">
-              <svg viewBox="0 0 100 50" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="50" cy="25" r="22" fill="#1E293B" stroke="#E2E8F0" stroke-width="1"/>
-                <circle cx="50" cy="25" r="15" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="0.5"/>
-                <path d="M50 25 L50 10 A15 15 0 0 1 65 25 Z" fill="#0066B2"/>
-                <path d="M50 25 L50 40 A15 15 0 0 1 35 25 Z" fill="#0066B2"/>
-                <text x="41" y="17" font-family="Arial, sans-serif" font-weight="900" font-size="5" fill="#FFFFFF">B</text>
-                <text x="48" y="15" font-family="Arial, sans-serif" font-weight="900" font-size="5" fill="#FFFFFF">M</text>
-                <text x="55" y="17" font-family="Arial, sans-serif" font-weight="900" font-size="5" fill="#FFFFFF">W</text>
-              </svg>
+              <img src="https://res.cloudinary.com/daimyvr5u/image/upload/f_auto,q_auto/v1784428171/bmw_hcsljh.png" alt="BMW" loading="lazy">
             </div>
             <div class="brand-slide-name">BMW</div>
           </div>
           <!-- Audi -->
           <div class="brand-slide-card">
             <div class="brand-slide-logo">
-              <svg viewBox="0 0 100 50" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="32" cy="25" r="10" stroke="#7F8C8D" stroke-width="3" fill="none"/>
-                <circle cx="44" cy="25" r="10" stroke="#7F8C8D" stroke-width="3" fill="none"/>
-                <circle cx="56" cy="25" r="10" stroke="#7F8C8D" stroke-width="3" fill="none"/>
-                <circle cx="68" cy="25" r="10" stroke="#7F8C8D" stroke-width="3" fill="none"/>
-              </svg>
+              <img src="https://res.cloudinary.com/daimyvr5u/image/upload/f_auto,q_auto/v1784428571/audi_fy82mu.png" alt="Audi" loading="lazy">
             </div>
             <div class="brand-slide-name">Audi</div>
           </div>
-          <!-- Mercedes-Benz -->
-          <div class="brand-slide-card">
-            <div class="brand-slide-logo">
-              <svg viewBox="0 0 100 50" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="50" cy="25" r="22" stroke="#334155" stroke-width="3" fill="none"/>
-                <path d="M50 5 L50 25 L32 35 L50 25 L68 35 Z" stroke="#334155" stroke-width="3" stroke-linejoin="round"/>
-                <polygon points="50,5 48.5,24 50,25" fill="#334155"/>
-                <polygon points="50,5 51.5,24 50,25" fill="#E2E8F0"/>
-                <polygon points="32,35 49,26 50,25" fill="#334155"/>
-                <polygon points="32,35 48,24 50,25" fill="#E2E8F0"/>
-                <polygon points="68,35 51,24 50,25" fill="#334155"/>
-                <polygon points="68,35 52,26 50,25" fill="#E2E8F0"/>
-              </svg>
-            </div>
-            <div class="brand-slide-name">Mercedes-Benz</div>
-          </div>
-          <!-- Nissan -->
-          <div class="brand-slide-card">
-            <div class="brand-slide-logo">
-              <svg viewBox="0 0 100 50" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="50" cy="25" r="18" stroke="#7F8C8D" stroke-width="4.5" fill="none"/>
-                <rect x="20" y="19" width="60" height="12" fill="#7F8C8D" rx="2.5"/>
-                <text x="50" y="28" font-family="Arial, sans-serif" font-weight="900" font-size="8" fill="#FFFFFF" text-anchor="middle" letter-spacing="0.5">NISSAN</text>
-              </svg>
-            </div>
-            <div class="brand-slide-name">Nissan</div>
-          </div>
-          <!-- Renault -->
-          <div class="brand-slide-card">
-            <div class="brand-slide-logo">
-              <svg viewBox="0 0 100 50" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <polygon points="50,6 74,25 50,44 26,25" stroke="#334155" stroke-width="4" fill="none" stroke-linejoin="miter"/>
-                <polygon points="50,14 62,25 50,36 38,25" stroke="#334155" stroke-width="2.5" fill="none" stroke-linejoin="miter"/>
-              </svg>
-            </div>
-            <div class="brand-slide-name">Renault</div>
-          </div>
-          <!-- Jeep -->
-          <div class="brand-slide-card">
-            <div class="brand-slide-logo">
-              <svg viewBox="0 0 100 50" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <text x="50" y="32" font-family="'Arial Black', sans-serif" font-weight="900" font-size="26" fill="#0F172A" text-anchor="middle">Jeep</text>
-              </svg>
-            </div>
-            <div class="brand-slide-name">Jeep</div>
-          </div>
-
-          <!-- Set 2 (Duplicated for infinite seamless scroll loop) -->
-          <!-- Maruti Suzuki -->
-          <div class="brand-slide-card">
-            <div class="brand-slide-logo">
-              <svg viewBox="0 0 100 50" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M35 10 H75 L60 25 H80 L45 42 H25 L40 27 H20 Z" fill="#E60012"/>
-              </svg>
-            </div>
-            <div class="brand-slide-name">Maruti Suzuki</div>
-          </div>
-          <!-- Hyundai -->
-          <div class="brand-slide-card">
-            <div class="brand-slide-logo">
-              <svg viewBox="0 0 100 50" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <ellipse cx="50" cy="25" rx="40" ry="20" stroke="#002C5F" stroke-width="5" fill="none"/>
-                <path d="M38 15 L34 35 M62 15 L58 35 M35 25 C45 23 55 23 60 25" stroke="#002C5F" stroke-width="6" stroke-linecap="round"/>
-              </svg>
-            </div>
-            <div class="brand-slide-name">Hyundai</div>
-          </div>
-          <!-- Tata Motors -->
-          <div class="brand-slide-card">
-            <div class="brand-slide-logo">
-              <svg viewBox="0 0 100 50" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="50" cy="25" r="22" stroke="#00529B" stroke-width="4.5" fill="none"/>
-                <path d="M38 34 C39 24 46 18 50 18 C54 18 61 24 62 34 M50 18 V35" stroke="#00529B" stroke-width="4.5" stroke-linecap="round"/>
-              </svg>
-            </div>
-            <div class="brand-slide-name">Tata Motors</div>
-          </div>
-          <!-- Mahindra -->
-          <div class="brand-slide-card">
-            <div class="brand-slide-logo">
-              <svg viewBox="0 0 100 50" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M25 40 C32 30 45 15 50 8 C55 15 68 30 75 40 M50 8 C50 20 45 32 35 40 M50 8 C50 20 55 32 65 40" stroke="#DD1D25" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-            </div>
-            <div class="brand-slide-name">Mahindra</div>
-          </div>
-          <!-- Honda -->
-          <div class="brand-slide-card">
-            <div class="brand-slide-logo">
-              <svg viewBox="0 0 100 50" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <rect x="25" y="8" width="50" height="34" rx="6" stroke="#E31837" stroke-width="4" fill="none"/>
-                <path d="M38 15V35 M62 15V35 M38 25H62" stroke="#E31837" stroke-width="5.5" stroke-linecap="round"/>
-              </svg>
-            </div>
-            <div class="brand-slide-name">Honda</div>
-          </div>
-          <!-- Toyota -->
-          <div class="brand-slide-card">
-            <div class="brand-slide-logo">
-              <svg viewBox="0 0 100 50" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <ellipse cx="50" cy="25" rx="36" ry="21" stroke="#EB0A1E" stroke-width="4" fill="none"/>
-                <ellipse cx="50" cy="25" rx="22" ry="13" stroke="#EB0A1E" stroke-width="3.5" fill="none"/>
-                <ellipse cx="50" cy="18" rx="8" ry="13" stroke="#EB0A1E" stroke-width="3.5" fill="none"/>
-              </svg>
-            </div>
-            <div class="brand-slide-name">Toyota</div>
-          </div>
-          <!-- KIA -->
-          <div class="brand-slide-card">
-            <div class="brand-slide-logo">
-              <svg viewBox="0 0 100 50" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M20 12L35 25L35 12M35 37L35 25L50 37M60 12V37M70 37L80 12L90 37" stroke="#000000" stroke-width="5.5" stroke-linecap="miter" stroke-linejoin="miter"/>
-              </svg>
-            </div>
-            <div class="brand-slide-name">KIA</div>
-          </div>
-          <!-- MG -->
-          <div class="brand-slide-card">
-            <div class="brand-slide-logo">
-              <svg viewBox="0 0 100 50" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <polygon points="50,6 74,6 92,25 92,25 74,44 50,44 26,44 8,25 8,25 26,6" stroke="#B22222" stroke-width="4" fill="none"/>
-                <text x="50" y="34" font-family="Arial, sans-serif" font-weight="900" font-size="24" fill="#B22222" text-anchor="middle">MG</text>
-              </svg>
-            </div>
-            <div class="brand-slide-name">MG Motor</div>
-          </div>
-          <!-- Volkswagen -->
-          <div class="brand-slide-card">
-            <div class="brand-slide-logo">
-              <svg viewBox="0 0 100 50" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="50" cy="25" r="22" fill="#0079C1"/>
-                <path d="M37 17 L46 37 H48 L39 17 Z" fill="#FFFFFF"/>
-                <path d="M63 17 L54 37 H52 L61 17 Z" fill="#FFFFFF"/>
-                <path d="M50 26 L45 17 H48 L50 21 L52 17 H55 Z" fill="#FFFFFF"/>
-                <path d="M50 27 L46 37 H48 L50 31 L52 37 H54 Z" fill="#FFFFFF"/>
-                <rect x="35" y="24" width="30" height="1.5" fill="#0079C1"/>
-              </svg>
-            </div>
-            <div class="brand-slide-name">Volkswagen</div>
-          </div>
-          <!-- Chevrolet -->
-          <div class="brand-slide-card">
-            <div class="brand-slide-logo">
-              <svg viewBox="0 0 100 50" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M20 20 L35 20 L35 12 L65 12 L65 20 L80 20 L84 30 L65 30 L65 38 L35 38 L35 30 L16 30 Z" fill="#EAAA00" stroke="#8C6900" stroke-width="2.5" stroke-linejoin="round"/>
-              </svg>
-            </div>
-            <div class="brand-slide-name">Chevrolet</div>
-          </div>
-          <!-- Skoda -->
-          <div class="brand-slide-card">
-            <div class="brand-slide-logo">
-              <svg viewBox="0 0 100 50" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="50" cy="25" r="22" fill="#008A51"/>
-                <path d="M46 25 C46 22 50 15 58 18 C54 19 52 22 52 25 C52 28 54 31 58 32 C50 35 46 28 46 25 Z" fill="#FFFFFF"/>
-                <path d="M40 25 L50 19 L52 25 L50 31 Z" fill="#FFFFFF"/>
-                <circle cx="48" cy="25" r="1.5" fill="#008A51"/>
-              </svg>
-            </div>
-            <div class="brand-slide-name">Skoda</div>
-          </div>
-          <!-- BMW -->
-          <div class="brand-slide-card">
-            <div class="brand-slide-logo">
-              <svg viewBox="0 0 100 50" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="50" cy="25" r="22" fill="#1E293B" stroke="#E2E8F0" stroke-width="1"/>
-                <circle cx="50" cy="25" r="15" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="0.5"/>
-                <path d="M50 25 L50 10 A15 15 0 0 1 65 25 Z" fill="#0066B2"/>
-                <path d="M50 25 L50 40 A15 15 0 0 1 35 25 Z" fill="#0066B2"/>
-                <text x="41" y="17" font-family="Arial, sans-serif" font-weight="900" font-size="5" fill="#FFFFFF">B</text>
-                <text x="48" y="15" font-family="Arial, sans-serif" font-weight="900" font-size="5" fill="#FFFFFF">M</text>
-                <text x="55" y="17" font-family="Arial, sans-serif" font-weight="900" font-size="5" fill="#FFFFFF">W</text>
-              </svg>
-            </div>
-            <div class="brand-slide-name">BMW</div>
-          </div>
-          <!-- Audi -->
-          <div class="brand-slide-card">
-            <div class="brand-slide-logo">
-              <svg viewBox="0 0 100 50" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="32" cy="25" r="10" stroke="#7F8C8D" stroke-width="3" fill="none"/>
-                <circle cx="44" cy="25" r="10" stroke="#7F8C8D" stroke-width="3" fill="none"/>
-                <circle cx="56" cy="25" r="10" stroke="#7F8C8D" stroke-width="3" fill="none"/>
-                <circle cx="68" cy="25" r="10" stroke="#7F8C8D" stroke-width="3" fill="none"/>
-              </svg>
-            </div>
-            <div class="brand-slide-name">Audi</div>
-          </div>
-          <!-- Mercedes-Benz -->
-          <div class="brand-slide-card">
-            <div class="brand-slide-logo">
-              <svg viewBox="0 0 100 50" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="50" cy="25" r="22" stroke="#334155" stroke-width="3" fill="none"/>
-                <path d="M50 5 L50 25 L32 35 L50 25 L68 35 Z" stroke="#334155" stroke-width="3" stroke-linejoin="round"/>
-                <polygon points="50,5 48.5,24 50,25" fill="#334155"/>
-                <polygon points="50,5 51.5,24 50,25" fill="#E2E8F0"/>
-                <polygon points="32,35 49,26 50,25" fill="#334155"/>
-                <polygon points="32,35 48,24 50,25" fill="#E2E8F0"/>
-                <polygon points="68,35 51,24 50,25" fill="#334155"/>
-                <polygon points="68,35 52,26 50,25" fill="#E2E8F0"/>
-              </svg>
-            </div>
-            <div class="brand-slide-name">Mercedes-Benz</div>
-          </div>
-          <!-- Nissan -->
-          <div class="brand-slide-card">
-            <div class="brand-slide-logo">
-              <svg viewBox="0 0 100 50" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="50" cy="25" r="18" stroke="#7F8C8D" stroke-width="4.5" fill="none"/>
-                <rect x="20" y="19" width="60" height="12" fill="#7F8C8D" rx="2.5"/>
-                <text x="50" y="28" font-family="Arial, sans-serif" font-weight="900" font-size="8" fill="#FFFFFF" text-anchor="middle" letter-spacing="0.5">NISSAN</text>
-              </svg>
-            </div>
-            <div class="brand-slide-name">Nissan</div>
-          </div>
-          <!-- Renault -->
-          <div class="brand-slide-card">
-            <div class="brand-slide-logo">
-              <svg viewBox="0 0 100 50" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <polygon points="50,6 74,25 50,44 26,25" stroke="#334155" stroke-width="4" fill="none" stroke-linejoin="miter"/>
-                <polygon points="50,14 62,25 50,36 38,25" stroke="#334155" stroke-width="2.5" fill="none" stroke-linejoin="miter"/>
-              </svg>
-            </div>
-            <div class="brand-slide-name">Renault</div>
-          </div>
-          <!-- Jeep -->
-          <div class="brand-slide-card">
-            <div class="brand-slide-logo">
-              <svg viewBox="0 0 100 50" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <text x="50" y="32" font-family="'Arial Black', sans-serif" font-weight="900" font-size="26" fill="#0F172A" text-anchor="middle">Jeep</text>
-              </svg>
-            </div>
-            <div class="brand-slide-name">Jeep</div>
           </div>
         </div>
       </div>
@@ -1261,11 +1106,7 @@
     <div class="container footer-grid">
       <div>
         <a href="index.html" class="footer-logo">
-          <i data-lucide="battery-charging" class="logo-icon"></i>
-          <span class="logo-text">
-            SN BATTERIES
-            <span class="logo-sub">Sales & Service</span>
-          </span>
+          <img src="https://res.cloudinary.com/daimyvr5u/image/upload/f_auto,q_auto,w_300/v1784428607/final_logo_rbe7ys.png" alt="SN Batteries Logo" class="logo-image" fetchpriority="high" loading="eager">
         </a>
         <p class="footer-desc">Bengaluru's leading network for genuine batteries, home UPS solutions, and professional doorstep installation services for over 10 years.</p>
         <div class="footer-socials">

@@ -33,22 +33,20 @@
 
 .marquee-content {
   display: flex;
-  gap: var(--space-8);
+  /* No gap here — each child uses margin-right so the trailing space
+     is preserved on the last item of each set, preventing loop seam jump */
+  gap: 0;
   width: max-content;
   animation: marquee 30s linear infinite;
+  will-change: transform;
+  backface-visibility: hidden;
 }
 
-.marquee-container:hover .marquee-content {
-  animation-play-state: paused;
-}
+/* Removed hover pause — fast tickers look broken when they suddenly stop */
 
 @keyframes marquee {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-50%); /* Scroll exactly half of the double content width */
-  }
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(var(--marquee-shift, -50%)); }
 }
 
 /* Fast gallery marquee variant */

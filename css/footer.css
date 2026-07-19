@@ -45,6 +45,10 @@
   text-decoration: none;
 }
 
+.footer-logo .logo-image {
+  height: 52px;
+}
+
 .footer-logo .logo-icon {
   width: 28px;
   height: 28px;
