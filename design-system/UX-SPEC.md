@@ -8,7 +8,7 @@
 - **Secondary Action:** "Contact Us" → `/contact`
 - **Layout:** Full-viewport height, dark navy gradient background, bold headline left-aligned (desktop), centered (mobile)
 - **Content:**
-  - Trust badge: pill chip — "Bengaluru's Trusted Battery Network"
+  - Trust badge: pill chip — "Bengaluru's Trusted Battery Network since 2016"
   - H1: ~60px Poppins 800, white, 2–3 lines max
   - Sub-copy: 18px Inter 400, slate-300, max 2 lines
   - Two CTA buttons side-by-side (stack on mobile)

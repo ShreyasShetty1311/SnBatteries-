@@ -75,11 +75,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   };
 
-  if (!contactForm) return;
-
-  // Validation Rules & Live Feedback on Blur
-  const inputs = contactForm.querySelectorAll('.input');
-
+  // Helper for input validation
   const validateInput = (input) => {
     const parent = input.parentElement;
     const errorMsg = parent.querySelector('.form-error-msg');
@@ -108,7 +104,7 @@ document.addEventListener('DOMContentLoaded', () => {
           isValid = false;
           message = 'Please enter a valid email address.';
         }
-      } else if (input.id === 'fullname' && value.length < 2) {
+      } else if ((input.id === 'fullname' || input.id === 'wa-fullname') && value.length < 2) {
         isValid = false;
         message = 'Name must be at least 2 characters long.';
       }
@@ -125,56 +121,152 @@ document.addEventListener('DOMContentLoaded', () => {
     return isValid;
   };
 
-  inputs.forEach(input => {
-    input.addEventListener('blur', () => validateInput(input));
-    input.addEventListener('input', () => {
-      if (input.classList.contains('input-error')) {
-        validateInput(input);
+  // Helper to bind validation events to inputs
+  const bindValidationEvents = (inputsArray) => {
+    inputsArray.forEach(input => {
+      input.addEventListener('blur', () => validateInput(input));
+      input.addEventListener('input', () => {
+        if (input.classList.contains('input-error')) {
+          validateInput(input);
+        }
+      });
+    });
+  };
+
+  // 1. Handle Contact Form if it exists
+  if (contactForm) {
+    const contactInputs = contactForm.querySelectorAll('.input');
+    bindValidationEvents(contactInputs);
+
+    contactForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      let isFormValid = true;
+
+      contactInputs.forEach(input => {
+        const valid = validateInput(input);
+        if (!valid) isFormValid = false;
+      });
+
+      if (!isFormValid) {
+        showToast('Please correct the validation errors in the form.', 'error');
+        return;
       }
+
+      // Submit animation (shows spinner, disables button)
+      const submitBtn = contactForm.querySelector('button[type="submit"]');
+      const originalText = submitBtn.innerHTML;
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = `
+        <svg style="animation: spin 1s linear infinite; width:16px; height:16px; margin-right:8px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+          <circle cx="12" cy="12" r="10" stroke="rgba(255,255,255,0.2)"></circle>
+          <path d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" fill="currentColor"></path>
+        </svg> Sending...
+      `;
+
+      // Inject spin keyframes style if not exists
+      if (!document.getElementById('spin-keyframes')) {
+        const style = document.createElement('style');
+        style.id = 'spin-keyframes';
+        style.textContent = `@keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }`;
+        document.head.appendChild(style);
+      }
+
+      // Simulate API request (1 second) and then redirect to WhatsApp
+      setTimeout(() => {
+        const name = document.getElementById('fullname').value.trim();
+        const phone = document.getElementById('phone').value.trim();
+        const email = document.getElementById('email').value.trim();
+        const serviceSelect = document.getElementById('service');
+        const service = serviceSelect.options[serviceSelect.selectedIndex].text;
+        const message = document.getElementById('message').value.trim();
+
+        let text = `Hi SN Batteries,\n\nI would like to make an enquiry:\n\n`;
+        text += `*Name:* ${name}\n`;
+        text += `*Mobile Number:* ${phone}\n`;
+        if (email) {
+          text += `*Email:* ${email}\n`;
+        }
+        text += `*Service Required:* ${service}\n`;
+        if (message) {
+          text += `*Message:* ${message}\n`;
+        }
+
+        const whatsappUrl = `https://wa.me/919880699315?text=${encodeURIComponent(text)}`;
+        window.open(whatsappUrl, '_blank');
+
+        // Success response
+        showToast("Opening WhatsApp to send your enquiry...", 'success');
+        contactForm.reset();
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = originalText;
+      }, 1000);
     });
-  });
+  }
 
-  // Submit handling
-  contactForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-    let isFormValid = true;
+  // 2. Handle WhatsApp Enquiry Form (Services Page) if it exists
+  const whatsappEnquiryForm = document.getElementById('whatsapp-enquiry-form');
+  if (whatsappEnquiryForm) {
+    const waInputs = whatsappEnquiryForm.querySelectorAll('.input');
+    bindValidationEvents(waInputs);
 
-    inputs.forEach(input => {
-      const valid = validateInput(input);
-      if (!valid) isFormValid = false;
+    whatsappEnquiryForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      let isFormValid = true;
+
+      waInputs.forEach(input => {
+        const valid = validateInput(input);
+        if (!valid) isFormValid = false;
+      });
+
+      if (!isFormValid) {
+        showToast('Please correct the validation errors in the form.', 'error');
+        return;
+      }
+
+      // Submit animation (shows spinner, disables button)
+      const submitBtn = whatsappEnquiryForm.querySelector('button[type="submit"]');
+      const originalText = submitBtn.innerHTML;
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = `
+        <svg style="animation: spin 1s linear infinite; width:16px; height:16px; margin-right:8px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+          <circle cx="12" cy="12" r="10" stroke="rgba(255,255,255,0.2)"></circle>
+          <path d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" fill="currentColor"></path>
+        </svg> Sending...
+      `;
+
+      // Inject spin keyframes style if not exists
+      if (!document.getElementById('spin-keyframes')) {
+        const style = document.createElement('style');
+        style.id = 'spin-keyframes';
+        style.textContent = `@keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }`;
+        document.head.appendChild(style);
+      }
+
+      // Simulate API request (1 second) and then redirect to WhatsApp
+      setTimeout(() => {
+        const name = document.getElementById('wa-fullname').value.trim();
+        const phone = document.getElementById('wa-phone').value.trim();
+        const location = document.getElementById('wa-location').value.trim();
+        const optionSelect = document.getElementById('wa-options');
+        const optionText = optionSelect.options[optionSelect.selectedIndex].text;
+        const message = document.getElementById('wa-message').value.trim();
+
+        let text = `Hi SN Batteries,\n\nI would like to submit my requirements:\n\n`;
+        text += `*Name:* ${name}\n`;
+        text += `*Mobile Number:* ${phone}\n`;
+        text += `*Location:* ${location}\n`;
+        text += `*Option Selected:* ${optionText}\n`;
+        text += `*Requirement/Message:* ${message}\n`;
+
+        const whatsappUrl = `https://wa.me/919880699315?text=${encodeURIComponent(text)}`;
+        window.open(whatsappUrl, '_blank');
+
+        // Success response
+        showToast("Opening WhatsApp to send your requirements...", 'success');
+        whatsappEnquiryForm.reset();
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = originalText;
+      }, 1000);
     });
-
-    if (!isFormValid) {
-      showToast('Please correct the validation errors in the form.', 'error');
-      return;
-    }
-
-    // Submit animation (shows spinner, disables button)
-    const submitBtn = contactForm.querySelector('button[type="submit"]');
-    const originalText = submitBtn.innerHTML;
-    submitBtn.disabled = true;
-    submitBtn.innerHTML = `
-      <svg style="animation: spin 1s linear infinite; width:16px; height:16px; margin-right:8px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
-        <circle cx="12" cy="12" r="10" stroke="rgba(255,255,255,0.2)"></circle>
-        <path d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" fill="currentColor"></path>
-      </svg> Sending...
-    `;
-
-    // Inject spin keyframes style if not exists
-    if (!document.getElementById('spin-keyframes')) {
-      const style = document.createElement('style');
-      style.id = 'spin-keyframes';
-      style.textContent = `@keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }`;
-      document.head.appendChild(style);
-    }
-
-    // Simulate API request (1.5 seconds)
-    setTimeout(() => {
-      // Success response
-      showToast("Thank you! We've received your inquiry and will contact you within a few hours.", 'success');
-      contactForm.reset();
-      submitBtn.disabled = false;
-      submitBtn.innerHTML = originalText;
-    }, 1500);
-  });
+  }
 });
