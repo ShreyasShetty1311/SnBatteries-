@@ -69,138 +69,179 @@
       font-size: var(--text-body-lg);
     }
 
-    /* Branch cards grid */
+    /* City cards grid */
+        /* City cards grid */
     .branches-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(4, 1fr);
       gap: var(--grid-gap);
     }
 
-    @media (max-width: 1024px) {
+    @media (max-width: 1200px) {
+      .branches-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    @media (max-width: 900px) {
       .branches-grid {
         grid-template-columns: repeat(2, 1fr);
       }
     }
 
-    @media (max-width: 640px) {
+    @media (max-width: 550px) {
       .branches-grid {
         grid-template-columns: 1fr;
       }
     }
 
-    .branch-card {
-      height: 100%;
-    }
-
-    .branch-img-wrapper img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-      transition: transform var(--duration-normal) var(--ease-out);
-    }
-    .branch-card:hover .branch-img-wrapper img {
-      transform: scale(1.08);
-    }
-    .branch-img-wrapper {
-      height: 220px;
-      background: linear-gradient(135deg, var(--color-primary-700) 0%, var(--color-primary) 100%);
+    .city-card {
+      background-color: var(--color-surface);
+      border: 1.5px solid var(--color-border);
+      border-radius: var(--radius-xl);
+      padding: var(--space-6);
+      box-shadow: 0 4px 12px rgba(15, 23, 42, 0.03);
       display: flex;
       flex-direction: column;
+      justify-content: space-between;
+      height: 100%;
+      min-height: 200px;
+      transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1),
+                  box-shadow 0.3s ease,
+                  border-color 0.2s ease;
+      position: relative;
+    }
+
+    .city-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 12px 28px rgba(15, 23, 42, 0.08);
+      border-color: var(--color-accent);
+    }
+
+    .city-card-header {
+      margin-bottom: var(--space-3);
+    }
+
+    .location-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 10px;
+      font-size: var(--text-caption);
+      font-weight: 600;
+      color: var(--color-accent);
+      background-color: var(--color-accent-light);
+      border-radius: var(--radius-full);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .location-badge i,
+    .location-badge svg {
+      width: 12px;
+      height: 12px;
+    }
+
+    .city-card h3 {
+      font-family: var(--font-heading);
+      font-size: 20px;
+      font-weight: 800;
+      color: var(--color-text-primary);
+      text-transform: uppercase;
+      margin-bottom: var(--space-5);
+      letter-spacing: 0.01em;
+      line-height: 1.35;
+      text-align: left;
+    }
+
+    .city-card-btn {
+      margin-top: auto;
+      width: 100%;
+    }
+
+    .city-whatsapp-btn {
+      display: inline-flex;
       align-items: center;
       justify-content: center;
-      color: var(--color-accent);
+      gap: 8px;
+      width: 100%;
+      padding: 11px 16px;
+      border-radius: var(--radius-md);
+      font-size: var(--text-body-sm);
+      font-weight: 600;
+      text-decoration: none;
+      color: var(--color-whatsapp);
+      background-color: transparent;
+      border: 1.5px solid var(--color-whatsapp);
+      transition: all var(--duration-fast) var(--ease-out);
+    }
+
+    .city-whatsapp-btn:hover {
+      background-color: var(--color-whatsapp);
+      color: #FFFFFF;
+      box-shadow: 0 8px 20px rgba(37, 211, 102, 0.15);
+      transform: translateY(-1px);
+    }
+
+    /* Search locator wrapper styling */
+    .search-locator-wrapper {
+      max-width: 600px;
+      margin: 0 auto var(--space-10);
+      text-align: center;
+    }
+
+    .search-input-container {
       position: relative;
-      overflow: hidden;
-    }
-
-    .branch-img-wrapper i,
-    .branch-img-wrapper svg {
-      width: 48px;
-      height: 48px;
-      z-index: 2;
-      transition: transform var(--duration-normal) var(--ease-out);
-    }
-
-    .branch-card:hover .branch-img-wrapper i,
-    .branch-card:hover .branch-img-wrapper svg {
-      transform: scale(1.12);
-    }
-
-    .branch-img-wrapper::after {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-image: radial-gradient(circle, transparent 40%, rgba(15, 23, 42, 0.4));
-      z-index: 1;
-    }
-
-    /* Image scale on card hover */
-    .branch-card {
-      overflow: hidden;
-    }
-
-    .branch-card:hover .branch-img-wrapper img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-      transition: transform var(--duration-normal) var(--ease-out);
-    }
-    .branch-card:hover .branch-img-wrapper img {
-      transform: scale(1.08);
-    }
-    .branch-img-wrapper {
-      transform: scale(1.04);
-      transition: transform var(--duration-normal) var(--ease-out);
-    }
-
-    .branch-img-wrapper img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-      transition: transform var(--duration-normal) var(--ease-out);
-    }
-    .branch-card:hover .branch-img-wrapper img {
-      transform: scale(1.08);
-    }
-    .branch-img-wrapper {
-      transition: transform var(--duration-normal) var(--ease-out);
-    }
-
-    .branch-card h3 {
-      font-size: 20px;
-      margin-bottom: var(--space-1);
-    }
-
-    .branch-location {
       display: flex;
       align-items: center;
-      gap: var(--space-1);
+      width: 100%;
+      background: var(--color-surface);
+      border: 1.5px solid var(--color-border);
+      border-radius: var(--radius-xl);
+      box-shadow: 0 4px 12px rgba(15, 23, 42, 0.03);
+      padding-left: 20px;
+      transition: all var(--duration-fast) var(--ease-out);
+    }
+
+    .search-input-container:focus-within {
+      border-color: var(--color-accent);
+      box-shadow: 0 0 0 4px rgba(3, 105, 161, 0.12), 0 8px 24px rgba(15, 23, 42, 0.05);
+    }
+
+    .search-input-container i,
+    .search-input-container svg {
+      color: var(--color-text-muted);
+      width: 20px;
+      height: 20px;
+      margin-right: 12px;
+      flex-shrink: 0;
+    }
+
+    .search-input-container input {
+      width: 100%;
+      border: none;
+      background: transparent;
+      padding: 16px 20px 16px 0;
+      font-size: 16px;
+      color: var(--color-text-primary);
+      outline: none;
+    }
+
+    .search-input-container input::placeholder {
+      color: var(--color-text-muted);
+    }
+
+    .search-results-info {
+      margin-top: var(--space-3);
       font-size: var(--text-body-sm);
       color: var(--color-text-secondary);
-      margin-bottom: var(--space-2);
     }
 
-    .branch-location i,
-    .branch-location svg {
-      width: 14px;
-      height: 14px;
+    .search-results-info span {
+      font-weight: 700;
       color: var(--color-accent);
     }
-
-    .branch-card-ctas {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: var(--space-2);
-      margin-top: var(--space-6);
-    }
-
-    /* Map section */
+    
     .map-container {
       border-radius: var(--radius-xl);
       overflow: hidden;
@@ -338,126 +379,487 @@
         <div class="section-header text-center reveal">
           <span class="badge badge-primary" style="margin-bottom:var(--space-3);">Outlets</span>
           <h2>Find the Nearest Store</h2>
-          <p>We operate 5+ stores in strategic locations throughout Bengaluru to provide swift power support.</p>
+          
+          <p>We serve all major localities across Bengaluru to provide swift doorstep power support.</p>
         </div>
         
+        <!-- Store Search Locator -->
+        <div class="search-locator-wrapper reveal">
+          <div class="search-input-container">
+            <i data-lucide="search"></i>
+            <input type="text" id="store-search" placeholder="Type your locality (e.g. HSR Layout, Hebbal...)" aria-label="Search Locality">
+          </div>
+          <div class="search-results-info">
+            Showing <span id="visible-count">31</span> delivery areas across Bengaluru
+          </div>
+        </div>
+
         <div class="branches-grid">
-          <!-- Store 1 -->
-          <div class="card branch-card reveal delay-1">
-            <div class="branch-img-wrapper">
-              <img src="https://images.unsplash.com/photo-1596176530529-78163a4f7af2?auto=format&fit=crop&q=80&w=600&h=400" alt="HSR Layout Bengaluru">
+          <!-- HSR LAYOUT -->
+          <div class="card city-card reveal delay-1">
+            <div class="city-card-header">
+              <span class="location-badge">
+                <i data-lucide="map-pin"></i> Bengaluru Area
+              </span>
             </div>
-            <div class="card-body">
-              <h3>HSR Layout Store</h3>
-              <div class="branch-location">
-                <i data-lucide="map-pin"></i>
-                <span>Sector 6, HSR Layout, Bengaluru</span>
-              </div>
-              <div class="rating">
-                <i data-lucide="star" class="rating-star"></i>
-                <span class="rating-text">4.8 (142 Reviews)</span>
-              </div>
-              <div class="branch-card-ctas">
-                <a href="tel:+919880699315" class="btn btn-ghost btn-sm" aria-label="Call HSR Layout Store"><i data-lucide="phone"></i></a>
-                <a href="https://wa.me/919880699315?text=Hi%2C%20I%20need%20assistance%20at%20your%20HSR%20Layout%20store." target="_blank" class="btn btn-whatsapp btn-sm" aria-label="Chat HSR Layout Store"><svg style="width: 1.1em; height: 1.1em; fill: currentColor; display: inline-block; vertical-align: middle;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L3 480l117.7-30.9c32.4 17.7 68.9 27 106.3 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7 .9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/></svg></a>
-                <a href="https://maps.google.com/?q=HSR+Layout+Bengaluru" target="_blank" rel="noopener" class="btn btn-secondary btn-sm" aria-label="Map HSR Layout Store">Map</a>
-              </div>
-            </div>
-          </div>
-          
-          <!-- Store 2 -->
-          <div class="card branch-card reveal delay-2">
-            <div class="branch-img-wrapper">
-              <img src="https://images.unsplash.com/photo-1568849676085-51415703900f?auto=format&fit=crop&q=80&w=600&h=400" alt="Indiranagar Bengaluru">
-            </div>
-            <div class="card-body">
-              <h3>Indiranagar Store</h3>
-              <div class="branch-location">
-                <i data-lucide="map-pin"></i>
-                <span>100 Feet Road, Indiranagar, Bengaluru</span>
-              </div>
-              <div class="rating">
-                <i data-lucide="star" class="rating-star"></i>
-                <span class="rating-text">4.7 (98 Reviews)</span>
-              </div>
-              <div class="branch-card-ctas">
-                <a href="tel:+919880699315" class="btn btn-ghost btn-sm" aria-label="Call Indiranagar Store"><i data-lucide="phone"></i></a>
-                <a href="https://wa.me/919880699315?text=Hi%2C%20I%20need%20assistance%20at%20your%20Indiranagar%20store." target="_blank" class="btn btn-whatsapp btn-sm" aria-label="Chat Indiranagar Store"><svg style="width: 1.1em; height: 1.1em; fill: currentColor; display: inline-block; vertical-align: middle;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L3 480l117.7-30.9c32.4 17.7 68.9 27 106.3 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7 .9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/></svg></a>
-                <a href="https://maps.google.com/?q=Indiranagar+Bengaluru" target="_blank" rel="noopener" class="btn btn-secondary btn-sm" aria-label="Map Indiranagar Store">Map</a>
-              </div>
-            </div>
-          </div>
-          
-          <!-- Store 3 -->
-          <div class="card branch-card reveal delay-3">
-            <div class="branch-img-wrapper">
-              <img src="https://images.unsplash.com/photo-1566552881560-0be862a7c445?auto=format&fit=crop&q=80&w=600&h=400" alt="Jayanagar Bengaluru">
-            </div>
-            <div class="card-body">
-              <h3>Jayanagar Store</h3>
-              <div class="branch-location">
-                <i data-lucide="map-pin"></i>
-                <span>4th Block, Jayanagar, Bengaluru</span>
-              </div>
-              <div class="rating">
-                <i data-lucide="star" class="rating-star"></i>
-                <span class="rating-text">4.9 (124 Reviews)</span>
-              </div>
-              <div class="branch-card-ctas">
-                <a href="tel:+919880699315" class="btn btn-ghost btn-sm" aria-label="Call Jayanagar Store"><i data-lucide="phone"></i></a>
-                <a href="https://wa.me/919880699315?text=Hi%2C%20I%20need%20assistance%20at%20your%20Jayanagar%20store." target="_blank" class="btn btn-whatsapp btn-sm" aria-label="Chat Jayanagar Store"><svg style="width: 1.1em; height: 1.1em; fill: currentColor; display: inline-block; vertical-align: middle;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L3 480l117.7-30.9c32.4 17.7 68.9 27 106.3 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7 .9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/></svg></a>
-                <a href="https://maps.google.com/?q=Jayanagar+Bengaluru" target="_blank" rel="noopener" class="btn btn-secondary btn-sm" aria-label="Map Jayanagar Store">Map</a>
-              </div>
+            <h3>HSR LAYOUT</h3>
+            <div class="city-card-btn">
+              <a href="https://wa.me/919880699315?text=Hi%2C%20I%20want%20to%20enquire%20about%20battery%20services%20in%20HSR%20LAYOUT." target="_blank" class="city-whatsapp-btn" aria-label="Chat HSR LAYOUT">
+                <svg style="width: 1.2em; height: 1.2em; fill: currentColor; display: inline-block; vertical-align: middle;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L3 480l117.7-30.9c32.4 17.7 68.9 27 106.3 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7 .9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/></svg> Chat on WhatsApp
+              </a>
             </div>
           </div>
 
-          <!-- Store 4 -->
-          <div class="card branch-card reveal delay-1">
-            <div class="branch-img-wrapper">
-              <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80&w=600&h=400" alt="Koramangala Bengaluru">
+          <!-- Belandur -->
+          <div class="card city-card reveal delay-2">
+            <div class="city-card-header">
+              <span class="location-badge">
+                <i data-lucide="map-pin"></i> Bengaluru Area
+              </span>
             </div>
-            <div class="card-body">
-              <h3>Koramangala Store</h3>
-              <div class="branch-location">
-                <i data-lucide="map-pin"></i>
-                <span>80 Feet Road, Koramangala, Bengaluru</span>
-              </div>
-              <div class="rating">
-                <i data-lucide="star" class="rating-star"></i>
-                <span class="rating-text">4.8 (115 Reviews)</span>
-              </div>
-              <div class="branch-card-ctas">
-                <a href="tel:+919880699315" class="btn btn-ghost btn-sm" aria-label="Call Koramangala Store"><i data-lucide="phone"></i></a>
-                <a href="https://wa.me/919880699315?text=Hi%2C%20I%20need%20assistance%20at%20your%20Koramangala%20store." target="_blank" class="btn btn-whatsapp btn-sm" aria-label="Chat Koramangala Store"><svg style="width: 1.1em; height: 1.1em; fill: currentColor; display: inline-block; vertical-align: middle;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L3 480l117.7-30.9c32.4 17.7 68.9 27 106.3 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7 .9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/></svg></a>
-                <a href="https://maps.google.com/?q=Koramangala+Bengaluru" target="_blank" rel="noopener" class="btn btn-secondary btn-sm" aria-label="Map Koramangala Store">Map</a>
-              </div>
+            <h3>Belandur</h3>
+            <div class="city-card-btn">
+              <a href="https://wa.me/919880699315?text=Hi%2C%20I%20want%20to%20enquire%20about%20battery%20services%20in%20Belandur." target="_blank" class="city-whatsapp-btn" aria-label="Chat Belandur">
+                <svg style="width: 1.2em; height: 1.2em; fill: currentColor; display: inline-block; vertical-align: middle;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L3 480l117.7-30.9c32.4 17.7 68.9 27 106.3 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7 .9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/></svg> Chat on WhatsApp
+              </a>
             </div>
           </div>
 
-          <!-- Store 5 -->
-          <div class="card branch-card reveal delay-2">
-            <div class="branch-img-wrapper">
-              <img src="https://images.unsplash.com/photo-1582407947304-fd86f028f716?auto=format&fit=crop&q=80&w=600&h=400" alt="Whitefield Bengaluru">
+          <!-- Sarja pur Road -->
+          <div class="card city-card reveal delay-3">
+            <div class="city-card-header">
+              <span class="location-badge">
+                <i data-lucide="map-pin"></i> Bengaluru Area
+              </span>
             </div>
-            <div class="card-body">
-              <h3>Whitefield Store</h3>
-              <div class="branch-location">
-                <i data-lucide="map-pin"></i>
-                <span>ITPL Main Road, Whitefield, Bengaluru</span>
-              </div>
-              <div class="rating">
-                <i data-lucide="star" class="rating-star"></i>
-                <span class="rating-text">4.7 (89 Reviews)</span>
-              </div>
-              <div class="branch-card-ctas">
-                <a href="tel:+919880699315" class="btn btn-ghost btn-sm" aria-label="Call Whitefield Store"><i data-lucide="phone"></i></a>
-                <a href="https://wa.me/919880699315?text=Hi%2C%20I%20need%20assistance%20at%20your%20Whitefield%20store." target="_blank" class="btn btn-whatsapp btn-sm" aria-label="Chat Whitefield Store"><svg style="width: 1.1em; height: 1.1em; fill: currentColor; display: inline-block; vertical-align: middle;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L3 480l117.7-30.9c32.4 17.7 68.9 27 106.3 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7 .9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/></svg></a>
-                <a href="https://maps.google.com/?q=Whitefield+Bengaluru" target="_blank" rel="noopener" class="btn btn-secondary btn-sm" aria-label="Map Whitefield Store">Map</a>
-              </div>
+            <h3>Sarja pur Road</h3>
+            <div class="city-card-btn">
+              <a href="https://wa.me/919880699315?text=Hi%2C%20I%20want%20to%20enquire%20about%20battery%20services%20in%20Sarja%20pur%20Road." target="_blank" class="city-whatsapp-btn" aria-label="Chat Sarja pur Road">
+                <svg style="width: 1.2em; height: 1.2em; fill: currentColor; display: inline-block; vertical-align: middle;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L3 480l117.7-30.9c32.4 17.7 68.9 27 106.3 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7 .9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/></svg> Chat on WhatsApp
+              </a>
+            </div>
+          </div>
+
+          <!-- Kadu bisanalli -->
+          <div class="card city-card reveal delay-4">
+            <div class="city-card-header">
+              <span class="location-badge">
+                <i data-lucide="map-pin"></i> Bengaluru Area
+              </span>
+            </div>
+            <h3>Kadu bisanalli</h3>
+            <div class="city-card-btn">
+              <a href="https://wa.me/919880699315?text=Hi%2C%20I%20want%20to%20enquire%20about%20battery%20services%20in%20Kadu%20bisanalli." target="_blank" class="city-whatsapp-btn" aria-label="Chat Kadu bisanalli">
+                <svg style="width: 1.2em; height: 1.2em; fill: currentColor; display: inline-block; vertical-align: middle;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L3 480l117.7-30.9c32.4 17.7 68.9 27 106.3 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7 .9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/></svg> Chat on WhatsApp
+              </a>
+            </div>
+          </div>
+
+          <!-- Marathahalli -->
+          <div class="card city-card reveal delay-1">
+            <div class="city-card-header">
+              <span class="location-badge">
+                <i data-lucide="map-pin"></i> Bengaluru Area
+              </span>
+            </div>
+            <h3>Marathahalli</h3>
+            <div class="city-card-btn">
+              <a href="https://wa.me/919880699315?text=Hi%2C%20I%20want%20to%20enquire%20about%20battery%20services%20in%20Marathahalli." target="_blank" class="city-whatsapp-btn" aria-label="Chat Marathahalli">
+                <svg style="width: 1.2em; height: 1.2em; fill: currentColor; display: inline-block; vertical-align: middle;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L3 480l117.7-30.9c32.4 17.7 68.9 27 106.3 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7 .9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/></svg> Chat on WhatsApp
+              </a>
+            </div>
+          </div>
+
+          <!-- Varthur -->
+          <div class="card city-card reveal delay-2">
+            <div class="city-card-header">
+              <span class="location-badge">
+                <i data-lucide="map-pin"></i> Bengaluru Area
+              </span>
+            </div>
+            <h3>Varthur</h3>
+            <div class="city-card-btn">
+              <a href="https://wa.me/919880699315?text=Hi%2C%20I%20want%20to%20enquire%20about%20battery%20services%20in%20Varthur." target="_blank" class="city-whatsapp-btn" aria-label="Chat Varthur">
+                <svg style="width: 1.2em; height: 1.2em; fill: currentColor; display: inline-block; vertical-align: middle;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L3 480l117.7-30.9c32.4 17.7 68.9 27 106.3 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7 .9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/></svg> Chat on WhatsApp
+              </a>
+            </div>
+          </div>
+
+          <!-- Mahadevpura -->
+          <div class="card city-card reveal delay-3">
+            <div class="city-card-header">
+              <span class="location-badge">
+                <i data-lucide="map-pin"></i> Bengaluru Area
+              </span>
+            </div>
+            <h3>Mahadevpura</h3>
+            <div class="city-card-btn">
+              <a href="https://wa.me/919880699315?text=Hi%2C%20I%20want%20to%20enquire%20about%20battery%20services%20in%20Mahadevpura." target="_blank" class="city-whatsapp-btn" aria-label="Chat Mahadevpura">
+                <svg style="width: 1.2em; height: 1.2em; fill: currentColor; display: inline-block; vertical-align: middle;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L3 480l117.7-30.9c32.4 17.7 68.9 27 106.3 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7 .9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/></svg> Chat on WhatsApp
+              </a>
+            </div>
+          </div>
+
+          <!-- White field -->
+          <div class="card city-card reveal delay-4">
+            <div class="city-card-header">
+              <span class="location-badge">
+                <i data-lucide="map-pin"></i> Bengaluru Area
+              </span>
+            </div>
+            <h3>White field</h3>
+            <div class="city-card-btn">
+              <a href="https://wa.me/919880699315?text=Hi%2C%20I%20want%20to%20enquire%20about%20battery%20services%20in%20White%20field." target="_blank" class="city-whatsapp-btn" aria-label="Chat White field">
+                <svg style="width: 1.2em; height: 1.2em; fill: currentColor; display: inline-block; vertical-align: middle;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L3 480l117.7-30.9c32.4 17.7 68.9 27 106.3 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7 .9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/></svg> Chat on WhatsApp
+              </a>
+            </div>
+          </div>
+
+          <!-- Hoodi -->
+          <div class="card city-card reveal delay-1">
+            <div class="city-card-header">
+              <span class="location-badge">
+                <i data-lucide="map-pin"></i> Bengaluru Area
+              </span>
+            </div>
+            <h3>Hoodi</h3>
+            <div class="city-card-btn">
+              <a href="https://wa.me/919880699315?text=Hi%2C%20I%20want%20to%20enquire%20about%20battery%20services%20in%20Hoodi." target="_blank" class="city-whatsapp-btn" aria-label="Chat Hoodi">
+                <svg style="width: 1.2em; height: 1.2em; fill: currentColor; display: inline-block; vertical-align: middle;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L3 480l117.7-30.9c32.4 17.7 68.9 27 106.3 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7 .9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/></svg> Chat on WhatsApp
+              </a>
+            </div>
+          </div>
+
+          <!-- K R PURAM -->
+          <div class="card city-card reveal delay-2">
+            <div class="city-card-header">
+              <span class="location-badge">
+                <i data-lucide="map-pin"></i> Bengaluru Area
+              </span>
+            </div>
+            <h3>K R PURAM</h3>
+            <div class="city-card-btn">
+              <a href="https://wa.me/919880699315?text=Hi%2C%20I%20want%20to%20enquire%20about%20battery%20services%20in%20K%20R%20PURAM." target="_blank" class="city-whatsapp-btn" aria-label="Chat K R PURAM">
+                <svg style="width: 1.2em; height: 1.2em; fill: currentColor; display: inline-block; vertical-align: middle;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L3 480l117.7-30.9c32.4 17.7 68.9 27 106.3 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7 .9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/></svg> Chat on WhatsApp
+              </a>
+            </div>
+          </div>
+
+          <!-- RAM marthi Nagar -->
+          <div class="card city-card reveal delay-3">
+            <div class="city-card-header">
+              <span class="location-badge">
+                <i data-lucide="map-pin"></i> Bengaluru Area
+              </span>
+            </div>
+            <h3>RAM marthi Nagar</h3>
+            <div class="city-card-btn">
+              <a href="https://wa.me/919880699315?text=Hi%2C%20I%20want%20to%20enquire%20about%20battery%20services%20in%20RAM%20marthi%20Nagar." target="_blank" class="city-whatsapp-btn" aria-label="Chat RAM marthi Nagar">
+                <svg style="width: 1.2em; height: 1.2em; fill: currentColor; display: inline-block; vertical-align: middle;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L3 480l117.7-30.9c32.4 17.7 68.9 27 106.3 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7 .9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/></svg> Chat on WhatsApp
+              </a>
+            </div>
+          </div>
+
+          <!-- K chenna sandra -->
+          <div class="card city-card reveal delay-4">
+            <div class="city-card-header">
+              <span class="location-badge">
+                <i data-lucide="map-pin"></i> Bengaluru Area
+              </span>
+            </div>
+            <h3>K chenna sandra</h3>
+            <div class="city-card-btn">
+              <a href="https://wa.me/919880699315?text=Hi%2C%20I%20want%20to%20enquire%20about%20battery%20services%20in%20K%20chenna%20sandra." target="_blank" class="city-whatsapp-btn" aria-label="Chat K chenna sandra">
+                <svg style="width: 1.2em; height: 1.2em; fill: currentColor; display: inline-block; vertical-align: middle;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L3 480l117.7-30.9c32.4 17.7 68.9 27 106.3 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7 .9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/></svg> Chat on WhatsApp
+              </a>
+            </div>
+          </div>
+
+          <!-- Horamavu -->
+          <div class="card city-card reveal delay-1">
+            <div class="city-card-header">
+              <span class="location-badge">
+                <i data-lucide="map-pin"></i> Bengaluru Area
+              </span>
+            </div>
+            <h3>Horamavu</h3>
+            <div class="city-card-btn">
+              <a href="https://wa.me/919880699315?text=Hi%2C%20I%20want%20to%20enquire%20about%20battery%20services%20in%20Horamavu." target="_blank" class="city-whatsapp-btn" aria-label="Chat Horamavu">
+                <svg style="width: 1.2em; height: 1.2em; fill: currentColor; display: inline-block; vertical-align: middle;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L3 480l117.7-30.9c32.4 17.7 68.9 27 106.3 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7 .9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/></svg> Chat on WhatsApp
+              </a>
+            </div>
+          </div>
+
+          <!-- Kalyan Nagar -->
+          <div class="card city-card reveal delay-2">
+            <div class="city-card-header">
+              <span class="location-badge">
+                <i data-lucide="map-pin"></i> Bengaluru Area
+              </span>
+            </div>
+            <h3>Kalyan Nagar</h3>
+            <div class="city-card-btn">
+              <a href="https://wa.me/919880699315?text=Hi%2C%20I%20want%20to%20enquire%20about%20battery%20services%20in%20Kalyan%20Nagar." target="_blank" class="city-whatsapp-btn" aria-label="Chat Kalyan Nagar">
+                <svg style="width: 1.2em; height: 1.2em; fill: currentColor; display: inline-block; vertical-align: middle;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L3 480l117.7-30.9c32.4 17.7 68.9 27 106.3 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7 .9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/></svg> Chat on WhatsApp
+              </a>
+            </div>
+          </div>
+
+          <!-- HPR layout -->
+          <div class="card city-card reveal delay-3">
+            <div class="city-card-header">
+              <span class="location-badge">
+                <i data-lucide="map-pin"></i> Bengaluru Area
+              </span>
+            </div>
+            <h3>HPR layout</h3>
+            <div class="city-card-btn">
+              <a href="https://wa.me/919880699315?text=Hi%2C%20I%20want%20to%20enquire%20about%20battery%20services%20in%20HPR%20layout." target="_blank" class="city-whatsapp-btn" aria-label="Chat HPR layout">
+                <svg style="width: 1.2em; height: 1.2em; fill: currentColor; display: inline-block; vertical-align: middle;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L3 480l117.7-30.9c32.4 17.7 68.9 27 106.3 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7 .9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/></svg> Chat on WhatsApp
+              </a>
+            </div>
+          </div>
+
+          <!-- Byrathi -->
+          <div class="card city-card reveal delay-4">
+            <div class="city-card-header">
+              <span class="location-badge">
+                <i data-lucide="map-pin"></i> Bengaluru Area
+              </span>
+            </div>
+            <h3>Byrathi</h3>
+            <div class="city-card-btn">
+              <a href="https://wa.me/919880699315?text=Hi%2C%20I%20want%20to%20enquire%20about%20battery%20services%20in%20Byrathi." target="_blank" class="city-whatsapp-btn" aria-label="Chat Byrathi">
+                <svg style="width: 1.2em; height: 1.2em; fill: currentColor; display: inline-block; vertical-align: middle;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L3 480l117.7-30.9c32.4 17.7 68.9 27 106.3 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7 .9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/></svg> Chat on WhatsApp
+              </a>
+            </div>
+          </div>
+
+          <!-- K Narayan pura -->
+          <div class="card city-card reveal delay-1">
+            <div class="city-card-header">
+              <span class="location-badge">
+                <i data-lucide="map-pin"></i> Bengaluru Area
+              </span>
+            </div>
+            <h3>K Narayan pura</h3>
+            <div class="city-card-btn">
+              <a href="https://wa.me/919880699315?text=Hi%2C%20I%20want%20to%20enquire%20about%20battery%20services%20in%20K%20Narayan%20pura." target="_blank" class="city-whatsapp-btn" aria-label="Chat K Narayan pura">
+                <svg style="width: 1.2em; height: 1.2em; fill: currentColor; display: inline-block; vertical-align: middle;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L3 480l117.7-30.9c32.4 17.7 68.9 27 106.3 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7 .9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/></svg> Chat on WhatsApp
+              </a>
+            </div>
+          </div>
+
+          <!-- Nagavara -->
+          <div class="card city-card reveal delay-2">
+            <div class="city-card-header">
+              <span class="location-badge">
+                <i data-lucide="map-pin"></i> Bengaluru Area
+              </span>
+            </div>
+            <h3>Nagavara</h3>
+            <div class="city-card-btn">
+              <a href="https://wa.me/919880699315?text=Hi%2C%20I%20want%20to%20enquire%20about%20battery%20services%20in%20Nagavara." target="_blank" class="city-whatsapp-btn" aria-label="Chat Nagavara">
+                <svg style="width: 1.2em; height: 1.2em; fill: currentColor; display: inline-block; vertical-align: middle;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L3 480l117.7-30.9c32.4 17.7 68.9 27 106.3 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7 .9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/></svg> Chat on WhatsApp
+              </a>
+            </div>
+          </div>
+
+          <!-- Hebbal -->
+          <div class="card city-card reveal delay-3">
+            <div class="city-card-header">
+              <span class="location-badge">
+                <i data-lucide="map-pin"></i> Bengaluru Area
+              </span>
+            </div>
+            <h3>Hebbal</h3>
+            <div class="city-card-btn">
+              <a href="https://wa.me/919880699315?text=Hi%2C%20I%20want%20to%20enquire%20about%20battery%20services%20in%20Hebbal." target="_blank" class="city-whatsapp-btn" aria-label="Chat Hebbal">
+                <svg style="width: 1.2em; height: 1.2em; fill: currentColor; display: inline-block; vertical-align: middle;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L3 480l117.7-30.9c32.4 17.7 68.9 27 106.3 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7 .9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/></svg> Chat on WhatsApp
+              </a>
+            </div>
+          </div>
+
+          <!-- Sahkar Nagar -->
+          <div class="card city-card reveal delay-4">
+            <div class="city-card-header">
+              <span class="location-badge">
+                <i data-lucide="map-pin"></i> Bengaluru Area
+              </span>
+            </div>
+            <h3>Sahkar Nagar</h3>
+            <div class="city-card-btn">
+              <a href="https://wa.me/919880699315?text=Hi%2C%20I%20want%20to%20enquire%20about%20battery%20services%20in%20Sahkar%20Nagar." target="_blank" class="city-whatsapp-btn" aria-label="Chat Sahkar Nagar">
+                <svg style="width: 1.2em; height: 1.2em; fill: currentColor; display: inline-block; vertical-align: middle;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L3 480l117.7-30.9c32.4 17.7 68.9 27 106.3 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7 .9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/></svg> Chat on WhatsApp
+              </a>
+            </div>
+          </div>
+
+          <!-- Jakkur -->
+          <div class="card city-card reveal delay-1">
+            <div class="city-card-header">
+              <span class="location-badge">
+                <i data-lucide="map-pin"></i> Bengaluru Area
+              </span>
+            </div>
+            <h3>Jakkur</h3>
+            <div class="city-card-btn">
+              <a href="https://wa.me/919880699315?text=Hi%2C%20I%20want%20to%20enquire%20about%20battery%20services%20in%20Jakkur." target="_blank" class="city-whatsapp-btn" aria-label="Chat Jakkur">
+                <svg style="width: 1.2em; height: 1.2em; fill: currentColor; display: inline-block; vertical-align: middle;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L3 480l117.7-30.9c32.4 17.7 68.9 27 106.3 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7 .9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/></svg> Chat on WhatsApp
+              </a>
+            </div>
+          </div>
+
+          <!-- Yelahanka -->
+          <div class="card city-card reveal delay-2">
+            <div class="city-card-header">
+              <span class="location-badge">
+                <i data-lucide="map-pin"></i> Bengaluru Area
+              </span>
+            </div>
+            <h3>Yelahanka</h3>
+            <div class="city-card-btn">
+              <a href="https://wa.me/919880699315?text=Hi%2C%20I%20want%20to%20enquire%20about%20battery%20services%20in%20Yelahanka." target="_blank" class="city-whatsapp-btn" aria-label="Chat Yelahanka">
+                <svg style="width: 1.2em; height: 1.2em; fill: currentColor; display: inline-block; vertical-align: middle;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L3 480l117.7-30.9c32.4 17.7 68.9 27 106.3 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7 .9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/></svg> Chat on WhatsApp
+              </a>
+            </div>
+          </div>
+
+          <!-- Airport -->
+          <div class="card city-card reveal delay-3">
+            <div class="city-card-header">
+              <span class="location-badge">
+                <i data-lucide="map-pin"></i> Bengaluru Area
+              </span>
+            </div>
+            <h3>Airport</h3>
+            <div class="city-card-btn">
+              <a href="https://wa.me/919880699315?text=Hi%2C%20I%20want%20to%20enquire%20about%20battery%20services%20in%20Airport." target="_blank" class="city-whatsapp-btn" aria-label="Chat Airport">
+                <svg style="width: 1.2em; height: 1.2em; fill: currentColor; display: inline-block; vertical-align: middle;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L3 480l117.7-30.9c32.4 17.7 68.9 27 106.3 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7 .9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/></svg> Chat on WhatsApp
+              </a>
+            </div>
+          </div>
+
+          <!-- BTM layout -->
+          <div class="card city-card reveal delay-4">
+            <div class="city-card-header">
+              <span class="location-badge">
+                <i data-lucide="map-pin"></i> Bengaluru Area
+              </span>
+            </div>
+            <h3>BTM layout</h3>
+            <div class="city-card-btn">
+              <a href="https://wa.me/919880699315?text=Hi%2C%20I%20want%20to%20enquire%20about%20battery%20services%20in%20BTM%20layout." target="_blank" class="city-whatsapp-btn" aria-label="Chat BTM layout">
+                <svg style="width: 1.2em; height: 1.2em; fill: currentColor; display: inline-block; vertical-align: middle;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L3 480l117.7-30.9c32.4 17.7 68.9 27 106.3 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7 .9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/></svg> Chat on WhatsApp
+              </a>
+            </div>
+          </div>
+
+          <!-- Bannerghatta road -->
+          <div class="card city-card reveal delay-1">
+            <div class="city-card-header">
+              <span class="location-badge">
+                <i data-lucide="map-pin"></i> Bengaluru Area
+              </span>
+            </div>
+            <h3>Bannerghatta road</h3>
+            <div class="city-card-btn">
+              <a href="https://wa.me/919880699315?text=Hi%2C%20I%20want%20to%20enquire%20about%20battery%20services%20in%20Bannerghatta%20road." target="_blank" class="city-whatsapp-btn" aria-label="Chat Bannerghatta road">
+                <svg style="width: 1.2em; height: 1.2em; fill: currentColor; display: inline-block; vertical-align: middle;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L3 480l117.7-30.9c32.4 17.7 68.9 27 106.3 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7 .9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/></svg> Chat on WhatsApp
+              </a>
+            </div>
+          </div>
+
+          <!-- JP Nagar -->
+          <div class="card city-card reveal delay-2">
+            <div class="city-card-header">
+              <span class="location-badge">
+                <i data-lucide="map-pin"></i> Bengaluru Area
+              </span>
+            </div>
+            <h3>JP Nagar</h3>
+            <div class="city-card-btn">
+              <a href="https://wa.me/919880699315?text=Hi%2C%20I%20want%20to%20enquire%20about%20battery%20services%20in%20JP%20Nagar." target="_blank" class="city-whatsapp-btn" aria-label="Chat JP Nagar">
+                <svg style="width: 1.2em; height: 1.2em; fill: currentColor; display: inline-block; vertical-align: middle;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L3 480l117.7-30.9c32.4 17.7 68.9 27 106.3 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7 .9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/></svg> Chat on WhatsApp
+              </a>
+            </div>
+          </div>
+
+          <!-- Kanakapura Road -->
+          <div class="card city-card reveal delay-3">
+            <div class="city-card-header">
+              <span class="location-badge">
+                <i data-lucide="map-pin"></i> Bengaluru Area
+              </span>
+            </div>
+            <h3>Kanakapura Road</h3>
+            <div class="city-card-btn">
+              <a href="https://wa.me/919880699315?text=Hi%2C%20I%20want%20to%20enquire%20about%20battery%20services%20in%20Kanakapura%20Road." target="_blank" class="city-whatsapp-btn" aria-label="Chat Kanakapura Road">
+                <svg style="width: 1.2em; height: 1.2em; fill: currentColor; display: inline-block; vertical-align: middle;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L3 480l117.7-30.9c32.4 17.7 68.9 27 106.3 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7 .9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/></svg> Chat on WhatsApp
+              </a>
+            </div>
+          </div>
+
+          <!-- Uttarahalli -->
+          <div class="card city-card reveal delay-4">
+            <div class="city-card-header">
+              <span class="location-badge">
+                <i data-lucide="map-pin"></i> Bengaluru Area
+              </span>
+            </div>
+            <h3>Uttarahalli</h3>
+            <div class="city-card-btn">
+              <a href="https://wa.me/919880699315?text=Hi%2C%20I%20want%20to%20enquire%20about%20battery%20services%20in%20Uttarahalli." target="_blank" class="city-whatsapp-btn" aria-label="Chat Uttarahalli">
+                <svg style="width: 1.2em; height: 1.2em; fill: currentColor; display: inline-block; vertical-align: middle;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L3 480l117.7-30.9c32.4 17.7 68.9 27 106.3 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7 .9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/></svg> Chat on WhatsApp
+              </a>
+            </div>
+          </div>
+
+          <!-- Raja rajeshwari Nagar -->
+          <div class="card city-card reveal delay-1">
+            <div class="city-card-header">
+              <span class="location-badge">
+                <i data-lucide="map-pin"></i> Bengaluru Area
+              </span>
+            </div>
+            <h3>Raja rajeshwari Nagar</h3>
+            <div class="city-card-btn">
+              <a href="https://wa.me/919880699315?text=Hi%2C%20I%20want%20to%20enquire%20about%20battery%20services%20in%20Raja%20rajeshwari%20Nagar." target="_blank" class="city-whatsapp-btn" aria-label="Chat Raja rajeshwari Nagar">
+                <svg style="width: 1.2em; height: 1.2em; fill: currentColor; display: inline-block; vertical-align: middle;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L3 480l117.7-30.9c32.4 17.7 68.9 27 106.3 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7 .9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/></svg> Chat on WhatsApp
+              </a>
+            </div>
+          </div>
+
+          <!-- Nagarabhavi -->
+          <div class="card city-card reveal delay-2">
+            <div class="city-card-header">
+              <span class="location-badge">
+                <i data-lucide="map-pin"></i> Bengaluru Area
+              </span>
+            </div>
+            <h3>Nagarabhavi</h3>
+            <div class="city-card-btn">
+              <a href="https://wa.me/919880699315?text=Hi%2C%20I%20want%20to%20enquire%20about%20battery%20services%20in%20Nagarabhavi." target="_blank" class="city-whatsapp-btn" aria-label="Chat Nagarabhavi">
+                <svg style="width: 1.2em; height: 1.2em; fill: currentColor; display: inline-block; vertical-align: middle;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L3 480l117.7-30.9c32.4 17.7 68.9 27 106.3 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7 .9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/></svg> Chat on WhatsApp
+              </a>
+            </div>
+          </div>
+
+          <!-- Ullal -->
+          <div class="card city-card reveal delay-3">
+            <div class="city-card-header">
+              <span class="location-badge">
+                <i data-lucide="map-pin"></i> Bengaluru Area
+              </span>
+            </div>
+            <h3>Ullal</h3>
+            <div class="city-card-btn">
+              <a href="https://wa.me/919880699315?text=Hi%2C%20I%20want%20to%20enquire%20about%20battery%20services%20in%20Ullal." target="_blank" class="city-whatsapp-btn" aria-label="Chat Ullal">
+                <svg style="width: 1.2em; height: 1.2em; fill: currentColor; display: inline-block; vertical-align: middle;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L3 480l117.7-30.9c32.4 17.7 68.9 27 106.3 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7 .9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/></svg> Chat on WhatsApp
+              </a>
             </div>
           </div>
         </div>
-      </div>
     </section>
 
     <!-- Interactive Map Section -->
@@ -632,6 +1034,34 @@
   <script src="js/fab.js"></script>
   <script>
     lucide.createIcons();
+  </script>
+
+  <!-- Real-time locator search script -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const searchInput = document.getElementById('store-search');
+      const cityCards = document.querySelectorAll('.city-card');
+      const visibleCount = document.getElementById('visible-count');
+
+      if (searchInput && visibleCount) {
+        searchInput.addEventListener('input', function(e) {
+          const query = e.target.value.toLowerCase().trim();
+          let count = 0;
+
+          cityCards.forEach(card => {
+            const cityName = card.querySelector('h3').textContent.toLowerCase();
+            if (cityName.includes(query)) {
+              card.style.display = '';
+              count++;
+            } else {
+              card.style.display = 'none';
+            }
+          });
+
+          visibleCount.textContent = count;
+        });
+      }
+    });
   </script>
 </body>
 </html>
