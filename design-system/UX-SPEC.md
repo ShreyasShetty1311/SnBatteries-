@@ -74,7 +74,7 @@
 - **Layout:** 3-column desktop, 2 tablet, 1 mobile; 10 cards
 - **Card anatomy:** Image (top, 200px, object-cover) + Service Name + Short Description + 2 buttons (Call, WhatsApp)
 - **WhatsApp:** Pre-filled message `https://wa.me/91XXXXXXXXXX?text=Hi, I need help with [Service Name]`
-- **Services:** Car Batteries, Bike Batteries, Home UPS, Office UPS, Battery Replacement, Battery Charging, Emergency Jump Start, Distilled Water Refilling, Battery Maintenance, Doorstep Replacement
+- **Services:** Car Batteries, Bike Batteries, Home UPS, Office UPS, Battery Replacement, Battery Charging, Jump Start, Distilled Water Refilling, Battery Maintenance, Doorstep Replacement
 
 ### Home & Power Backup Solutions
 - **Layout:** Feature list left + icon grid right (desktop) | stacked (mobile)
